@@ -3,21 +3,31 @@ lockfileVersion: 5.4
 specifiers:
   '@nuxtjs/eslint-module': ^4.0.2
   '@nuxtjs/tailwindcss': ^6.6.6
+  '@prisma/client': ^4.14.0
   '@types/node': ^18
   '@types/prettier': ^2.7.2
   '@typescript-eslint/eslint-plugin': ^5.43.0
+  dayjs: ^1.11.7
   eslint: ^8.0.1
   eslint-config-prettier: ^8.8.0
   eslint-config-standard-with-typescript: ^34.0.1
   eslint-plugin-import: ^2.25.2
   eslint-plugin-n: ^15.0.0
+  eslint-plugin-nuxt: ^4.0.0
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-promise: ^6.0.0
   eslint-plugin-vue: ^9.11.0
   nuxt: ^3.4.2
+  nuxt-icon: ^0.4.0
   prettier: ^2.8.8
   prettier-plugin-tailwindcss: ^0.2.7
+  prisma: ^4.14.0
   typescript: '*'
+
+dependencies:
+  '@prisma/client': 4.14.0_prisma@4.14.0
+  dayjs: 1.11.7
+  prisma: 4.14.0
 
 devDependencies:
   '@nuxtjs/eslint-module': 4.0.2_eslint@8.39.0
@@ -30,10 +40,12 @@ devDependencies:
   eslint-config-standard-with-typescript: 34.0.1_kk4muzn4zjyjzjlu4kdbj2xkva
   eslint-plugin-import: 2.27.5_eslint@8.39.0
   eslint-plugin-n: 15.7.0_eslint@8.39.0
+  eslint-plugin-nuxt: 4.0.0_eslint@8.39.0
   eslint-plugin-prettier: 4.2.1_5pokp25ua6t5ubushhw3tqituq
   eslint-plugin-promise: 6.1.1_eslint@8.39.0
   eslint-plugin-vue: 9.11.0_eslint@8.39.0
   nuxt: 3.4.2_2o6n6wafbygmblqgdnsxngo3pa
+  nuxt-icon: 0.4.0
   prettier: 2.8.8
   prettier-plugin-tailwindcss: 0.2.7_prettier@2.8.8
   typescript: 5.0.4
@@ -644,6 +656,18 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@iconify/types/2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: true
+
+  /@iconify/vue/4.1.1:
+    resolution: {integrity: sha512-RL85Bm/DAe8y6rT6pux7D2FJSiUEM/TPfyK7GrbAOfTSwrhvwJW+S5yijdGcmtXouA8MtuH9C7l4hiSE4mLMjg==}
+    peerDependencies:
+      vue: '>=3'
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@ioredis/commands/1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
     dev: true
@@ -969,6 +993,29 @@ packages:
       - ts-node
       - webpack
     dev: true
+
+  /@prisma/client/4.14.0_prisma@4.14.0:
+    resolution: {integrity: sha512-MK/XaA2sFdfaOa7I9MjNKz6dxeIEdeZlnpNRoF2w3JuRLlFJLkpp6cD3yaqw2nUUhbrn3Iqe3ZpVV+VuGGil7Q==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c
+      prisma: 4.14.0
+    dev: false
+
+  /@prisma/engines-version/4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c:
+    resolution: {integrity: sha512-3jum8/YSudeSN0zGW5qkpz+wAN2V/NYCQ+BPjvHYDfWatLWlQkqy99toX0GysDeaUoBIJg1vaz2yKqiA3CFcQw==}
+    dev: false
+
+  /@prisma/engines/4.14.0:
+    resolution: {integrity: sha512-PDNlhP/1vyTgmNyiucGqGCdXIp7HIkkvKO50si3y3PcceeHvqtiKPaH1iJdz63jCWMVMbj2MElSxXPOeBvEVIQ==}
+    requiresBuild: true
+    dev: false
 
   /@rollup/plugin-alias/5.0.0_rollup@3.21.0:
     resolution: {integrity: sha512-l9hY5chSCjuFRPsnRm16twWBiSApl2uYFLsepQYwtBuAxNMQ/1dJqADld40P0Jkqm65GRTLy/AC6hnpVebtLsA==}
@@ -2388,6 +2435,10 @@ packages:
     engines: {node: '>= 12'}
     dev: true
 
+  /dayjs/1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
+    dev: false
+
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -2901,6 +2952,17 @@ packages:
       minimatch: 3.1.2
       resolve: 1.22.2
       semver: 7.5.0
+    dev: true
+
+  /eslint-plugin-nuxt/4.0.0_eslint@8.39.0:
+    resolution: {integrity: sha512-v3Vwdk8YKe52bAz8eSIDqQuTtfL/T1r9dSl1uhC5SyR5pgLxgKkQdxXVf/Bf6Ax7uyd9rHqiAuYVdqqDb7ILdA==}
+    dependencies:
+      eslint-plugin-vue: 9.11.0_eslint@8.39.0
+      semver: 7.5.0
+      vue-eslint-parser: 9.1.1_eslint@8.39.0
+    transitivePeerDependencies:
+      - eslint
+      - supports-color
     dev: true
 
   /eslint-plugin-prettier/4.2.1_5pokp25ua6t5ubushhw3tqituq:
@@ -4761,6 +4823,17 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /nuxt-icon/0.4.0:
+    resolution: {integrity: sha512-j7phHbE4Ug2MsHvj9SidH5Nx9Bs2i/XpoH7HjQJD7DPlWNaI9srJGDOPY1g83S8i4vmDJvCc6KqkLjRasJZlYA==}
+    dependencies:
+      '@iconify/vue': 4.1.1
+      '@nuxt/kit': 3.4.2
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+      - vue
+    dev: true
+
   /nuxt/3.4.2_2o6n6wafbygmblqgdnsxngo3pa:
     resolution: {integrity: sha512-4v+oeBL4ZI8nHzF0Dm1p5kF9VCNlzrpvOt7wu3BnmzlueXsu4A/LfmFvpfZLxws+r5U74eM5Ut/LMD8B8LrZIw==}
     engines: {node: ^14.18.0 || ^16.10.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
@@ -5676,6 +5749,15 @@ packages:
     resolution: {integrity: sha512-Rk753HI8f4uivXi4ZCIYdhmG1V+WKzvRMg/X+M42a6t7D07RcmopXJMDNk6N++7Bl75URRGsb40ruvg7Hcp2wQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
     dev: true
+
+  /prisma/4.14.0:
+    resolution: {integrity: sha512-+5dMl1uxMQb4RepndY6AwR9xi1cDcaGFICu+ws6/Nmgt93mFPNj8tYxSfTdmfg+rkNrUId9rk/Ac2vTgLe/oXA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.14.0
+    dev: false
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
