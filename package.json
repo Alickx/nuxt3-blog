@@ -5,11 +5,11 @@
     "schema": "src/prisma/schema.prisma"
   },
   "scripts": {
-    "build": "nuxt build",
+    "build": "prisma generate && nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare && prisma generate"
   },
   "devDependencies": {
     "@nuxtjs/eslint-module": "^4.0.2",
