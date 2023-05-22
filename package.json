@@ -12,6 +12,7 @@
     "postinstall": "nuxt prepare && prisma generate"
   },
   "devDependencies": {
+    "@nuxt/image-edge": "1.0.0-28059208.2abef1b",
     "@nuxtjs/eslint-module": "^4.0.2",
     "@nuxtjs/tailwindcss": "^6.6.6",
     "@types/node": "^18",
@@ -34,7 +35,10 @@
   },
   "dependencies": {
     "@prisma/client": "^4.14.0",
+    "@types/marked": "^5.0.0",
     "dayjs": "^1.11.7",
+    "highlight.js": "^11.8.0",
+    "marked": "^5.0.2",
     "prisma": "^4.14.0"
   }
 }

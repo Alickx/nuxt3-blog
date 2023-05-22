@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/eslint-module',
     'nuxt-icon',
+    '@nuxt/image-edge',
   ],
-  srcDir: 'src/',
+  srcDir: 'src/'
 })
