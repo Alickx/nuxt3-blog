@@ -7,7 +7,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 declare module '#app' {
   interface NuxtApp {
-    $dayjs: dayjs.Dayjs
+    $dayjs(date?: dayjs.ConfigType): dayjs.Dayjs;
   }
 }
 declare module '@vue/runtime-core' {

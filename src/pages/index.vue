@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-52">
     <ArticleList />
   </div>
 </template>

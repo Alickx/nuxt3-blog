@@ -1,13 +1,15 @@
 <template>
-  <div class="mx-auto w-2/3 p-10">
-    <div v-for="item in articles" :key="item.id">
-      <ArticleItem :article="item" />
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 space-y-5">
+      <div v-for="item in articles" :key="item.id">
+        <ArticleItem :article="item" />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { article } from '@prisma/client'
+import { article } from '@prisma/client';
 
 const { pageArticle } = useArticle()
 
@@ -18,7 +20,7 @@ const articles = ref<article[]>()
 
 const getArticles = async () => {
   const data = await pageArticle(page.value)
-  articles.value = data.articles
+  articles.value = data.data
   total.value = data.total
 }
 
@@ -28,4 +30,27 @@ onMounted(() => {
 </script>
 
 <style scoped>
+@media (min-width: 640px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 </style>

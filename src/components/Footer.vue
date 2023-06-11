@@ -1,16 +1,15 @@
 <template>
-  <div class="bg-[#f1f5f9] px-20 py-10">
+  <div class="w-full bg-gray-100 px-20 py-10">
     <div class="flex flex-col items-center justify-center space-y-10">
-      <div class="text-base text-[#475569]">
+      <div class="text-base text-gray-600 text-center">
         <!-- 底部信息 -->
-        <span>@2023 平平凡凡的Alickx</span>
+        <span>@2023 Alickx</span>
       </div>
-      <div class="flex flex-row">
+      <div class="flex flex-row items-center space-x-2 text-base text-gray-400">
         <!-- 网站来自 -->
-        <div class="space-x-2 text-base text-[#8c8c8c]">
-          <span>Powered by Nuxt3</span>
-          <Icon name="vscode-icons:file-type-nuxt" size="25"></Icon>
-        </div>
+        <span>Powered by</span>
+        <Icon name="vscode-icons:file-type-nuxt" size="25"></Icon>
+        <span>Nuxt3</span>
       </div>
     </div>
   </div>

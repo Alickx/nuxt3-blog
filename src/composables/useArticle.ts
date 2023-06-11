@@ -1,6 +1,8 @@
+import { article } from "@prisma/client"
+
 export default () => {
 
-  const getArticle = (articleId) => {
+  const getArticle = (articleId: string) => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await $fetch(`/api/article/${articleId}`, {
@@ -13,9 +15,8 @@ export default () => {
     })
   }
 
-
-  const pageArticle = (page) => {
-    return new Promise(async (resolve, reject) => {
+  const pageArticle = (page: number) => {
+    return new Promise<any>(async (resolve, reject) => {
       try {
         const response = await $fetch(`/api/article/page/${page}`, {
           method: 'GET'
@@ -27,9 +28,9 @@ export default () => {
     })
   }
 
-
   return {
     getArticle,
-    pageArticle,
+    pageArticle
   }
+
 }

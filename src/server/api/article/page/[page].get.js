@@ -2,12 +2,11 @@ import { pageArticle, countArticle } from '~/server/db/article.js'
 export default defineEventHandler(async (event) => {
   const { page } = event.context.params
 
-  const articles = await pageArticle(page, 10)
-
-  const count = await countArticle()
+  const data = await pageArticle(page, 10)
+  const total = await countArticle()
 
   return {
-    articles,
-    count,
+    data,
+    total,
   }
 })

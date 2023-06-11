@@ -1,22 +1,14 @@
 <template>
-  <div class="relative z-50 bg-[#1a316b]">
-    <div class="mx-32 flex flex-col px-4">
-      <div class="flex flex-row items-center justify-between pb-10 pt-10">
-        <!-- 我的昵称 -->
-        <h1 class="text-2xl font-black text-white">平平凡凡的Alickx</h1>
-        <div class="flex- flex-row space-x-5">
-          <Icon
-            class="cursor-pointer"
-            name="mdi:magnify"
-            color="white"
-            size="28"
-          />
-          <Icon
-            class="cursor-pointer"
-            name="material-symbols:dark-mode-outline"
-            color="white"
-            size="28"
-          />
+  <div class="z-50 bg-[#1a316b]">
+    <div class="flex flex-col px-4">
+      <div class="flex justify-center items-center py-10">
+        <div class="w-2/3 flex flex-row items-center justify-between">
+          <!-- 我的昵称 -->
+          <span class="text-2xl font-black text-white">Alickx</span>
+          <div class="flex- flex-row space-x-5">
+            <Icon class="cursor-pointer" name="mdi:magnify" color="white" size="28" />
+            <Icon class="cursor-pointer" name="material-symbols:dark-mode-outline" color="white" size="28" />
+          </div>
         </div>
       </div>
       <div class="flex flex-row items-center justify-center">
@@ -37,7 +29,8 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <style scoped>
 .nav-link .router-link-exact-active {
