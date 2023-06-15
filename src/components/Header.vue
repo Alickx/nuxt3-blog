@@ -4,16 +4,16 @@
       <div class="flex justify-center items-center py-10">
         <div class="w-2/3 flex flex-row items-center justify-between">
           <!-- 我的昵称 -->
-          <span class="text-2xl font-black text-white">Alickx</span>
+          <span class="text-2xl font-bold text-white">Alickx</span>
           <div class="flex- flex-row space-x-5">
-            <Icon class="cursor-pointer" name="mdi:magnify" color="white" size="28" />
+            <Icon @click="clickSearchHandle" class="cursor-pointer" name="mdi:magnify" color="white" size="28" />
             <Icon class="cursor-pointer" name="material-symbols:dark-mode-outline" color="white" size="28" />
           </div>
         </div>
       </div>
       <div class="flex flex-row items-center justify-center">
         <!-- 导航栏 -->
-        <ul class="nav-link flex flex-row space-x-5 pb-5 text-lg font-bold">
+        <ul class="nav-link flex flex-row space-x-5 pb-5 text-lg font-bold list-none">
           <li>
             <NuxtLink to="/">Home</NuxtLink>
           </li>
@@ -27,9 +27,18 @@
       </div>
     </div>
   </div>
+  <ArticleSearch ref="searchRef" v-if="showSearch" @close="clickSearchHandle" />
 </template>
 
 <script setup lang="ts">
+
+let showSearch = ref(false);
+let searchRef = ref();
+
+const clickSearchHandle = () => {
+  showSearch.value = !showSearch.value;
+}
+
 </script>
 
 <style scoped>
@@ -39,7 +48,8 @@
   transition: border-bottom-color 0.3s ease;
 }
 
-.nav-link {
+.nav-link a {
   color: #8c8c8c;
+  text-decoration: none;
 }
 </style>

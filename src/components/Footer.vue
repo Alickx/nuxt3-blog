@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-gray-100 px-20 py-10">
+  <div class="w-full bg-gray-100 py-10">
     <div class="flex flex-col items-center justify-center space-y-10">
       <div class="text-base text-gray-600 text-center">
         <!-- 底部信息 -->

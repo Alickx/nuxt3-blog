@@ -5,8 +5,9 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  name: "Home",
+
+useHead({
+  title: "Alickx' Blog",
 })
 
 </script>

@@ -28,9 +28,38 @@ export default () => {
     })
   }
 
+  const createArticle = (article: article) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await $fetch(`/api/article`, {
+          method: 'POST',
+          body: JSON.stringify(article)
+        })
+        resolve(response)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+
+  const deleteArticle = (articleId: string) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await $fetch(`/api/article/${articleId}`, {
+          method: 'DELETE'
+        })
+        resolve(response)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+
+
   return {
     getArticle,
-    pageArticle
+    pageArticle,
+    createArticle
   }
 
 }
