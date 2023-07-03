@@ -9,24 +9,27 @@
 </template>
 
 <script setup lang="ts">
-import { article } from '@prisma/client';
 
 const { pageArticle } = useArticle()
 
 const page = ref(1)
 const total = ref(0)
 
-const articles = ref<article[]>()
+const articles = ref<Article[]>()
 
 const getArticles = async () => {
-  const data = await pageArticle(page.value)
-  articles.value = data.data
+  const { data } = await pageArticle(page.value)
+  articles.value = data.records
   total.value = data.total
 }
 
+
 onMounted(() => {
-  getArticles()
+  nextTick(() => {
+    getArticles()
+  })
 })
+
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
-import { getArticle } from '../../db/article.js';
-
+import { getArticle } from '~/server/db/article';
+import {R} from "~/composables/useResult";
 
 export default defineEventHandler(async (event) => {
 
@@ -7,6 +7,6 @@ export default defineEventHandler(async (event) => {
 
   const article = await getArticle(id);
 
-  return article;
+  return R.ok(article);
 
 })

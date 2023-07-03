@@ -8,6 +8,9 @@
           <div class="flex- flex-row space-x-5">
             <Icon @click="clickSearchHandle" class="cursor-pointer" name="mdi:magnify" color="white" size="28" />
             <Icon class="cursor-pointer" name="material-symbols:dark-mode-outline" color="white" size="28" />
+            <nuxt-link to="/admin" v-if="showAdminIcon">
+              <Icon name="eos-icons:admin" size="28" color="white" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -34,10 +37,15 @@
 
 let showSearch = ref(false);
 let searchRef = ref();
+const cookies = useCookie('ACCESS_TOKEN');
 
 const clickSearchHandle = () => {
   showSearch.value = !showSearch.value;
 }
+
+const showAdminIcon = computed(() => {
+  return cookies.value && cookies.value !== '';
+});
 
 </script>
 

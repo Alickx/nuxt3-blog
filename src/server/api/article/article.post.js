@@ -1,8 +1,7 @@
-import { PrismaClient } from '@prisma/client'
+import {createArticle} from "~/server/db/article";
+import {R} from "~/composables/useResult";
 
-const prisma = new PrismaClient()
-
-export default defineEventHandler((event) => {
+export default defineEventHandler( async (event) => {
   const { title, content, abstract, cover } = event.body
 
   if (!title || !content || !abstract || !cover) {
@@ -15,14 +14,12 @@ export default defineEventHandler((event) => {
     )
   }
 
-  const article = prisma.article.create({
-    data: {
-      title,
-      content,
-      abstract,
-      cover,
-    },
+  await createArticle({
+    title,
+    content,
+    abstract,
+    cover,
   })
 
-  return article
+  return R.ok()
 })

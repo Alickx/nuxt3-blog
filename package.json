@@ -26,8 +26,10 @@
   "dependencies": {
     "@prisma/client": "^4.14.0",
     "@types/marked": "^5.0.0",
+    "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",
     "highlight.js": "^11.8.0",
+    "jsonwebtoken": "^9.0.0",
     "marked": "^5.0.2",
     "prisma": "^4.14.0"
   }

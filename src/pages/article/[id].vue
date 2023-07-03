@@ -19,10 +19,10 @@ let article = ref()
 
 const getArticleById = async (id: string) => {
   try {
-    const resp = await getArticle(id)
-    article.value = resp
+    let { data } = await getArticle(id)
+    article.value = data
   } catch (err) {
-    router.push('/404')
+    await router.push('/404')
   }
 }
 

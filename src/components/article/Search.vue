@@ -10,8 +10,6 @@
 
 <script setup lang="ts">
 
-// 抛出关闭事件
-
 let searchModel = ref()
 let inputRef = ref()
 
