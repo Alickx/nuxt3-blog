@@ -1,20 +1,14 @@
 <template>
   <div>
-    <nuxt-page />
+    <content-handle-button-group />
   </div>
 </template>
 
 <script setup lang="ts">
 
-definePageMeta({
-  middleware: ['auth'],
-  layout: 'dashboard'
-})
-
 </script>
 
 
 <style scoped>
-
 
 </style>

@@ -4,9 +4,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
-  corePlugins: {
-    preflight: false,
-  },
-  darkMode: 'class',
+  plugins: [require('@tailwindcss/ui')]
 }

@@ -1,20 +1,14 @@
 <template>
   <div>
-    <nuxt-page />
+    dashboard
   </div>
 </template>
 
 <script setup lang="ts">
 
-definePageMeta({
-  middleware: ['auth'],
-  layout: 'dashboard'
-})
-
 </script>
 
 
 <style scoped>
-
 
 </style>
