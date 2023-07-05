@@ -8,7 +8,7 @@ export default () => {
     })
   }
 
-  const pageArticle = async (page: number) => {
+  const pageArticle = (page: number) => {
     return $fetch(`/api/article/page/${page}`,{
       method: 'GET',
     });

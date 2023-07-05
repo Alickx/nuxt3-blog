@@ -1,8 +1,6 @@
-import {useHttp} from "~/composables/useHttp";
-
 export default () => {
 
-  const userLogin = async (user: User) => {
+  const userLogin = (user: User) => {
     return $fetch('/api/user/login', {
       method: 'post',
       body: user
