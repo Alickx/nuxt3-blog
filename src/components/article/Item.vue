@@ -3,7 +3,7 @@
     class="bg-white border rounded-lg shadow-lg overflow-hidden transition-transform duration-200 ease-in-out hover:scale-105">
     <div class="md:flex">
       <NuxtLink class="md:flex-shrink-0" :to="{ name: 'article-id', params: { id: props.article.id } }">
-        <img class="h-full w-full object-cover md:w-56 md:h-full " :src="article.cover" alt="">
+        <img class="h-full w-full object-cover md:w-56 " :src="article.cover" alt="">
       </NuxtLink>
       <div class="px-4 py-4 w-full">
         <NuxtLink :to="{ name: 'article-id', params: { id: props.article.id } }"

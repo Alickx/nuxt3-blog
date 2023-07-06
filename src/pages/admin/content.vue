@@ -1,6 +1,9 @@
 <template>
-  <div>
+  <div class="flex flex-col">
     <content-handle-button-group />
+
+    <content-table />
+
   </div>
 </template>
 
@@ -10,5 +13,4 @@
 
 
 <style scoped>
-
 </style>

@@ -5,6 +5,9 @@
         <ArticleItem :article="item" />
       </div>
     </div>
+    <div class="flex justify-center mt-10">
+      <ArticlePageHandle :total="total" :size="size" @pageChange="pageChange" />
+    </div>
   </div>
 </template>
 
@@ -12,15 +15,21 @@
 
 const { pageArticle } = useArticle()
 
-const page = ref(1)
+const queryPage = ref(1)
 const total = ref(0)
+const size = ref(5)
 
 const articles = ref<Article[]>()
 
 const getArticles = async () => {
-  const { data } = await pageArticle(page.value)
+  const { data } = await pageArticle(queryPage.value,size.value) as result
   articles.value = data.records
   total.value = data.total
+}
+
+const pageChange = (page: number) => {
+  queryPage.value = page
+  getArticles()
 }
 
 

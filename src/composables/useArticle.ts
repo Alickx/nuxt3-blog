@@ -8,9 +8,13 @@ export default () => {
     })
   }
 
-  const pageArticle = (page: number) => {
-    return $fetch(`/api/article/page/${page}`,{
+  const pageArticle = (page: number, size: number) => {
+    return $fetch('/api/article' ,{
       method: 'GET',
+      params: {
+        page,
+        size
+      }
     });
   }
 
@@ -18,12 +22,6 @@ export default () => {
     return $fetch(`/api/article`, {
       method: 'POST',
       body: JSON.stringify(article)
-    });
-  }
-
-  const deleteArticle = (articleId: string) => {
-    return $fetch(`/api/article/${articleId}`,{
-      method: 'DELETE'
     });
   }
 

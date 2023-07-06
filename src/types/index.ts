@@ -12,3 +12,9 @@ interface Article {
   createdAt: string
   updatedAt: string
 }
+
+interface result {
+  code: number
+  msg: string
+  data: any
+}
