@@ -8,13 +8,11 @@
 
 definePageMeta({
   middleware: ['auth'],
-  layout: 'dashboard'
+  layout: 'admin'
 })
 
 </script>
 
 
 <style scoped>
-
-
 </style>

@@ -1,8 +1,7 @@
 <template>
   <div class="mx-4 my-8">
-    <div class="p-4 md:p-8 lg:p-12 xl:p-16 rounded-lg shadow-inner md:w-3/4 lg:w-3/4 xl:w-3/4 mx-auto">
-      <div class="markdown-body" v-html="contentHtml" />
-    </div>
+      <div class="markdown-body max-w-5xl mx-auto rounded-lg shadow-default p-4 md:p-8 lg:p-12 xl:p-16 "
+        v-html="contentHtml" />
   </div>
 </template>
 

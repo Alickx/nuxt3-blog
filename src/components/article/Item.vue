@@ -5,13 +5,13 @@
       <NuxtLink class="md:flex-shrink-0" :to="{ name: 'article-id', params: { id: props.article.id } }">
         <img class="h-full w-full object-cover md:w-56 " :src="article.cover" alt="">
       </NuxtLink>
-      <div class="px-4 py-4 w-full">
+      <div class="px-4 py-4">
         <NuxtLink :to="{ name: 'article-id', params: { id: props.article.id } }"
                   class="block mt-1 text-xl leading-tight font-bold text-black hover:underline no-underline">
           {{ article.title }}
         </NuxtLink>
         <p class="mt-3 text-gray-500">{{ formattedDate }}</p>
-        <p class="mt-3 text-gray-600 leading-6 line-clamp-2">{{ article.abstract.substring(0, 100) }}...</p>
+        <p class="mt-3 text-gray-600 leading-6 line-clamp-2">{{ article.abstract.substring(0, 100) }}</p>
       </div>
     </div>
   </div>

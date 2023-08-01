@@ -4,5 +4,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/ui')]
+  plugins: [require('@tailwindcss/ui')],
+  corePlugins: {
+    preflight: false
+  }
 }

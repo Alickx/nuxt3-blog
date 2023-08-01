@@ -5,13 +5,21 @@
         <ArticleItem :article="item" />
       </div>
     </div>
-    <div class="flex justify-center mt-10">
-      <ArticlePageHandle :total="total" :size="size" @pageChange="pageChange" />
+    <div v-if="articles != null" class="flex justify-center mt-20">
+      <a-pagination v-model:current="queryPage" :total="total" show-less-items>
+        <template #itemRender="{ type, originalElement }">
+          <a v-if="type === 'prev'">上一页</a>
+          <a v-else-if="type === 'next'">下一页</a>
+          <component :is="originalElement" v-else></component>
+        </template>
+      </a-pagination>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { SimpleArticle } from '~/composables/useArticle'
+
 
 const { pageArticle } = useArticle()
 
@@ -19,10 +27,10 @@ const queryPage = ref(1)
 const total = ref(0)
 const size = ref(5)
 
-const articles = ref<Article[]>()
+const articles = ref<SimpleArticle[]>()
 
 const getArticles = async () => {
-  const { data } = await pageArticle(queryPage.value,size.value) as result
+  const { data } = await pageArticle(queryPage.value, size.value)
   articles.value = data.records
   total.value = data.total
 }

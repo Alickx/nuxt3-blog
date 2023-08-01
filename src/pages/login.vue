@@ -15,10 +15,7 @@
         </div>
       </div>
       <div class="w-full">
-        <button
-          class="m-0 py-2 px-10 text-black rounded block w-full cursor-pointer font-bold outline-none border border-solid border-transparent"
-          @click="submit">登录
-        </button>
+        <a-button type="primary" block @click="submit">登录</a-button>
       </div>
     </div>
   </div>
@@ -33,8 +30,11 @@ const {userLogin} = useUser()
 const router = useRouter()
 
 definePageMeta({
-  title: '后台登录',
   layout: false
+})
+
+useHead({
+  title: '后台登录'
 })
 
 
@@ -58,11 +58,20 @@ const submit = async () => {
 
   if (data.code == common.SUCCESS_CODE) {
     cookies.value = data.data.token
-    await router.push('/admin')
+    await router.push('/admin/dashboard')
   }
-
-
 }
+
+
+// 监听enter
+onMounted(() => {
+  document.onkeydown = function (event) {
+    let e = event || window.event || arguments.callee.caller.arguments[0];
+    if (e && e.keyCode == 13) {
+      submit()
+    }
+  };
+})
 
 
 </script>

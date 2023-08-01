@@ -3,18 +3,17 @@ interface User {
   password: string;
 }
 
-interface Article {
-  id: string
-  title: string
-  abstract: string
-  content: string
-  cover: string
-  createdAt: string
-  updatedAt: string
-}
-
-interface result {
+interface Result<T> {
   code: number
   msg: string
-  data: any
+  data: T
+}
+
+interface PageResult<T> {
+  code: number
+  msg: string
+  data: {
+    total: number
+    records: T[]
+  }
 }

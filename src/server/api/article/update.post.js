@@ -1,8 +1,8 @@
-import { createArticle } from '~/server/db/article';
+import { updateArticle } from '~/server/db/article';
 import { R } from '~/composables/useResult';
 
 export default defineEventHandler(async (event) => {
-	const { title, content, abstract, cover } = await readBody(event);
+	const { id, title, content, abstract, cover } = await readBody(event);
 
 	if (!title || !content || !abstract) {
 		return sendError(
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 		);
 	}
 
-	await createArticle({
+	await updateArticle(id, {
 		title,
 		content,
 		abstract,

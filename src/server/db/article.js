@@ -13,6 +13,14 @@ export const pageArticle = async (page, size) => {
   const articles = await prisma.article.findMany({
     skip: (page - 1) * size,
     take: size,
+    select: {
+      id: true,
+      title: true,
+      abstract: true,
+      cover: true,
+      createdAt: true,
+      updatedAt: true
+    },
   })
   return articles
 }
