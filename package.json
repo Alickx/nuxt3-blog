@@ -13,20 +13,20 @@
   },
   "devDependencies": {
     "@ant-design-vue/nuxt": "1.0.0-alpha.0",
-    "@nuxtjs/tailwindcss": "^6.6.6",
+    "@nuxt/image": "1.0.0-rc.1",
     "@types/node": "^18",
     "@types/prettier": "^2.7.2",
+    "@unocss/nuxt": "^0.54.1",
     "@vueuse/core": "^10.1.2",
     "@vueuse/nuxt": "^10.1.2",
     "nuxt": "^3.4.2",
     "nuxt-icon": "^0.4.0",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.2.7",
+    "sass": "^1.64.2",
     "typescript": "*"
   },
   "dependencies": {
     "@prisma/client": "^4.14.0",
-    "@tailwindcss/ui": "^0.7.2",
     "@types/marked": "^5.0.0",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",

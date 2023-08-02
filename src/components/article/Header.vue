@@ -2,7 +2,7 @@
   <div class="bg-[#1a316b] p-6">
     <div class="flex flex-row justify-between">
       <div class="flex flex-row space-x-5">
-        <Icon class="cursor-pointer" @click="$router.go(-1)" name="material-symbols:chevron-left-rounded" color="white"
+        <Icon class="cursor-pointer" @click="$router.push('/')" name="material-symbols:chevron-left-rounded" color="white"
           size="28" />
         <span class="text-white font-bold text-xl">Alickx</span>
       </div>

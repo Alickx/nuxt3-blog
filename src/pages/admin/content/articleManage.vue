@@ -5,7 +5,7 @@
         <a-button type="primary" @click="addArticle">新增文章</a-button>
       </a-space>
     </div>
-    <a-table :data-source="tableData" :columns="columns" :scroll="{ x: 'max-content' }">
+    <a-table bordered :data-source="tableData" :columns="columns" :scroll="{ x: 'max-content' }">
       <template #bodyCell="{ column, record, text }">
         <template v-if="column.dataIndex === 'title'">
           <nuxt-link class="font-bold" :href="`/article/${record.id}`" target="_blank">{{ text }}</nuxt-link>
@@ -15,7 +15,7 @@
         </template>
         <template v-else-if="column.key === 'action'">
           <a-space>
-            <a-button type="primary" @click="editArticle(record.id)">编辑</a-button>
+            <a-button @click="editArticle(record.id)">编辑</a-button>
             <a-popconfirm title="删除文章" @confirm="delArticle(record.id)" cancel-text="取消">
               <a-button type="primary" danger>删除</a-button>
             </a-popconfirm>

@@ -21,6 +21,9 @@ export const pageArticle = async (page, size) => {
       createdAt: true,
       updatedAt: true
     },
+    orderBy: {
+      createdAt: 'desc',
+    }
   })
   return articles
 }

@@ -21,9 +21,6 @@
             <NuxtLink to="/">Home</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/about">About</NuxtLink>
-          </li>
-          <li>
             <a href="https://github.com/Alickx" target="_blank">Github</a>
           </li>
         </ul>

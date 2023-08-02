@@ -7,11 +7,16 @@
         </a-menu>
       </a-layout-sider>
       <a-layout class="ml-4">
-        <a-layout-header class="!bg-white mb-3 flex items-center justify-end">
-          <admin-user-model />
+        <a-layout-header class="!bg-white mb-3 flex items-center">
+          <div class="flex justify-start flex-1">
+            <nuxt-link to="/">返回首页</nuxt-link>
+          </div>
+          <div class="flex justify-end">
+            <admin-user-model />
+          </div>
         </a-layout-header>
         <a-layout-content>
-          <div class="p-6 bg-white min-h-[360px]">
+          <div class="p-[50px] bg-white min-h-[360px]">
             <slot />
           </div>
         </a-layout-content>
@@ -51,8 +56,6 @@ const items: ItemType[] = reactive([
 
   getItem('内容管理', '/admin/content', () => h(ReadOutlined), [
     getItem('文章管理', '/admin/content/articleManage'),
-    getItem('分类管理', '/admin/content/categoryManage'),
-    getItem('标签管理', '3'),
     getItem('评论管理', '4')
   ]),
 

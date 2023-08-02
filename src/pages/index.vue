@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-52">
+  <div class="bg-[#f2f3f5] flex-1">
     <ArticleList />
   </div>
 </template>

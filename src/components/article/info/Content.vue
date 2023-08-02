@@ -1,6 +1,6 @@
 <template>
-  <div class="mx-4 my-8">
-      <div class="markdown-body max-w-5xl mx-auto rounded-lg shadow-default p-4 md:p-8 lg:p-12 xl:p-16 "
+  <div class="mx-4">
+      <div class="markdown-body bg-white max-w-4xl mx-auto rounded-lg shadow-default p-4 md:p-8 lg:p-12 xl:p-16 "
         v-html="contentHtml" />
   </div>
 </template>
@@ -9,7 +9,7 @@
 import { marked } from "marked";
 import hljs from 'highlight.js'
 import 'highlight.js/styles/foundation.css'
-import '~/assets/sytles/markdown.css'
+import '~/assets/sytles/markdown.scss'
 
 const props = defineProps({
   content: {

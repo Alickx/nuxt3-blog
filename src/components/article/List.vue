@@ -6,7 +6,7 @@
       </div>
     </div>
     <div v-if="articles != null" class="flex justify-center mt-20">
-      <a-pagination v-model:current="queryPage" :total="total" show-less-items>
+      <a-pagination v-model:current="queryPage" :defaultPageSize="5" :total="total" show-less-items @change="pageChange">
         <template #itemRender="{ type, originalElement }">
           <a v-if="type === 'prev'">上一页</a>
           <a v-else-if="type === 'next'">下一页</a>
@@ -35,7 +35,7 @@ const getArticles = async () => {
   total.value = data.total
 }
 
-const pageChange = (page: number) => {
+const pageChange = (page: number, pageSize: number) => {
   queryPage.value = page
   getArticles()
 }

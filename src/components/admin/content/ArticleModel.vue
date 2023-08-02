@@ -18,9 +18,10 @@
 </template>
 
 <script setup lang="ts">
+import { marked } from 'marked';
 
 const { createArticle, getArticle, updateArticle } = useArticle();
-
+const { getCover } = useCover();
 
 const props = defineProps({
   type: {
@@ -45,7 +46,6 @@ const showModal = async () => {
   await nextTick(() => {
     if (props.type === 'edit') {
       getArticleById(props.articleId as string)
-      console.log("props.articleId", props.articleId);
     }
     open.value = true;
   })
@@ -56,9 +56,9 @@ const getArticleById = async (id: string) => {
   let { data } = await getArticle(id);
   if (data) {
     title.value = data.title
-    content.value = data.content
+    content.value = data.content as string
     abstract.value = data.abstract
-    cover.value = data.cover
+    cover.value = data.cover as string
   }
 }
 
@@ -70,7 +70,37 @@ const clear = () => {
 }
 
 
+const handleCover = async () => {
+  if (cover.value !== '') return;
+  let { imgurl,success } = await getCover();
+  if (success) {
+    cover.value = imgurl;
+  } else {
+    message.error('获取封面失败');
+  }
+}
+
+const handleAbstract = () => {
+  if (abstract.value === '') {
+    // markdown转html
+    let html = marked(content.value);
+    // 去除html标签
+    let str = html.replace(/<[^>]+>/g, "");
+    // 去除空格
+    let str2 = str.replace(/\s+/g, "");
+    // 截取前100个字符
+    let str3 = str2.substring(0, 100);
+    abstract.value = str3;
+  }
+}
+
+
+
 const handleOk = async (e: MouseEvent) => {
+
+  await handleCover();
+
+  await handleAbstract();
 
   if (props.type === 'add') {
     let { data } = await createArticle({

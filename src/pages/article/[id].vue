@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-[#f2f3f5] pb-14">
     <ArticleInfoHeader :title="article?.title" :created-at="article?.createdAt" :cover="article?.cover" />
     <ArticleInfoContent :content="article?.content" />
   </div>
