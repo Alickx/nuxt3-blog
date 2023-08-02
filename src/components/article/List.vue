@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 space-y-5">
+    <div class="min-h-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 space-y-5">
       <div v-for="item in articles" :key="item.id">
         <ArticleItem :article="item" />
       </div>
@@ -38,6 +38,10 @@ const getArticles = async () => {
 const pageChange = (page: number, pageSize: number) => {
   queryPage.value = page
   getArticles()
+  // 回到顶部
+  window.scrollTo({
+    top: 0,
+  })
 }
 
 

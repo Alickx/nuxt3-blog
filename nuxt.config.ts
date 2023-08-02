@@ -3,7 +3,7 @@ export default defineNuxtConfig({
 	css: ['@/assets/sytles/normalize.css'],
 	srcDir: 'src/',
   image: {
-    format: ['webp'],
+    format: ['webp', 'avif', 'png', 'jpg', 'jpeg'],
     quality: 50,
   }
 });
