@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     exclude: ["/admin/**", "/login"],
   },
   site: {
-    url: "https://alickx.top",
+    url: "https://www.alickx.top",
   },
   async setup(options) {
     await installNuxtSiteConfig();
