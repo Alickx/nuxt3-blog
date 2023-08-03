@@ -6,6 +6,7 @@
 </template>
 
 <script setup lang="ts">
+import { Article } from 'composables/useArticle';
 
 const { getArticle } = useArticle()
 
@@ -15,12 +16,25 @@ definePageMeta({
 
 const route = useRoute()
 const router = useRouter()
-let article = ref()
+let article = ref<Article>()
+let title = ref('')
+let desc = ref('')
+
+
+useHead({
+  titleTemplate: '%s - alickx\'s blog',
+  title: title,
+  meta: [
+    { name: 'description', content: desc }
+  ],
+})
 
 const getArticleById = async (id: string) => {
   try {
     let { data } = await getArticle(id)
     article.value = data
+    title.value = data.title
+    desc.value = data.abstract
   } catch (err) {
     await router.push('/404')
   }
@@ -29,6 +43,8 @@ const getArticleById = async (id: string) => {
 onMounted(() => {
   getArticleById(route.params.id as string)
 })
+
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

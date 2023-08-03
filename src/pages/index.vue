@@ -8,6 +8,16 @@
 
 useHead({
   title: "Alickx' Blog",
+  meta: [
+    {
+      name: "keywords",
+      content: "Alickx, Blog, Vue, Nuxt, Java",
+    },
+    {
+      name: "description",
+      content: "Alickx' Blog",
+    },
+  ],
 })
 
 </script>

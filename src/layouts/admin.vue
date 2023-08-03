@@ -33,6 +33,14 @@ const router = useRouter();
 const route = useRoute();
 const selectedKeys = ref<string[]>([route.path]);
 const openKeys = ref<string[]>([]);
+let title = ref();
+
+useHead({
+  titleTemplate: (title) => `${title} - 后台管理系统`,
+  title: title,
+})
+
+
 
 function getItem(
   label: VueElement | string,
@@ -68,8 +76,8 @@ const items: ItemType[] = reactive([
 const handleClick: MenuProps['onClick'] = (e) => {
   const key = e.key as string;
   // 跳转
-  console.log(key);
   router.push(key);
+  title.value = e.item.label;
 };
 
 watch(() => route.path, () => {

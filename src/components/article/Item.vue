@@ -19,8 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from '@vue/runtime-core';
-
 const { $dayjs } = useNuxtApp();
 
 const props = defineProps({
