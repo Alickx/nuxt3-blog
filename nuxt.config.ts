@@ -1,3 +1,5 @@
+import { log } from "console";
+import { installNuxtSiteConfig, updateSiteConfig } from "nuxt-site-config-kit";
 export default defineNuxtConfig({
   modules: [
     "@unocss/nuxt",
@@ -19,9 +21,16 @@ export default defineNuxtConfig({
     quality: 50,
   },
   sitemap: {
-    exclude: [
-      "/admin/**",
-      "/login"
-    ]
-  }
+    exclude: ["/admin/**", "/login"],
+  },
+  site: {
+    url: "https://alickx.top",
+  },
+  async setup(options) {
+    await installNuxtSiteConfig();
+    updateSiteConfig({
+      _context: "my-module",
+      url: "https://alickx.top",
+    });
+  },
 });

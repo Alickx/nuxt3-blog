@@ -22,6 +22,8 @@
     "nuxt": "^3.6.5",
     "nuxt-icon": "^0.4.2",
     "nuxt-simple-sitemap": "^3.1.4",
+    "nuxt-site-config": "^1.0.10",
+    "nuxt-site-config-kit": "^1.0.10",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.4.1",
     "sass": "^1.64.2",
