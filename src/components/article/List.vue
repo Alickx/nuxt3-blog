@@ -1,12 +1,20 @@
 <template>
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-    <div class="min-h-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 space-y-5">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div
+      class="min-h-lg grid grid-cols-1 gap-4 space-y-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
       <div v-for="item in articles" :key="item.id">
         <ArticleItem :article="item" />
       </div>
     </div>
-    <div v-if="articles != null" class="flex justify-center mt-20">
-      <a-pagination v-model:current="queryPage" :defaultPageSize="5" :total="total" show-less-items @change="pageChange">
+    <div v-if="articles != null" class="mt-20 flex justify-center">
+      <a-pagination
+        v-model:current="page"
+        :defaultPageSize="defaultPageSize"
+        :total="total"
+        show-less-items
+        @change="pageChange"
+      >
         <template #itemRender="{ type, originalElement }">
           <a v-if="type === 'prev'">上一页</a>
           <a v-else-if="type === 'next'">下一页</a>
@@ -18,39 +26,43 @@
 </template>
 
 <script setup lang="ts">
-import { SimpleArticle } from '~/composables/useArticle'
+import { SimpleArticle } from "~/composables/useArticle";
 
+const { pageArticle } = useArticle();
 
-const { pageArticle } = useArticle()
-
-const queryPage = ref(1)
-const total = ref(0)
-const size = ref(5)
-
-const articles = ref<SimpleArticle[]>()
+const router = useRouter();
+const route = useRoute();
+const page = ref(1);
+const total = ref(0);
+const defaultPageSize = ref(5);
+const articles = ref<SimpleArticle[]>();
 
 const getArticles = async () => {
-  const { data } = await pageArticle(queryPage.value, size.value)
-  articles.value = data.records
-  total.value = data.total
-}
+  const { data } = await pageArticle(page.value, defaultPageSize.value);
+  articles.value = data.records;
+  total.value = data.total;
+};
 
-const pageChange = (page: number, pageSize: number) => {
-  queryPage.value = page
-  getArticles()
-  // 回到顶部
-  window.scrollTo({
-    top: 0,
-  })
-}
+const pageChange = (page: number) => {
+  router.push({ query: { page } });
+  getArticles();
+  window.scrollTo(0, 0);
+};
 
+watch(
+  () => route.query.page,
+  () => {
+    const queryPage = Number(route.query.page);
+    if (queryPage) {
+      page.value = queryPage;
+    }
+    getArticles();
+  },
+);
 
-onMounted(() => {
-  nextTick(() => {
-    getArticles()
-  })
-})
-
+useAsyncData(async () => {
+  await getArticles();
+});
 </script>
 
 <style scoped>

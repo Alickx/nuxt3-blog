@@ -1,50 +1,63 @@
 <template>
   <div class="bg-[#f2f3f5] pb-14">
-    <ArticleInfoHeader :title="article?.title" :created-at="article?.createdAt" :cover="article?.cover" />
-    <ArticleInfoContent :content="article?.content" />
+    <ArticleInfoHeader
+      :title="article?.title"
+      :created-at="article?.createdAt"
+      :cover="article?.cover"
+    />
+    <ArticleInfoContent :content-html="contentHtml" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { Article } from 'composables/useArticle';
+import { Article } from "composables/useArticle";
+import { marked } from "marked";
+import hljs from "highlight.js";
 
-const { getArticle } = useArticle()
+const { getArticle } = useArticle();
 
 definePageMeta({
-  layout: 'article'
-})
+  layout: "article",
+});
 
-const route = useRoute()
-const router = useRouter()
-let article = ref<Article>()
-let title = ref('')
-let desc = ref('')
-
+const route = useRoute();
+let article = ref<Article>();
+let title = ref("");
+let desc = ref("");
+let contentHtml = ref("");
 
 useHead({
-  titleTemplate: '%s - alickx\'s blog',
+  titleTemplate: "%s - alickx's blog",
   title: title,
-  meta: [
-    { name: 'description', content: desc }
-  ],
-})
+  meta: [{ name: "description", content: desc }],
+});
 
 const getArticleById = async (id: string) => {
-  try {
-    let { data } = await getArticle(id)
-    article.value = data
-    title.value = data.title
-    desc.value = data.abstract
-  } catch (err) {
-    await router.push('/404')
-  }
-}
+  const { data } = await getArticle(id);
+  article.value = data;
+  title.value = data.title;
+  desc.value = data.abstract;
+};
 
-onMounted(() => {
-  getArticleById(route.params.id as string)
-})
+const render = new marked.Renderer();
+marked.setOptions({
+  renderer: render, // 这是必填项
+  gfm: true, // 启动类似于Github样式的Markdown语法
+  pedantic: false, // 只解析符合Markdwon定义的，不修正Markdown的错误
+  sanitize: false, // 原始输出，忽略HTML标签（关闭后，可直接渲染HTML标签）
+  // 高亮的语法规范
+  highlight: (code, lang) => hljs.highlight(code, { language: lang }).value,
+});
 
+// 通过marked将markdown转换为html
+const parseMarkdown = (content: string) => {
+  contentHtml.value = marked(content || "");
+};
+
+useAsyncData(async () => {
+  await getArticleById(route.params.id as string);
+  parseMarkdown(article.value?.content || "");
+});
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

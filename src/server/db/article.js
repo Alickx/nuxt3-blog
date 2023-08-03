@@ -58,3 +58,16 @@ export const countArticle = async () => {
   const count = await prisma.article.count()
   return count
 }
+
+export const listArticle = async () => {
+  const articles = await prisma.article.findMany({
+    select: {
+      id: true,
+      updatedAt: true
+    },
+    orderBy: {
+      createdAt: 'desc',
+    }
+  })
+  return articles
+}

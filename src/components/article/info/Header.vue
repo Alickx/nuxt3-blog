@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col justify-center items-center p-5 mb-5 max-w-3xl mx-auto">
+  <div
+    class="mx-auto mb-5 flex max-w-3xl flex-col items-center justify-center p-5"
+  >
     <div class="leading-5">
-      <!-- 标题 -->
       <h1 class="text-3xl font-bold">{{ title }}</h1>
     </div>
     <div>
-      <!-- 发布时间等信息 -->
-      <p class="text-lg font-medium flex items-center">
+      <p class="flex items-center text-lg font-medium">
         <Icon name="ic:baseline-access-time" size="18" class="mr-2" />
         {{ formatTime }}
       </p>
@@ -14,8 +14,7 @@
   </div>
 </template>
 <script setup lang="ts">
-
-const { $dayjs } = useNuxtApp()
+const { $dayjs } = useNuxtApp();
 
 const props = defineProps({
   title: {
@@ -27,16 +26,11 @@ const props = defineProps({
   cover: {
     type: String,
   },
-})
+});
 
 const formatTime = computed(() => {
-  return $dayjs(props.createdAt).format('YYYY-MM-DD')
-})
-
-
-
+  return $dayjs(props.createdAt).format("YYYY-MM-DD HH:mm:ss");
+});
 </script>
 
-<style scoped>
-</style>
-
+<style scoped></style>
