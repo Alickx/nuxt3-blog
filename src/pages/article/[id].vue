@@ -1,11 +1,18 @@
 <template>
-  <div class="bg-[#f2f3f5] pb-14">
-    <ArticleInfoHeader
-      :title="article?.title"
-      :created-at="article?.createdAt"
-      :cover="article?.cover"
-    />
-    <ArticleInfoContent :content-html="contentHtml" />
+  <div class="bg-[#f2f3f5] pb-14 pt-10">
+    <div
+      class="shadow-default mx-4 mx-auto max-w-4xl rounded-lg bg-white px-4 md:px-8 lg:px-12 xl:px-16"
+    >
+      <ArticleInfoHeader
+        :title="article?.title"
+        :created-at="article?.createdAt"
+        :content="contentHtml"
+      />
+      <ArticleInfoContent :content-html="contentHtml" />
+    </div>
+    <ClientOnly>
+      <a-back-top />
+    </ClientOnly>
   </div>
 </template>
 
@@ -17,7 +24,7 @@ import hljs from "highlight.js";
 const { getArticle } = useArticle();
 
 definePageMeta({
-  layout: "article",
+  layout: "default",
 });
 
 const route = useRoute();

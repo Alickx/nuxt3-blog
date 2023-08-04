@@ -15,7 +15,7 @@ useHead({
     },
     {
       name: "description",
-      content: "Alickx' Blog",
+      content: "Alickx-Blog, 一个关于前端、后端的技术博客",
     },
   ],
 })
