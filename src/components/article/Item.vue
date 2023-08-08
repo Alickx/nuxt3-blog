@@ -12,7 +12,7 @@
           :alt="article.title"
           :imgAttrs="{
             class:
-              'h-full w-full object-cover transition-all duration-300 transform hover:scale-110',
+              'h-full w-full md:h-[230px] object-cover transition-all duration-300 transform hover:scale-110',
           }"
         />
       </NuxtLink>

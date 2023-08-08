@@ -14,6 +14,8 @@
   "devDependencies": {
     "@ant-design-vue/nuxt": "1.0.0-alpha.0",
     "@nuxt/image": "1.0.0-rc.1",
+    "@sidebase/nuxt-auth": "0.6.0-beta.3",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^18.17.1",
     "@types/prettier": "^2.7.3",
     "@unocss/nuxt": "^0.54.1",
@@ -31,12 +33,12 @@
   },
   "dependencies": {
     "@prisma/client": "^4.16.2",
-    "@types/marked": "^5.0.1",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.9",
     "highlight.js": "^11.8.0",
     "jsonwebtoken": "^9.0.1",
-    "marked": "^5.1.2",
+    "marked": "^6.0.0",
+    "marked-highlight": "^2.0.2",
     "prisma": "^4.16.2"
   }
 }

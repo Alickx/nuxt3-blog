@@ -1,4 +1,3 @@
-import { log } from "console";
 import { installNuxtSiteConfig, updateSiteConfig } from "nuxt-site-config-kit";
 export default defineNuxtConfig({
   modules: [
@@ -8,6 +7,7 @@ export default defineNuxtConfig({
     "@ant-design-vue/nuxt",
     "@nuxt/image",
     "nuxt-simple-sitemap",
+    "@sidebase/nuxt-auth",
   ],
   css: ["@/assets/sytles/normalize.css"],
   app: {
@@ -32,5 +32,26 @@ export default defineNuxtConfig({
       _context: "my-module",
       url: "https://alickx.top",
     });
+  },
+  build: {
+    transpile: ['jsonwebtoken']
+  },
+  auth: {
+    provider: {
+      type: "local",
+      pages: {
+        login: "/login",
+      },
+      endpoints: {
+        getSession: { path: "/user",method: "get" },
+      },
+      token: {
+        signInResponseTokenPointer: "/token/accessToken",
+      },
+    },
+    session: {
+      enableRefreshOnWindowFocus: true,
+      enableRefreshPeriodically: 5000,
+    },
   },
 });

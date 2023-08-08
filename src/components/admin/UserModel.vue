@@ -19,6 +19,8 @@
 
 import { LogoutOutlined} from '@ant-design/icons-vue';
 
+const { signOut } = useAuth();
+
 
 const dropdownVisible = ref(false);
 
@@ -27,8 +29,7 @@ const handleVisibleChange = (flag: boolean) => {
 };
 
 const logout = () => {
-  const cookies = useCookie('ACCESS_TOKEN');
-  cookies.value = null;
+  signOut();
 }
 
 

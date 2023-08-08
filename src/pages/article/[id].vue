@@ -1,14 +1,22 @@
 <template>
   <div class="bg-[#f2f3f5] pb-14 pt-10">
     <div
-      class="shadow-default mx-4 mx-auto max-w-4xl rounded-lg bg-white px-4 md:px-8 lg:px-12 xl:px-16"
+      class="mx-4 mx-auto flex max-w-7xl flex-row gap-2 rounded-lg px-4 md:px-8 lg:px-12 xl:px-16"
     >
-      <ArticleInfoHeader
-        :title="article?.title"
-        :created-at="article?.createdAt"
-        :content="contentHtml"
+      <div class="flex-1 bg-white p-10 lg:max-w-5xl">
+        <ArticleInfoHeader
+          v-if="article"
+          :title="article?.title"
+          :created-at="article?.createdAt"
+          :content="contentHtml"
+        />
+        <ArticleInfoContent :content-html="contentHtml" />
+      </div>
+      <ArticleInfoMarkdownToc
+        class="hidden lg:block"
+        v-if="toc.length > 0"
+        :toc="toc"
       />
-      <ArticleInfoContent :content-html="contentHtml" />
     </div>
     <ClientOnly>
       <a-back-top />
@@ -18,7 +26,8 @@
 
 <script setup lang="ts">
 import { Article } from "composables/useArticle";
-import { marked } from "marked";
+import { Marked } from "marked";
+import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
 
 const { getArticle } = useArticle();
@@ -27,11 +36,17 @@ definePageMeta({
   layout: "default",
 });
 
+interface Toc {
+  text: string;
+  level: number;
+}
+
 const route = useRoute();
 let article = ref<Article>();
 let title = ref("");
 let desc = ref("");
 let contentHtml = ref("");
+let toc = ref<Toc[]>([]);
 
 useHead({
   titleTemplate: "%s - alickx's blog",
@@ -46,19 +61,39 @@ const getArticleById = async (id: string) => {
   desc.value = data.abstract;
 };
 
-const render = new marked.Renderer();
-marked.setOptions({
-  renderer: render, // 这是必填项
+const marked = new Marked(
+  markedHighlight({
+    langPrefix: "hljs language-",
+    highlight(code, lang) {
+      const language = hljs.getLanguage(lang) ? lang : "plaintext";
+      return hljs.highlight(code, { language }).value;
+    },
+  }),
+);
+
+const renderer = new marked.Renderer();
+renderer.heading = (text, level, raw, slugger) => {
+  toc.value.push({
+    level: level,
+    text: raw,
+  });
+  // id按顺序生成，heading-1  heading-2
+  const id = `heading-${toc.value.length}`;
+  return `<h${level} id="${id}">${text}</h${level}>`;
+};
+marked.use({
+  renderer: renderer, // 这是必填项
   gfm: true, // 启动类似于Github样式的Markdown语法
   pedantic: false, // 只解析符合Markdwon定义的，不修正Markdown的错误
   sanitize: false, // 原始输出，忽略HTML标签（关闭后，可直接渲染HTML标签）
-  // 高亮的语法规范
-  highlight: (code, lang) => hljs.highlight(code, { language: lang }).value,
+  mangle: false,
+  headerIds: false,
+  smartLists: true,
 });
 
 // 通过marked将markdown转换为html
 const parseMarkdown = (content: string) => {
-  contentHtml.value = marked(content || "");
+  contentHtml.value = marked.parse(content || "") as string;
 };
 
 useAsyncData(async () => {
