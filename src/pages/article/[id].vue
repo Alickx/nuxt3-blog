@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-[#f2f3f5] pb-14 pt-10">
+  <div class="overflow-hidden bg-[#f2f3f5] pb-14 pt-10">
     <div
-      class="mx-4 mx-auto flex max-w-7xl flex-row gap-2 rounded-lg px-4 md:px-8 lg:px-12 xl:px-16"
+      class="mx-4 mx-auto md:flex max-w-7xl flex-row gap-2 rounded-lg px-4 md:px-8 lg:px-12 xl:px-16"
     >
       <div class="flex-1 bg-white p-10 lg:max-w-5xl">
         <ArticleInfoHeader
