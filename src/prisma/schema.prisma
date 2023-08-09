@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextIndex"]
 }
 
 datasource db {
@@ -15,6 +16,8 @@ model article {
   cover     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@fulltext([title(sort: Desc), content])
 }
 
 model user {

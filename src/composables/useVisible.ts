@@ -1,19 +1,17 @@
-const isOpen = ref(false)
-
+const isOpen = ref(false);
 
 const toggle = () => {
-  isOpen.value = !isOpen.value
-}
+  isOpen.value = !isOpen.value;
+};
 
 const close = () => {
-  isOpen.value = false
-}
-
+  isOpen.value = false;
+};
 
 export function useVisible() {
   return {
     isOpen,
     toggle,
-    close
-  }
+    close,
+  };
 }

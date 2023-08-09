@@ -5,6 +5,10 @@ export default defineEventHandler(async (event) => {
 	const query = getQuery(event);
 	const { page, size } = query;
 
+	const queryPage = Number(page);
+	const querySize = Number(size);
+
+
 	const total = await countArticle();
 
 	if (total == 0) {
@@ -13,7 +17,8 @@ export default defineEventHandler(async (event) => {
 			total,
 		});
 	}
-	const records = await pageArticle(page, Number(size));
+
+	const records = await pageArticle(queryPage, querySize);
 
 	return R.ok({
 		records,

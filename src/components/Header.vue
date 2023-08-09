@@ -53,22 +53,13 @@
             </li>
           </ul>
           <div class="flex flex-row gap-5">
-            <Icon
-              @click="clickSearchHandle"
-              class="cursor-pointer"
-              name="mdi:magnify"
-              color="white"
-              size="28"
-            />
+            <ArticleSearch />
             <Icon
               class="cursor-pointer"
               name="material-symbols:dark-mode-outline"
               color="white"
               size="28"
             />
-            <nuxt-link to="/admin/dashboard" v-if="showAdminIcon">
-              <Icon name="eos-icons:admin" size="28" color="white" />
-            </nuxt-link>
           </div>
         </div>
       </div>
@@ -92,16 +83,10 @@
       </li>
     </ul>
   </div>
-  <ArticleSearch ref="searchRef" v-if="showSearch" @close="clickSearchHandle" />
 </template>
 
 <script setup lang="ts">
-
 const router = useRouter();
-
-let showSearch = ref(false);
-let searchRef = ref();
-const cookies = useCookie("ACCESS_TOKEN");
 
 const { isOpen, toggle, close } = useVisible();
 
@@ -112,14 +97,6 @@ const headerList = [
     path: "/",
   },
 ];
-
-const clickSearchHandle = () => {
-  showSearch.value = !showSearch.value;
-};
-
-const showAdminIcon = computed(() => {
-  return cookies.value && cookies.value !== "";
-});
 
 watch(
   () => isOpen.value,
@@ -139,6 +116,4 @@ onMounted(() => {
     close();
   });
 });
-
-
 </script>

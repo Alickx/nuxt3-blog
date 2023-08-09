@@ -27,7 +27,7 @@ export default () => {
     page: number,
     size: number,
   ): Promise<PageResult<SimpleArticle>> => {
-    return await $fetch("/api/article", {
+    return await $fetch("/api/article/page", {
       method: "GET",
       params: {
         page,
@@ -37,7 +37,7 @@ export default () => {
   };
 
   const createArticle = async (article: Article): Promise<Result<boolean>> => {
-    return await $fetch(`/api/article`, {
+    return await $fetch(`/api/article/create`, {
       method: "POST",
       body: JSON.stringify(article),
     });
@@ -63,6 +63,15 @@ export default () => {
     });
   };
 
+  const searchArticle = async (keyword: string): Promise<Result<Article[]>> => {
+    return await $fetch(`/api/article/search`, {
+      method: "GET",
+      params: {
+        keyword,
+      },
+    });
+  };
+
   return {
     getArticle,
     pageArticle,
@@ -70,5 +79,6 @@ export default () => {
     deleteArticle,
     updateArticle,
     listArticle,
+    searchArticle
   };
 };

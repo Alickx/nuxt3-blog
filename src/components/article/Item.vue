@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card-shadow overflow-hidden rounded-lg bg-white transition-transform md:max-w-xs lg:max-w-sm"
+    class="card-shadow overflow-hidden rounded-lg bg-white transition-transform"
   >
     <div class="md:flex md:flex-col">
       <NuxtLink

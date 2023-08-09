@@ -1,8 +1,6 @@
 <template>
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-    <div
-      class="min-h-lg flex flex-row justify-center flex-wrap gap-5"
-    >
+    <div class="min-h-lg grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
       <div v-for="item in articles" :key="item.id">
         <ArticleItem :article="item" />
       </div>
@@ -65,5 +63,4 @@ useAsyncData(async () => {
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
