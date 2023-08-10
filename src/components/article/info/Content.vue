@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown-body class="dark:text-white"" v-html="contentHtml" />
+  <div class="markdown-body dark:text-white" v-html="contentHtml" />
 </template>
 
 <script setup lang="ts">
