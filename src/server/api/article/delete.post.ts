@@ -1,20 +1,31 @@
-import { deleteArticle } from '~/server/db/article';
-import { R } from '~/composables/useResult';
+import { deleteArticle } from "~/server/db/article";
+import { R } from "~/composables/useResult";
 
 export default defineEventHandler(async (event) => {
-	const { articleId } = await readBody(event);
+  const { auth } = useServerAuth();
+  if (!auth(event)) {
+    return sendError(
+      event,
+      createError({
+        statusCode: 401,
+        statusMessage: "未登录",
+      }),
+    );
+  }
 
-	if (!articleId) {
-		return sendError(
-			event,
-			createError({
-				statusCode: 400,
-				statusMessage: '文章id参数错误',
-			})
-		);
-	}
+  const { articleId } = await readBody(event);
 
-	await deleteArticle(articleId);
+  if (!articleId) {
+    return sendError(
+      event,
+      createError({
+        statusCode: 400,
+        statusMessage: "文章id参数错误",
+      }),
+    );
+  }
 
-	return R.ok(true);
+  await deleteArticle(articleId);
+
+  return R.ok(true);
 });
