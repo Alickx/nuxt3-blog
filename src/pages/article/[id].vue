@@ -1,9 +1,9 @@
 <template>
-  <div class="overflow-hidden bg-[#f2f3f5] pb-14 pt-10">
+  <div class="overflow-hidden bg-[#f2f3f5] dark:bg-[#212526] pb-14 pt-5 md:pt-10">
     <div
-      class="mx-4 mx-auto md:flex max-w-7xl flex-row gap-2 rounded-lg px-4 md:px-8 lg:px-12 xl:px-16"
+      class="mx-auto md:flex max-w-7xl flex-row gap-2 rounded-lg md:px-4 md:px-8 lg:px-12 xl:px-16"
     >
-      <div class="flex-1 bg-white p-10 lg:max-w-5xl">
+      <div class="flex-1 bg-white dark:bg-[#111111] p-5 md:p-10 lg:max-w-5xl">
         <ArticleInfoHeader
           v-if="article"
           :title="article?.title"
@@ -85,9 +85,6 @@ marked.use({
   renderer: renderer, // 这是必填项
   gfm: true, // 启动类似于Github样式的Markdown语法
   pedantic: false, // 只解析符合Markdwon定义的，不修正Markdown的错误
-  sanitize: false, // 原始输出，忽略HTML标签（关闭后，可直接渲染HTML标签）
-  mangle: false,
-  headerIds: false,
   smartLists: true,
 });
 

@@ -1,16 +1,16 @@
 <template>
   <a-affix :offset-top="105">
-    <div class="w-[20rem] rounded-lg bg-white px-4 py-2">
-      <h3 class="border-0 border-b border-solid border-b-gray-200 pb-2 text-lg">
+    <div class="w-[20rem] rounded-lg bg-white dark:bg-[#111111] px-4 py-2">
+      <h3 class="border-0 border-b border-solid border-b-gray-200 pb-2 text-lg dark:text-white">
         目录
       </h3>
-      <ul class="flex list-disc list-none flex-col gap-1 text-sm no-underline">
+      <ul class="flex list-disc list-none flex-col gap-1 text-sm no-underline dark:text-white">
         <li v-for="(item, index) in tocItemData" :key="index">
           <a
             class="line-clamp-1"
             :class="{ 'text-blue-500': item.active }"
             :href="`#${item.anchor}`"
-            >{{ item.text }}</a
+          >{{ item.text }}</a
           >
           <article-info-toc-item :item="item" />
         </li>
@@ -33,6 +33,7 @@ interface TocItem {
   active: boolean;
 }
 
+const route = useRoute();
 const tocItemData = ref<TocItem[]>([]);
 const currentAnchor = ref("");
 
@@ -61,12 +62,12 @@ const generateToc = () => {
       text: tocItem.text,
       level: tocItem.level,
       children: [],
-      anchor: getAnchor(tocItem.text),
+      anchor: getAnchorIndex(tocItem.text),
       active: tocItem.text === currentAnchor.value,
     };
 
     // 锚点
-    const anchor = getAnchor(tocItem.text);
+    const anchor = getAnchorIndex(tocItem.text);
     // 如果当前目录项的锚点与 currentAnchor 的值相同，将 active 属性设置为 true
     if (anchor === currentAnchor.value) {
       newTocItem.active = true;
@@ -76,7 +77,7 @@ const generateToc = () => {
     while (
       tocItemStack.length > 0 &&
       tocItem.level <= tocItemStack[tocItemStack.length - 1].level
-    ) {
+      ) {
       tocItemStack.pop();
     }
 
@@ -89,10 +90,9 @@ const generateToc = () => {
 
     tocItemStack.push(newTocItem);
   }
-  console.log(tocItemData.value);
 };
 
-const getAnchor = (text: string): string => {
+const getAnchorIndex = (text: string): string => {
   // 返回在toc中的索引
   if (!props.toc) {
     return "";
@@ -101,17 +101,26 @@ const getAnchor = (text: string): string => {
   return `heading-${index + 1}`;
 };
 
-const listenAnchor = () => {
+const getAnchorText = (anchor: string): string => {
+  if (!props.toc) {
+    return "";
+  }
+  const index = anchor.split("-")[1];
+  return props.toc[Number(index) - 1].text;
+};
+
+const listenScrollAnchor = () => {
   window.addEventListener("scroll", () => {
     if (!props.toc) {
       return;
     }
     const toc = props.toc;
     const tocLength = toc.length;
-    for (let i = 0; i < tocLength; i++) {
+    for (let i = 1; i <= tocLength; i++) {
       const element = document.getElementById(`heading-${i}`);
       if (element) {
         const rect = element.getBoundingClientRect();
+        console.log(i,rect.top);
         if (rect.top >= 0 && rect.top <= 200) {
           currentAnchor.value = toc[i - 1].text;
           break;
@@ -135,14 +144,24 @@ watch(
   },
 );
 
+// 监听url上的锚点
+watch(
+  () => route.hash,
+  (val) => {
+    currentAnchor.value = getAnchorText(val);
+  },
+);
+
+
 onMounted(() => {
   generateToc();
   // 监听滚动事件获取当前窗口的锚点
-  listenAnchor();
+  listenScrollAnchor();
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", () => {});
+  window.removeEventListener("scroll", () => {
+  });
 });
 </script>
 

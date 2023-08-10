@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card-shadow overflow-hidden rounded-lg bg-white transition-transform"
+    class="card-shadow overflow-hidden rounded-lg bg-white dark:bg-[#111111] transition-transform"
   >
     <div class="md:flex md:flex-col">
       <NuxtLink
@@ -21,13 +21,13 @@
           :to="{ name: 'article-id', params: { id: props.article.id } }"
         >
           <h1
-            class="mt-1 line-clamp-1 break-all text-xl font-bold leading-tight text-black no-underline hover:underline"
+            class="mt-1 line-clamp-1 break-all text-xl font-bold leading-tight text-black dark:text-white no-underline hover:underline"
           >
             {{ article.title }}
           </h1>
         </NuxtLink>
-        <p class="mt-3 text-gray-500">{{ formattedDate }}</p>
-        <p class="mt-3 line-clamp-2 break-all leading-6 text-gray-600">
+        <p class="mt-3 text-gray-500 dark:text-gray-400">{{ formattedDate }}</p>
+        <p class="mt-3 line-clamp-2 break-all leading-6 text-gray-600 dark:text-gray-400">
           {{ article.abstract }}...
         </p>
       </div>

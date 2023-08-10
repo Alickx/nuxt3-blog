@@ -55,8 +55,18 @@
           <div class="flex flex-row gap-5">
             <ArticleSearch />
             <Icon
+              v-if="mode === 'light'"
+              @click="toggleDark"
               class="cursor-pointer"
               name="material-symbols:dark-mode-outline"
+              color="white"
+              size="28"
+            />
+            <Icon
+              v-else
+              @click="toggleDark"
+              class="cursor-pointer"
+              name="material-symbols:light-mode-outline"
               color="white"
               size="28"
             />
@@ -86,6 +96,8 @@
 </template>
 
 <script setup lang="ts">
+
+const mode = useColorMode();
 const router = useRouter();
 
 const { isOpen, toggle, close } = useVisible();
@@ -109,6 +121,10 @@ watch(
     }
   },
 );
+
+const toggleDark = () => {
+  mode.value = mode.value === "light" ? "dark" : "light";
+};
 
 onMounted(() => {
   // 监听路由变化，关闭菜单

@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto flex max-w-3xl flex-col items-center justify-center">
     <div class="leading-5">
-      <h1 class="text-3xl font-bold">{{ title }}</h1>
+      <h1 class="text-3xl font-bold dark:text-white">{{ title }}</h1>
     </div>
     <div class="flex flex-row flex-wrap gap-3">
       <p class="info-text">

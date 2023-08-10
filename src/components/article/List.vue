@@ -1,11 +1,11 @@
 <template>
-  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <div class="min-h-lg grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
       <div v-for="item in articles" :key="item.id">
         <ArticleItem :article="item" />
       </div>
     </div>
-    <div v-if="articles != null" class="mt-20 flex justify-center">
+    <div v-if="articles != null" class="mt-15 mb-5 flex justify-center">
       <a-pagination
         v-model:current="page"
         :defaultPageSize="defaultPageSize"
