@@ -1,5 +1,6 @@
 import { createArticle } from "~/server/db/article";
 import { R } from "~/composables/useResult";
+import useServerAuth from "~/composables/useServerAuth";
 
 export default defineEventHandler(async (event) => {
   const { auth } = useServerAuth();
