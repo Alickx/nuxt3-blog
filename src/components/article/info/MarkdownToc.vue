@@ -1,16 +1,20 @@
 <template>
   <a-affix :offset-top="105">
-    <div class="w-[20rem] rounded-lg bg-white dark:bg-[#111111] px-4 py-2">
-      <h3 class="border-0 border-b border-solid border-b-gray-200 pb-2 text-lg dark:text-white">
+    <div class="w-[20rem] rounded-lg bg-white px-4 py-2 dark:bg-[#111111]">
+      <h3
+        class="border-0 border-b border-solid border-b-gray-200 pb-2 text-lg dark:text-white"
+      >
         目录
       </h3>
-      <ul class="flex list-disc list-none flex-col gap-1 text-sm no-underline dark:text-white">
+      <ul
+        class="flex list-disc list-none flex-col gap-1 text-sm no-underline dark:text-white"
+      >
         <li v-for="(item, index) in tocItemData" :key="index">
           <a
             class="line-clamp-1"
             :class="{ 'text-blue-500': item.active }"
             :href="`#${item.anchor}`"
-          >{{ item.text }}</a
+            >{{ item.text }}</a
           >
           <article-info-toc-item :item="item" />
         </li>
@@ -77,7 +81,7 @@ const generateToc = () => {
     while (
       tocItemStack.length > 0 &&
       tocItem.level <= tocItemStack[tocItemStack.length - 1].level
-      ) {
+    ) {
       tocItemStack.pop();
     }
 
@@ -120,7 +124,6 @@ const listenScrollAnchor = () => {
       const element = document.getElementById(`heading-${i}`);
       if (element) {
         const rect = element.getBoundingClientRect();
-        console.log(i,rect.top);
         if (rect.top >= 0 && rect.top <= 200) {
           currentAnchor.value = toc[i - 1].text;
           break;
@@ -152,7 +155,6 @@ watch(
   },
 );
 
-
 onMounted(() => {
   generateToc();
   // 监听滚动事件获取当前窗口的锚点
@@ -160,8 +162,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", () => {
-  });
+  window.removeEventListener("scroll", () => {});
 });
 </script>
 
