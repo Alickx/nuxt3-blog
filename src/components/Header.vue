@@ -10,7 +10,7 @@
     <div class="flex h-full w-full flex-col justify-center">
       <div class="flex items-center justify-center">
         <div
-          class="sm:w-xl md:w-2xl lg:w-4xl flex w-[22rem] flex-row items-center justify-between xl:w-[88rem]"
+          class="sm:w-xl md:w-2xl lg:w-4xl w-sm xl:w-7xl flex flex-row items-center justify-between"
         >
           <div>
             <Icon
@@ -96,7 +96,6 @@
 </template>
 
 <script setup lang="ts">
-
 const mode = useColorMode();
 const router = useRouter();
 
