@@ -1,6 +1,6 @@
 <template>
   <a-affix :offset-top="105">
-    <div class="w-[20rem] rounded-lg bg-white px-4 py-2 dark:bg-[#111111]">
+    <div class="w-[20rem] rounded bg-white px-4 py-2 dark:bg-[#111111]">
       <h3
         class="border-0 border-b border-solid border-b-gray-200 pb-2 text-lg dark:text-white"
       >

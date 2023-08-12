@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   site: {
     url: "https://www.alickx.top",
   },
-  async setup(options) {
+  async setup() {
     await installNuxtSiteConfig();
     updateSiteConfig({
       _context: "my-module",

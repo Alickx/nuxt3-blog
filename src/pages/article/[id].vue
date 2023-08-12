@@ -3,7 +3,7 @@
     class="overflow-hidden bg-[#f2f3f5] pb-14 pt-5 dark:bg-[#212526] md:pt-10"
   >
     <div
-      class="mx-auto max-w-5xl flex-row gap-2 rounded-lg md:flex md:px-4 md:px-8 lg:px-12 xl:px-16"
+      class="mx-auto max-w-6xl flex-row gap-5 md:flex md:px-4 md:px-8 lg:px-12 xl:px-16"
     >
       <div class="max-w-3xl flex-1 bg-white p-5 dark:bg-[#111111] md:p-10">
         <ArticleInfoHeader

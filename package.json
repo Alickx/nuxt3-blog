@@ -32,13 +32,13 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@prisma/client": "^4.16.2",
+    "@prisma/client": "^5.1.1",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.9",
     "highlight.js": "^11.8.0",
     "jsonwebtoken": "^9.0.1",
     "marked": "^6.0.0",
     "marked-highlight": "^2.0.2",
-    "prisma": "^4.16.2"
+    "prisma": "^5.1.1"
   }
 }
