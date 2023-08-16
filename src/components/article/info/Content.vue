@@ -4,8 +4,8 @@
 
 <script setup lang="ts">
 import "highlight.js/styles/foundation.css";
-import "~/assets/sytles/fira-code.scss";
-import "~/assets/sytles/markdown.scss";
+import "assets/styles/fira-code.scss";
+import "assets/styles/markdown.scss";
 
 defineProps({
   contentHtml: {

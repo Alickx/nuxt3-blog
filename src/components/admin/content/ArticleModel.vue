@@ -62,11 +62,20 @@ const clear = () => {
   content.value = "";
 };
 
+const wordCountComputed = computed(() => {
+  const contentHtml = marked.parse(content.value || "");
+  const contentText = contentHtml
+    ?.replace(/<[^>]+>/g, "")
+    .replace(/[\r\n]/g, "");
+  return contentText?.length;
+});
+
 const handleOk = async () => {
   try {
     const articleData = {
       title: title.value,
       content: content.value,
+      wordCount: wordCountComputed.value,
     };
 
     if (props.type === "add") {

@@ -1,14 +1,24 @@
 <template>
-  <div class="min-w-[180px] max-w-[180px] rounded bg-transparent px-4 py-2 dark:bg-[#111111]">
+  <div
+    class="min-w-[180px] max-w-[180px] rounded bg-transparent px-4 py-2 dark:bg-[#111111]"
+  >
+    <div class="flex justify-end">
+      <Icon
+        @click="isShowToc = !isShowToc"
+        name="icons8:right-round"
+        size="25"
+        class="cursor-pointer"
+      />
+    </div>
     <ul
-      class="flex list-decimal list-none flex-col gap-2 text-base no-underline dark:text-white"
+      v-if="isShowToc"
+      class="flex flex-col text-base no-underline dark:text-white"
     >
       <li
         class="rounded p-1"
         :class="{
           'text-blue-500': item.active,
           'bg-[#e3efff]': item.active,
-          'toc-item-active': item.active,
         }"
         v-for="(item, index) in tocItemData"
         :key="index"
@@ -37,6 +47,7 @@ interface TocItem {
 const route = useRoute();
 const tocItemData = ref<TocItem[]>([]);
 const currentAnchor = ref("");
+const isShowToc = ref(true);
 
 const props = defineProps({
   toc: {

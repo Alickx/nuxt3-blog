@@ -14,22 +14,9 @@ export default defineEventHandler(async (event) => {
     );
   }
 
-  const { title, content } = await readBody(event);
+  const { ...articleData } = await readBody(event);
 
-  if (!title || !content) {
-    return sendError(
-      event,
-      createError({
-        statusCode: 400,
-        statusMessage: "参数错误",
-      }),
-    );
-  }
-
-  await createArticle({
-    title,
-    content,
-  });
+  await createArticle({ ...articleData });
 
   return R.ok(true);
 });

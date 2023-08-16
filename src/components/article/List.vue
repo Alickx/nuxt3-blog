@@ -1,30 +1,37 @@
 <template>
-  <div class="mx-auto max-w-3xl mt-4">
+  <div class="mx-auto mt-4 max-w-3xl">
     <div class="min-h-lg flex flex-col">
       <div v-for="item in articles" :key="item.id">
-        <ArticleItem class="border-b-1 border-0 border-solid border-b-gray-1" :article="item" />
+        <ArticleItem
+          class="border-b-1 border-b-gray-1 border-0 border-solid"
+          :article="item"
+        />
       </div>
     </div>
-    <div v-if="articles != null" class="mt-15 mb-5 flex justify-center">
-      <a-pagination
-        v-model:current="page"
-        :defaultPageSize="defaultPageSize"
-        :total="total"
-        show-less-items
-        @change="pageChange"
-      >
-        <template #itemRender="{ type, originalElement }">
-          <a v-if="type === 'prev'">上一页</a>
-          <a v-else-if="type === 'next'">下一页</a>
-          <component :is="originalElement" v-else></component>
-        </template>
-      </a-pagination>
-    </div>
+    <client-only>
+      <div v-if="articles != undefined" class="mt-15 mb-5 flex justify-center">
+        <a-pagination
+          v-if="total > defaultPageSize"
+          v-model:current="page"
+          :defaultPageSize="defaultPageSize"
+          :total="total"
+          show-less-items
+          @change="pageChange"
+        >
+          <template #itemRender="{ type, originalElement }">
+            <a v-if="type === 'prev'">上一页</a>
+            <a v-else-if="type === 'next'">下一页</a>
+            <component :is="originalElement" v-else></component>
+          </template>
+        </a-pagination>
+      </div>
+    </client-only>
   </div>
 </template>
 
 <script setup lang="ts">
 import { SimpleArticle } from "~/types";
+
 const { pageArticle } = useArticle();
 
 const router = useRouter();

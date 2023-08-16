@@ -16,6 +16,8 @@ export const pageArticle = async (page: number, size: number) => {
     select: {
       id: true,
       title: true,
+      viewCount: true,
+      wordCount: true,
       createdAt: true,
       updatedAt: true,
     },
@@ -89,6 +91,19 @@ export const searchArticle = async (keyword: string) => {
     },
     orderBy: {
       createdAt: "desc",
+    },
+  });
+};
+
+export const incrementArticleView = async (id: string) => {
+  return await prisma.article.update({
+    where: {
+      id,
+    },
+    data: {
+      viewCount: {
+        increment: 1,
+      },
     },
   });
 };

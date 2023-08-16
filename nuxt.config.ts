@@ -1,4 +1,5 @@
 import { installNuxtSiteConfig, updateSiteConfig } from "nuxt-site-config-kit";
+
 export default defineNuxtConfig({
   modules: [
     "@unocss/nuxt",
@@ -10,9 +11,7 @@ export default defineNuxtConfig({
     "@sidebase/nuxt-auth",
     "dayjs-nuxt",
   ],
-  css: [
-    "@/assets/sytles/normalize.css",
-  ],
+  css: ["@/assets/styles/normalize.css"],
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],

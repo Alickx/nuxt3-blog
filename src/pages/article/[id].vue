@@ -1,16 +1,17 @@
 <template>
-  <div class="bg-[#fafafa] pb-14 dark:bg-[#212526]">
-    <div class="mx-auto md:flex items-start max-w-6xl flex-row gap-5 relative">
-      <div class="max-w-3xl p-5 dark:bg-[#111111] md:p-7">
+  <div class="flex-1 bg-[#fafafa] pb-14 dark:bg-[#212526]">
+    <div class="relative mx-auto max-w-6xl flex-row items-start gap-5 md:flex">
+      <div class="w-5xl p-5 dark:bg-[#111111] md:p-7">
         <ArticleInfoHeader
           v-if="article"
           :title="article?.title"
           :created-at="article?.createdAt"
-          :content="contentHtml"
+          :word-count="article?.wordCount"
+          :view-count="article?.viewCount"
         />
         <ArticleInfoContent :content-html="contentHtml" />
       </div>
-      <div class="sticky top-0 pt-10 md:block hidden">
+      <div class="sticky top-0 hidden pt-10 md:block">
         <ArticleInfoMarkdownToc v-if="toc.length > 0" :toc="toc" />
       </div>
     </div>
