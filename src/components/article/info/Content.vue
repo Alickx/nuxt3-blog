@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import "highlight.js/styles/foundation.css";
+import "~/assets/sytles/fira-code.scss";
 import "~/assets/sytles/markdown.scss";
 
 defineProps({

@@ -1,11 +1,7 @@
 <template>
-  <div
-    class="overflow-hidden bg-[#f2f3f5] pb-14 pt-5 dark:bg-[#212526] md:pt-10"
-  >
-    <div
-      class="mx-auto max-w-6xl flex-row gap-5 md:flex md:px-4 md:px-8 lg:px-12 xl:px-16"
-    >
-      <div class="max-w-3xl flex-1 bg-white p-5 dark:bg-[#111111] md:p-10">
+  <div class="bg-[#fafafa] pb-14 dark:bg-[#212526]">
+    <div class="mx-auto md:flex items-start max-w-6xl flex-row gap-5 relative">
+      <div class="max-w-3xl p-5 dark:bg-[#111111] md:p-7">
         <ArticleInfoHeader
           v-if="article"
           :title="article?.title"
@@ -14,23 +10,18 @@
         />
         <ArticleInfoContent :content-html="contentHtml" />
       </div>
-      <ArticleInfoMarkdownToc
-        class="hidden lg:block"
-        v-if="toc.length > 0"
-        :toc="toc"
-      />
+      <div class="sticky top-0 pt-10 md:block hidden">
+        <ArticleInfoMarkdownToc v-if="toc.length > 0" :toc="toc" />
+      </div>
     </div>
-    <ClientOnly>
-      <a-back-top />
-    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Article } from "composables/useArticle";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
+import { ArticleInfo } from "types";
 
 const { getArticle } = useArticle();
 
@@ -44,23 +35,20 @@ interface Toc {
 }
 
 const route = useRoute();
-let article = ref<Article>();
+let article = ref<ArticleInfo>();
 let title = ref("");
-let desc = ref("");
 let contentHtml = ref("");
 let toc = ref<Toc[]>([]);
 
 useHead({
   titleTemplate: "%s - alickx's blog",
   title: title,
-  meta: [{ name: "description", content: desc }],
 });
 
 const getArticleById = async (id: string) => {
   const { data } = await getArticle(id);
   article.value = data;
   title.value = data.title;
-  desc.value = data.abstract;
 };
 
 const marked = new Marked(

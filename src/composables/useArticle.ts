@@ -1,23 +1,9 @@
-export interface SimpleArticle {
-  id: string;
-  title: string;
-  abstract: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface Article {
-  id?: string;
-  title: string;
-  abstract: string;
-  content?: string;
-  cover?: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
+import { ArticleInfo, SimpleArticle } from "~/types";
 
 export default () => {
-  const getArticle = async (articleId: string): Promise<Result<Article>> => {
+  const getArticle = async (
+    articleId: string,
+  ): Promise<Result<ArticleInfo>> => {
     return await $fetch(`/api/article/${articleId}`, {
       method: "GET",
     });
@@ -36,7 +22,9 @@ export default () => {
     });
   };
 
-  const createArticle = async (article: Article): Promise<Result<boolean>> => {
+  const createArticle = async (
+    article: ArticleInfo,
+  ): Promise<Result<boolean>> => {
     return await $fetch(`/api/article/create`, {
       method: "POST",
       body: JSON.stringify(article),
@@ -50,20 +38,24 @@ export default () => {
     });
   };
 
-  const updateArticle = async (article: Article): Promise<Result<boolean>> => {
+  const updateArticle = async (
+    article: ArticleInfo,
+  ): Promise<Result<boolean>> => {
     return await $fetch(`/api/article/update`, {
       method: "POST",
       body: JSON.stringify(article),
     });
   };
 
-  const listArticle = async (): Promise<Result<Article[]>> => {
+  const listArticle = async (): Promise<Result<ArticleInfo[]>> => {
     return await $fetch(`/api/article/list`, {
       method: "GET",
     });
   };
 
-  const searchArticle = async (keyword: string): Promise<Result<Article[]>> => {
+  const searchArticle = async (
+    keyword: string,
+  ): Promise<Result<ArticleInfo[]>> => {
     return await $fetch(`/api/article/search`, {
       method: "GET",
       params: {
@@ -79,6 +71,6 @@ export default () => {
     deleteArticle,
     updateArticle,
     listArticle,
-    searchArticle
+    searchArticle,
   };
 };

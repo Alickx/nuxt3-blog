@@ -1,8 +1,8 @@
 <template>
-  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <div class="min-h-lg grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+  <div class="mx-auto max-w-3xl mt-4">
+    <div class="min-h-lg flex flex-col">
       <div v-for="item in articles" :key="item.id">
-        <ArticleItem :article="item" />
+        <ArticleItem class="border-b-1 border-0 border-solid border-b-gray-1" :article="item" />
       </div>
     </div>
     <div v-if="articles != null" class="mt-15 mb-5 flex justify-center">
@@ -24,8 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { SimpleArticle } from "~/composables/useArticle";
-
+import { SimpleArticle } from "~/types";
 const { pageArticle } = useArticle();
 
 const router = useRouter();

@@ -1,14 +1,5 @@
+import { ArticleInfo } from "types";
 import { prisma } from "./prisma";
-
-interface Article {
-  id?: string;
-  title: string;
-  abstract: string;
-  content: string;
-  cover: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
 
 export const getArticle = async (id: string) => {
   return await prisma.article.findUnique({
@@ -25,8 +16,6 @@ export const pageArticle = async (page: number, size: number) => {
     select: {
       id: true,
       title: true,
-      abstract: true,
-      cover: true,
       createdAt: true,
       updatedAt: true,
     },
@@ -36,13 +25,13 @@ export const pageArticle = async (page: number, size: number) => {
   });
 };
 
-export const createArticle = async (article: Article) => {
+export const createArticle = async (article: ArticleInfo) => {
   return await prisma.article.create({
     data: article,
   });
 };
 
-export const updateArticle = async (id: string, article: Article) => {
+export const updateArticle = async (id: string, article: ArticleInfo) => {
   return await prisma.article.update({
     where: {
       id,

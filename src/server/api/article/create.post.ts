@@ -14,9 +14,9 @@ export default defineEventHandler(async (event) => {
     );
   }
 
-  const { title, content, abstract, cover } = await readBody(event);
+  const { title, content } = await readBody(event);
 
-  if (!title || !content || !abstract) {
+  if (!title || !content) {
     return sendError(
       event,
       createError({
@@ -29,8 +29,6 @@ export default defineEventHandler(async (event) => {
   await createArticle({
     title,
     content,
-    abstract,
-    cover,
   });
 
   return R.ok(true);

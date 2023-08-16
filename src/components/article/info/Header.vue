@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto flex max-w-3xl flex-col items-center justify-center">
     <div class="leading-5">
-      <h1 class="text-3xl font-bold dark:text-white">{{ title }}</h1>
+      <h1 class="text-3xl text-[#444] font-bold dark:text-white">{{ title }}</h1>
     </div>
     <div class="flex flex-row flex-wrap gap-3">
       <p class="info-text">
@@ -20,7 +20,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const { $dayjs } = useNuxtApp();
+const dayjs = useDayjs();
 
 const props = defineProps({
   title: {
@@ -39,7 +39,7 @@ const { title, content } = toRefs(props);
 const wordCount = ref(0);
 
 const formatTime = computed(() => {
-  return $dayjs(props.createdAt).format("YYYY-MM-DD HH:mm:ss");
+  return dayjs(props.createdAt).format("YYYY-MM-DD HH:mm:ss");
 });
 
 // 字数统计

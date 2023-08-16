@@ -8,12 +8,21 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-simple-sitemap",
     "@sidebase/nuxt-auth",
+    "dayjs-nuxt",
   ],
-  css: ["@/assets/sytles/normalize.css"],
+  css: [
+    "@/assets/sytles/normalize.css",
+  ],
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
     },
+  },
+  dayjs: {
+    locales: ["zh-cn"],
+    plugins: ["relativeTime", "utc", "timezone"],
+    defaultLocale: "zh-cn",
+    defaultTimezone: "Asia/Shanghai",
   },
   srcDir: "src/",
   image: {
@@ -26,6 +35,7 @@ export default defineNuxtConfig({
   site: {
     url: "https://www.alickx.top",
   },
+  // @ts-ignore
   async setup() {
     await installNuxtSiteConfig();
     updateSiteConfig({
@@ -34,7 +44,7 @@ export default defineNuxtConfig({
     });
   },
   build: {
-    transpile: ['jsonwebtoken']
+    transpile: ["jsonwebtoken"],
   },
   auth: {
     provider: {
@@ -43,7 +53,7 @@ export default defineNuxtConfig({
         login: "/login",
       },
       endpoints: {
-        getSession: { path: "/user",method: "get" },
+        getSession: { path: "/user", method: "get" },
       },
       token: {
         signInResponseTokenPointer: "/token/accessToken",

@@ -1,42 +1,33 @@
 <template>
-  <div
-    class="card-shadow overflow-hidden rounded-lg bg-white dark:bg-[#111111] transition-transform"
-  >
+  <div class="overflow-hidden p-4 transition-transform">
     <div class="md:flex md:flex-col">
       <NuxtLink
         class="md:flex-shrink-0"
         :to="{ name: 'article-id', params: { id: props.article.id } }"
       >
-        <nuxt-picture
-          :src="article.cover"
-          :alt="article.title"
-          :imgAttrs="{
-            class:
-              'h-full w-full md:h-[230px] object-cover transition-all duration-300 transform hover:scale-110',
-          }"
-        />
       </NuxtLink>
-      <div class="px-4 py-4">
+      <div>
         <NuxtLink
           :to="{ name: 'article-id', params: { id: props.article.id } }"
         >
-          <h1
-            class="mt-1 line-clamp-1 break-all text-xl font-bold leading-tight text-black dark:text-white no-underline hover:underline"
+          <b
+            class="mt-1 line-clamp-1 break-all text-lg font-light leading-tight text-[#444] no-underline hover:underline dark:text-white"
           >
             {{ article.title }}
-          </h1>
+          </b>
         </NuxtLink>
-        <p class="mt-3 text-gray-500 dark:text-gray-400">{{ formattedDate }}</p>
-        <p class="mt-3 line-clamp-2 break-all leading-6 text-gray-600 dark:text-gray-400">
-          {{ article.abstract }}...
-        </p>
+        <div class="flex flex-row gap-2">
+          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            {{ formattedDate }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const { $dayjs } = useNuxtApp();
+const dayjs = useDayjs();
 
 const props = defineProps({
   article: {
@@ -46,13 +37,6 @@ const props = defineProps({
 });
 
 const formattedDate = computed(() => {
-  return $dayjs(props.article.createdAt).format("YYYY-MM-DD ");
+  return dayjs(props.article.createdAt).fromNow();
 });
 </script>
-
-<style scoped>
-.card-shadow {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03),
-    0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
-}
-</style>

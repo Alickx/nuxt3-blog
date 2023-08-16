@@ -11,13 +11,9 @@ datasource db {
 model article {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
-  abstract  String
   content   String
-  cover     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@fulltext([title(sort: Desc), content])
 }
 
 model user {

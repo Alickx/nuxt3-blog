@@ -1,13 +1,14 @@
-$monospace-font: Menlo, Monaco, Consolas, 'Courier New', monospace;
+$font-family: "Fira Code", self;
 $line-space: 22px;
 
 .markdown-body {
   word-break: break-word;
-  line-height: 1.75;
+  line-height: 32.4px;
+  font-family: monospace;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 16.56px;
   overflow-x: hidden;
-  color: #333;
+  color: #444;
 
   h1,
   h2,
@@ -15,7 +16,8 @@ $line-space: 22px;
   h4,
   h5,
   h6 {
-    line-height: 1.5;
+    color: #217c91;
+    line-height: 32.4px;
     margin-top: 35px;
     margin-bottom: 10px;
     padding-bottom: 5px;
@@ -25,7 +27,11 @@ $line-space: 22px;
     font-size: 24px;
     margin-bottom: 5px;
   }
-  h2, h3, h4, h5, h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-size: 20px;
   }
   h2 {
@@ -41,7 +47,7 @@ $line-space: 22px;
   }
 
   p {
-    line-height: inherit;
+    line-height: 32.4px;
     margin-top: $line-space;
     margin-bottom: $line-space;
   }
@@ -59,31 +65,42 @@ $line-space: 22px;
     margin-bottom: 32px;
   }
 
-  code {
-    font-family: $monospace-font;
+  p > code {
+    font-family: $font-family;
     word-break: break-word;
     border-radius: 2px;
     overflow-x: auto;
-    background-color: #fff5f5;
+    background-color: #fff;
+    border: 1px solid #ddd;
     color: #ff502c;
     font-size: 0.87em;
     padding: 0.065em 0.4em;
+    text-decoration: underline;
+    text-decoration-color: #000;
   }
 
   pre {
-    font-family: $monospace-font;
-    overflow: auto;
+    background: #f3f3f3;
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    margin: 1.3rem 0;
     position: relative;
-    line-height: 1.75;
+    overflow: auto;
     > code {
-      font-size: 12px;
-      padding: 15px 12px;
-      margin: 0;
-      word-break: normal;
+      background: #fff;
+      border-radius: 0 0 8px 8px;
+      border-top: 1px solid #e4e4e4;
       display: block;
-      overflow-x: auto;
-      color: #333;
-      background: #f8f8f8;
+      color: #444;
+      font-size: 15.3px;
+      font-weight: 400;
+      line-height: 1.3rem;
+      max-height: 90vh;
+      overflow: auto;
+      padding: 0.5rem 0.8rem;
+      position: relative;
+      word-break: normal;
     }
   }
 
@@ -123,18 +140,13 @@ $line-space: 22px;
   }
 
   blockquote {
-    color: #666;
-    padding: 1px 23px;
-    margin: 22px 0;
-    border-left: 4px solid #cbcbcb;
-    background-color: #f8f8f8;
-    &::after {
-      display: block;
-      content: '';
-    }
-    & > p {
-      margin: 10px 0;
-    }
+    line-height: 1.8rem;
+    position: relative;
+    border-left: 3px solid #aa40ff;
+    padding: 0.5rem 0.8rem;
+    margin: 1rem 0;
+    background: rgb(239 239 239);
+    border-radius: 0 0.5rem 0.5rem 0;
   }
 
   ol,

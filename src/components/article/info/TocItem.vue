@@ -1,6 +1,6 @@
 <template>
   <ul
-    class="mt-2 flex list-disc list-none flex-col gap-1 pl-4 text-sm no-underline"
+    class="mt-2 flex list-disc list-none flex-col gap-1 text-sm no-underline"
   >
     <li v-for="(child, index) in item.children" :key="index">
       <a

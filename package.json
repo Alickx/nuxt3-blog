@@ -21,6 +21,7 @@
     "@unocss/nuxt": "^0.54.1",
     "@vueuse/core": "^10.3.0",
     "@vueuse/nuxt": "^10.3.0",
+    "dayjs-nuxt": "^1.1.2",
     "nuxt": "^3.6.5",
     "nuxt-icon": "^0.4.2",
     "nuxt-simple-sitemap": "^3.1.4",
