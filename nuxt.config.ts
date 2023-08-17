@@ -15,6 +15,16 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
+      meta: [
+        {
+          name: "keywords",
+          content: "alickx,alickx.top,alickx blog,alickx's blog",
+        },
+        {
+          name: "description",
+          content: "alickx's blog,记录代码，生活的博客",
+        },
+      ],
     },
   },
   dayjs: {
