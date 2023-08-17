@@ -5,7 +5,7 @@ export default defineEventHandler(async () => {
   dayjs.extend(utc);
   const articles = await listArticle();
   return articles.map((article) => ({
-    loc: `/article/${article.id}`,
+    loc: `/article/${article.slug}`,
     lastmod: dayjs(article.updatedAt).utc().add(8, "hour"),
     changefreq: "daily",
     priority: 0.8,

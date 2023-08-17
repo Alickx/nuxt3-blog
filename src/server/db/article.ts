@@ -66,7 +66,7 @@ export const countArticle = async () => {
 export const listArticle = async () => {
   return await prisma.article.findMany({
     select: {
-      id: true,
+      slug: true,
       updatedAt: true,
     },
     orderBy: {
