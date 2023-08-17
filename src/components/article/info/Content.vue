@@ -10,6 +10,7 @@
 import "assets/styles/hljs.scss";
 import "assets/styles/fira-code.scss";
 import "assets/styles/markdown.scss";
+import "highlight.js/styles/atom-one-light.css";
 import ClipboardJS from "clipboard";
 
 const props = defineProps({
