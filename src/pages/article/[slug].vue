@@ -73,6 +73,11 @@ renderer.heading = (text, level, raw, slugger) => {
   const id = `heading-${toc.value.length}`;
   return `<h${level} id="${id}">${text}</h${level}>`;
 };
+
+renderer.image =  (href, title, text) => {
+  return `<img onclick='showImage(event,"${href}")' src="${href}" alt="${text}" title="${title ? title : ''}" style="cursor: zoom-in;" />`;
+};
+
 marked.use({
   renderer: renderer, // 这是必填项
   gfm: true, // 启动类似于Github样式的Markdown语法
