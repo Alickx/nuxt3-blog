@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { marked } from "marked";
+import { getSlug } from "~/utils/slugUtils";
 
 const { createArticle, getArticle, updateArticle } = useArticle();
 
@@ -75,6 +76,7 @@ const handleOk = async () => {
     const articleData = {
       title: title.value,
       content: content.value,
+      slug: getSlug(title.value) as string,
       wordCount: wordCountComputed.value,
     };
 

@@ -1,10 +1,11 @@
 import { ArticleInfo, SimpleArticle } from "~/types";
 
 export default () => {
-  const getArticle = async (
-    articleId: string,
+
+  const getArticleBySlug = async (
+    slug: string,
   ): Promise<Result<ArticleInfo>> => {
-    return await $fetch(`/api/article/${articleId}`, {
+    return await $fetch(`/api/article/${slug}`, {
       method: "GET",
     });
   };
@@ -65,7 +66,7 @@ export default () => {
   };
 
   return {
-    getArticle,
+    getArticleBySlug,
     pageArticle,
     createArticle,
     deleteArticle,

@@ -12,6 +12,7 @@ model article {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   content   String
+  slug      String   @unique
   viewCount Int      @default(0)
   wordCount Int      @default(0)
   createdAt DateTime @default(now())

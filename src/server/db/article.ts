@@ -1,10 +1,10 @@
 import { ArticleInfo } from "types";
 import { prisma } from "./prisma";
 
-export const getArticle = async (id: string) => {
+export const getArticleBySlug = async (slug: string) => {
   return await prisma.article.findUnique({
     where: {
-      id,
+      slug,
     },
   });
 };
@@ -18,6 +18,7 @@ export const pageArticle = async (page: number, size: number) => {
       title: true,
       viewCount: true,
       wordCount: true,
+      slug: true,
       createdAt: true,
       updatedAt: true,
     },
@@ -87,6 +88,7 @@ export const searchArticle = async (keyword: string) => {
     select: {
       id: true,
       title: true,
+      slug: true,
       createdAt: true,
     },
     orderBy: {

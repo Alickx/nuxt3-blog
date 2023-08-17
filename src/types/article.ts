@@ -2,6 +2,7 @@ export interface ArticleInfo {
   id?: string;
   title: string;
   content: string;
+  slug: string;
   viewCount?: number;
   wordCount?: number;
   createdAt?: string;
@@ -13,6 +14,7 @@ export interface SimpleArticle {
   title: string;
   viewCount: number;
   wordCount: number;
+  slug: string;
   createdAt: string;
   updatedAt: string;
 }

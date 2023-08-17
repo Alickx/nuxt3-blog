@@ -41,6 +41,7 @@
     "jsonwebtoken": "^9.0.1",
     "marked": "^6.0.0",
     "marked-highlight": "^2.0.2",
+    "pinyin": "3.0.0-alpha.5",
     "prisma": "^5.1.1"
   }
 }

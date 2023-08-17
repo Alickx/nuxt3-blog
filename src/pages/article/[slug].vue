@@ -24,7 +24,7 @@ import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
 import { ArticleInfo } from "types";
 
-const { getArticle } = useArticle();
+const { getArticleBySlug } = useArticle();
 
 definePageMeta({
   layout: "default",
@@ -46,8 +46,8 @@ useHead({
   title: title,
 });
 
-const getArticleById = async (id: string) => {
-  const { data } = await getArticle(id);
+const getArticle = async (slug: string) => {
+  const { data } = await getArticleBySlug(slug);
   article.value = data;
   title.value = data.title;
 };
@@ -87,7 +87,7 @@ const parseMarkdown = (content: string) => {
 };
 
 useAsyncData(async () => {
-  await getArticleById(route.params.id as string);
+  await getArticle(route.params.slug as string);
   parseMarkdown(article.value?.content || "");
 });
 </script>

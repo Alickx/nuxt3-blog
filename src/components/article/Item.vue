@@ -3,12 +3,12 @@
     <div class="md:flex md:flex-col">
       <NuxtLink
         class="md:flex-shrink-0"
-        :to="{ name: 'article-id', params: { id: props.article.id } }"
+        :to="{ name: 'article-slug', params: { slug: props.article.slug } }"
       >
       </NuxtLink>
       <div>
         <NuxtLink
-          :to="{ name: 'article-id', params: { id: props.article.id } }"
+          :to="{ name: 'article-slug', params: { slug: props.article.slug } }"
         >
           <b
             class="mt-1 line-clamp-1 break-all text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-white"

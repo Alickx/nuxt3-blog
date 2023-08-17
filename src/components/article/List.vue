@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto mt-4 max-w-3xl">
     <div class="min-h-lg flex flex-col">
-      <div v-for="item in articles" :key="item.id">
+      <div v-for="item in articles" :key="item.slug">
         <ArticleItem
           class="border-b-1 border-b-gray-1 border-0 border-solid"
           :article="item"
