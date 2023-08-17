@@ -11,7 +11,7 @@
           :to="{ name: 'article-slug', params: { slug: props.article.slug } }"
         >
           <b
-            class="mt-1 line-clamp-1 break-all text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-white"
+            class="mt-1 line-clamp-1 break-all text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-[#CCCCCC]"
           >
             {{ article.title }}
           </b>

@@ -10,6 +10,17 @@ export default () => {
     });
   };
 
+  const getArticleById = async (
+    id: string,
+  ): Promise<Result<ArticleInfo>> => {
+    return await $fetch(`/api/article/id`, {
+      method: "GET",
+      params: {
+        id,
+      },
+    });
+  };
+
   const pageArticle = async (
     page: number,
     size: number,
@@ -67,6 +78,7 @@ export default () => {
 
   return {
     getArticleBySlug,
+    getArticleById,
     pageArticle,
     createArticle,
     deleteArticle,

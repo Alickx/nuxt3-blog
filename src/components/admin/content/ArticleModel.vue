@@ -23,7 +23,7 @@
 import { marked } from "marked";
 import { getSlug } from "~/utils/slugUtils";
 
-const { createArticle, getArticle, updateArticle } = useArticle();
+const { createArticle, getArticleById, updateArticle } = useArticle();
 
 const props = defineProps({
   type: {
@@ -44,14 +44,14 @@ const open = ref<boolean>(false);
 const showModal = async () => {
   await nextTick(() => {
     if (props.type === "edit") {
-      getArticleById(props.articleId as string);
+      getArticle(props.articleId as string);
     }
     open.value = true;
   });
 };
 
-const getArticleById = async (id: string) => {
-  let { data } = await getArticle(id);
+const getArticle = async (id: string) => {
+  let { data } = await getArticleById(id);
   if (data) {
     title.value = data.title;
     content.value = data.content as string;

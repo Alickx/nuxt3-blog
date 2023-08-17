@@ -1,10 +1,13 @@
 <template>
-  <div ref="markdownBodyRef" class="markdown-body" v-html="contentHtml" />
+  <div
+    ref="markdownBodyRef"
+    class="markdown-body dark:text-gray-400"
+    v-html="contentHtml"
+  />
 </template>
 
 <script setup lang="ts">
 import "assets/styles/hljs.scss";
-import "highlight.js/styles/atom-one-light.css";
 import "assets/styles/fira-code.scss";
 import "assets/styles/markdown.scss";
 import ClipboardJS from "clipboard";

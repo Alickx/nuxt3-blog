@@ -9,6 +9,14 @@ export const getArticleBySlug = async (slug: string) => {
   });
 };
 
+export const getArticleById = async (id: string) => {
+  return await prisma.article.findUnique({
+    where: {
+      id,
+    },
+  });
+};
+
 export const pageArticle = async (page: number, size: number) => {
   return await prisma.article.findMany({
     skip: (page - 1) * size,

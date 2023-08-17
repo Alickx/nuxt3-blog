@@ -3,7 +3,7 @@
     <div class="min-h-lg flex flex-col">
       <div v-for="item in articles" :key="item.slug">
         <ArticleItem
-          class="border-b-1 border-b-gray-1 border-0 border-solid"
+          class="border-b-1 border-b-gray-1 dark:border-b-gray-6 border-0 border-solid"
           :article="item"
         />
       </div>
@@ -38,7 +38,7 @@ const router = useRouter();
 const route = useRoute();
 const page = ref(1);
 const total = ref(0);
-const defaultPageSize = ref(9);
+const defaultPageSize = ref(10);
 const articles = ref<SimpleArticle[]>();
 
 const getArticles = async () => {

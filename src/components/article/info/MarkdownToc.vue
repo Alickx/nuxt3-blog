@@ -1,13 +1,13 @@
 <template>
   <div
-    class="min-w-[180px] max-w-[180px] rounded bg-transparent px-4 py-2 dark:bg-[#111111]"
+    class="min-w-[180px] max-w-[180px] rounded bg-transparent px-4 py-2"
   >
     <div class="flex justify-end">
       <Icon
         @click="isShowToc = !isShowToc"
         name="icons8:right-round"
         size="25"
-        class="cursor-pointer"
+        class="cursor-pointer dark:text-white"
       />
     </div>
     <ul
@@ -15,10 +15,11 @@
       class="flex flex-col text-base no-underline dark:text-white"
     >
       <li
-        class="rounded p-1"
+        class="rounded py-1 px-3 dark:text-white"
         :class="{
           'text-blue-500': item.active,
           'bg-[#e3efff]': item.active,
+          'dark:bg-black': item.active,
         }"
         v-for="(item, index) in tocItemData"
         :key="index"

@@ -1,7 +1,7 @@
 <template>
   <div class="flex-1 bg-[#fafafa] pb-14 dark:bg-[#212526]">
     <div class="relative mx-auto max-w-6xl flex-row items-start gap-5 md:flex">
-      <div class="w-5xl p-5 dark:bg-[#111111] md:p-7">
+      <div class="max-w-5xl p-5 md:p-7">
         <ArticleInfoHeader
           v-if="article"
           :title="article?.title"
@@ -16,6 +16,7 @@
       </div>
     </div>
   </div>
+  <BackTop />
 </template>
 
 <script setup lang="ts">
