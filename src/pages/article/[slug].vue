@@ -10,6 +10,7 @@
           :view-count="article?.viewCount"
         />
         <ArticleInfoContent :content-html="contentHtml" />
+        <ArticleInfoFooter v-if="article" />
       </div>
       <div class="sticky top-0 hidden pt-10 md:block">
         <ArticleInfoMarkdownToc v-if="toc.length > 0" :toc="toc" />
@@ -74,8 +75,16 @@ renderer.heading = (text, level, raw, slugger) => {
   return `<h${level} id="${id}">${text}</h${level}>`;
 };
 
-renderer.image =  (href, title, text) => {
-  return `<img onclick='showImage(event,"${href}")' src="${href}" alt="${text}" title="${title ? title : ''}" style="cursor: zoom-in;" />`;
+const mdImgStyle = `
+  cursor: zoom-in;
+  box-shadow: 15px 15px 20px 0px rgba(0,0,0,0.1);
+  width: 70%;
+`;
+
+renderer.image = (href, title, text) => {
+  return `<img onclick='showImage(event,"${href}")' src="${href}" alt="${text}" title="${
+    title ? title : ""
+  }" style="${mdImgStyle}" />`;
 };
 
 marked.use({
