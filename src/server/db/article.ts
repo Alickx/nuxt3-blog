@@ -105,10 +105,10 @@ export const searchArticle = async (keyword: string) => {
   });
 };
 
-export const incrementArticleView = async (id: string) => {
+export const incrementArticleViewBySlug = async (slug: string) => {
   return await prisma.article.update({
     where: {
-      id,
+      slug,
     },
     data: {
       viewCount: {

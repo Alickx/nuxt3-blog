@@ -1,4 +1,4 @@
-import { getArticleBySlug, incrementArticleView } from "~/server/db/article";
+import { getArticleBySlug, incrementArticleViewBySlug } from "~/server/db/article";
 import { R } from "~/composables/useResult";
 
 export default defineEventHandler(async (event) => {
@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const article = await getArticleBySlug(slug);
 
   if (article) {
-    await incrementArticleView(article.id);
+    await incrementArticleViewBySlug(article.slug);
   }
 
   return R.ok(article);
