@@ -26,3 +26,15 @@ model user {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model requestLog {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  method    String
+  url       String
+  ip        String
+  userAgent String
+  status    Int
+  duration  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
