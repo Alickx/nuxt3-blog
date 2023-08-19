@@ -77,8 +77,6 @@ renderer.heading = (text, level, raw, slugger) => {
 
 const mdImgStyle = `
   cursor: zoom-in;
-  box-shadow: 15px 15px 20px 0px rgba(0,0,0,0.1);
-  width: 70%;
 `;
 
 renderer.image = (href, title, text) => {
