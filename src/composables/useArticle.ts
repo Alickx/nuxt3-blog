@@ -67,7 +67,7 @@ export default () => {
 
   const searchArticle = async (
     keyword: string,
-  ): Promise<Result<ArticleInfo[]>> => {
+  ): Promise<Result<SimpleArticle[]>> => {
     return await $fetch(`/api/article/search`, {
       method: "GET",
       params: {

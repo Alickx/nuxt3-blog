@@ -8,7 +8,7 @@
   />
   <div
     v-if="isOpen"
-    class="z-999 md:top-10% md:left-50% md:w-xl fixed left-0 top-0 h-full w-full transform bg-[#f5f6f7] md:absolute md:h-auto md:-translate-x-1/2 md:rounded"
+    class="z-999 md:top-10% md:left-50% md:w-xl fixed left-0 top-0 h-full w-full transform bg-[#f5f6f7] dark:bg-[#242424] md:absolute md:h-auto md:-translate-x-1/2 md:rounded"
   >
     <div class="flex flex-col gap-3">
       <!-- 搜索框 -->
@@ -20,7 +20,8 @@
       />
       <div class="flex flex-row items-center">
         <input
-          class="indent-lg placeholder-text-lg m-3 mr-0 flex-1 rounded border-2 border-solid border-[#5468ff] px-3 py-3 text-lg placeholder-gray-400 outline-none md:m-3"
+          ref="searchInputRef"
+          class="indent-lg placeholder-text-lg m-3 mr-0 flex-1 rounded border-2 border-solid border-[#5468ff] px-3 py-3 text-lg placeholder-gray-400 outline-none dark:border-[#42b883] dark:bg-[#2f2f2f] dark:text-white md:m-3"
           placeholder="Search docs"
           v-model="searchContent"
         />
@@ -41,12 +42,12 @@
         <!-- 搜索结果列表展示 -->
         <nuxt-link
           v-for="item in searchResult"
-          :key="item.id"
-          :to="{ name: 'article-id', params: { id: item.id } }"
+          :key="item.slug"
+          :to="{ name: 'article-slug', params: { slug: item.slug } }"
           class="text-sm font-bold"
         >
           <div
-            class="flex cursor-pointer flex-row gap-3 rounded bg-white px-3 py-4 shadow hover:bg-[#5468ff] hover:text-white"
+            class="dark:text-gray-4 flex cursor-pointer flex-row gap-3 rounded bg-white px-3 py-4 shadow hover:bg-[#5468ff] hover:text-white dark:bg-[#2f2f2f] dark:hover:bg-[#42b883] dark:hover:text-white"
           >
             <Icon name="ph:article-thin" color="hover:white" size="24" />{{
               item.title
@@ -64,19 +65,25 @@
 </template>
 
 <script setup lang="ts">
-import { Article } from "composables/useArticle";
+import { SimpleArticle } from "types";
+import { useFocus } from "@vueuse/core";
 
 const { searchArticle } = useArticle();
 
 const router = useRouter();
 
 let searchContent = ref("");
-const searchResult = ref<Article[]>([]);
+const searchResult = ref<SimpleArticle[]>([]);
 const isOpen = ref(false);
+const searchInputRef = ref<HTMLInputElement | null>(null);
 
 const toggle = () => {
   isOpen.value = !isOpen.value;
 };
+
+const { focused: inputFocus } = useFocus(searchInputRef, {
+  initialValue: true,
+});
 
 const close = () => {
   searchContent.value = "";
