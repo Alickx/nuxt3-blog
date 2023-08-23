@@ -8,19 +8,19 @@
     <div class="flex flex-row flex-wrap gap-3">
       <p class="info-text">
         <Icon name="ic:baseline-access-time" size="18" class="mr-2" />
-        {{ formatTime }}
+        发布时间：{{ formatTime }}
       </p>
       <p class="info-text">
         <Icon name="carbon:book" size="18" class="mr-2" />
-        {{ wordCount }} 字
+        统计字数：{{ wordCount }} 字
       </p>
       <p class="info-text">
         <Icon name="mdi:eye-outline" size="18" class="mr-2" />
-        {{ viewCount }}
+        浏览总量：{{ viewCount }}
       </p>
       <p class="info-text">
         <Icon name="ic:baseline-timer" size="18" class="mr-2" />
-        {{ readTimeComputed }}
+        阅读时间：{{ readTimeComputed }}
       </p>
     </div>
   </div>

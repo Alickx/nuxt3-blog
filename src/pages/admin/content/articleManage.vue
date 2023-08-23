@@ -8,7 +8,7 @@
     <a-table bordered :data-source="tableData" :columns="columns" :scroll="{ x: 'max-content' }">
       <template #bodyCell="{ column, record, text }">
         <template v-if="column.dataIndex === 'title'">
-          <nuxt-link class="font-bold" :href="`/article/${record.id}`" target="_blank">{{ text }}</nuxt-link>
+          <nuxt-link class="font-bold" :href="`/article/${record.slug}`" target="_blank">{{ text }}</nuxt-link>
         </template>
         <template v-else-if="column.dataIndex === 'createdAt' || column.dataIndex === 'updatedAt'">
           {{ formatTime(text) }}
@@ -28,7 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import { SimpleArticle } from '~/composables/useArticle';
+import { SimpleArticle } from 'types';
+
 
 const { pageArticle, deleteArticle } = useArticle()
 const { $dayjs } = useNuxtApp()
