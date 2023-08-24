@@ -17,7 +17,8 @@ export default defineEventHandler(async (event) => {
     ip === "" ||
     (Array.isArray(ip) && ip[0].startsWith("192.168.")) ||
     (Array.isArray(ip) && ip[0].startsWith("10.")) ||
-    (Array.isArray(ip) && ip[0].startsWith("172."))
+    (Array.isArray(ip) && ip[0].startsWith("172.")) ||
+    (Array.isArray(ip) && ip[0].startsWith("::"))
   ) {
     return;
   }
