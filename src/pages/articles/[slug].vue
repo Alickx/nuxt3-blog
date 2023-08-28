@@ -23,6 +23,12 @@ const { data } = await useAsyncData('article', () => {
   return queryContent('/articles').where({ slug: route.params.slug }).findOne();
 })
 
+useHead({
+  titleTemplate(title) {
+    return `${title} - Alickx'blog`
+  },
+  title: data.value?.title
+})
 
 
 </script>
