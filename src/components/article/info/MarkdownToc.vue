@@ -1,147 +1,86 @@
 <template>
-  <div
-    class="min-w-[180px] max-w-[180px] rounded bg-transparent px-4 py-2"
-  >
+  <div v-if="hasToc" class="min-w-[180px] max-w-[180px] rounded bg-transparent px-4 py-2">
     <div class="flex justify-end">
-      <Icon
-        @click="isShowToc = !isShowToc"
-        name="icons8:right-round"
-        size="25"
-        class="cursor-pointer dark:text-white"
-      />
+      <Icon @click="isShowToc = !isShowToc" name="icons8:right-round" size="25" class="cursor-pointer dark:text-white" />
     </div>
-    <ul
-      v-if="isShowToc"
-      class="flex flex-col text-base no-underline dark:text-white"
-    >
-      <li
-        class="rounded py-1 px-3 dark:text-white"
-        :class="{
-          'text-blue-500': item.active,
-          'bg-[#e3efff]': item.active,
-          'dark:bg-black': item.active,
-        }"
-        v-for="(item, index) in tocItemData"
-        :key="index"
-      >
-        <a class="line-clamp-1 break-all rounded" :href="`#${item.anchor}`">{{
+    <ul v-if="isShowToc" class="flex flex-col text-base no-underline dark:text-white">
+      <li class="rounded py-1 px-3 dark:text-white cursor-pointer" :class="{
+        'text-blue-500': item.active,
+        'bg-[#e3efff]': item.active,
+        'dark:bg-black': item.active,
+      }" v-for="(item, index) in tocItemData" :key="index">
+        <span class="line-clamp-1 break-all rounded" @click="scrollToAnchor(item.id)">{{
           item.text
-        }}</a>
+        }}</span>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+
 interface Toc {
+  id: string;
   text: string;
-  level: number;
-}
-
-interface TocItem {
-  text: string;
-  level: number;
-  anchor: string;
+  depth: number;
   active: boolean;
+  children?: Toc[];
 }
 
-const route = useRoute();
-const tocItemData = ref<TocItem[]>([]);
-const currentAnchor = ref("");
-const isShowToc = ref(true);
+const props = defineProps<{
+  articleData: ParsedContent
+}>()
 
-const props = defineProps({
-  toc: {
-    type: Array as () => Toc[],
-  },
-});
+const { articleData } = toRefs(props);
+const tocItemData = ref<Toc[]>(articleData.value.body.toc.links);
+let currentAnchor = ref('');
 
-const getAnchorIndex = (text: string): string => {
-  // 返回在toc中的索引
-  if (!props.toc) {
-    return "";
+let isShowToc = ref(true);
+
+const scrollToAnchor = (anchor: string) => {
+  const anchorElement = document.getElementById(anchor);
+  if (anchorElement) {
+    anchorElement.scrollIntoView({ behavior: 'smooth' });
   }
-  const index = props.toc.findIndex((item) => item.text === text);
-  return `heading-${index + 1}`;
 };
 
-const getAnchorText = (anchor: string): string => {
-  if (!props.toc) {
-    return "";
-  }
-  const index = anchor.split("-")[1];
-  return props.toc[Number(index) - 1].text;
-};
 
-const listenScrollAnchor = () => {
-  window.addEventListener("scroll", () => {
-    if (!props.toc) {
-      return;
-    }
-    const toc = props.toc;
-    const tocLength = toc.length;
-    for (let i = 1; i <= tocLength; i++) {
-      const element = document.getElementById(`heading-${i}`);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top <= 200) {
-          currentAnchor.value = toc[i - 1].text;
-          break;
-        }
-      }
-    }
-  });
-};
-
-const generateToc = () => {
-  // 将toc转换为tocItemData
-  if (!props.toc) {
-    return;
-  }
-  const toc = props.toc;
-  tocItemData.value = toc.map((item) => {
-    return {
-      text: item.text,
-      level: item.level,
-      anchor: getAnchorIndex(item.text),
-      active: false,
-    };
-  });
-};
-
-watch(
-  () => currentAnchor.value,
-  (val) => {
-    // 将当前锚点设置为active,tocItemData
-    if (!props.toc) {
-      return;
-    }
-    // 将所在的锚点设置为active
-    const index = props.toc.findIndex((item) => item.text === val);
-    tocItemData.value.forEach((item) => {
-      item.active = false;
-    });
-    tocItemData.value[index].active = true;
-  },
-);
-
-// 监听url上的锚点
-watch(
-  () => route.hash,
-  (val) => {
-    currentAnchor.value = getAnchorText(val);
-  },
-);
+const hasToc = computed(() => {
+  return props.articleData.body.toc.links.length > 0;
+})
 
 onMounted(() => {
-  generateToc();
-  // 监听滚动事件获取当前窗口的锚点
-  listenScrollAnchor();
+  if (tocItemData.value) {
+    window.addEventListener('scroll', () => {
+      tocItemData.value.forEach((item, index) => {
+        const ele = document.getElementById(item.id);
+        if (ele) {
+          const rect = ele.getBoundingClientRect();
+          if (rect.top >= 0 && rect.top <= 200) {
+            currentAnchor.value = item.id;
+          }
+        }
+      });
+    })
+  }
+})
+
+watch(() => currentAnchor.value,(val) => {
+  tocItemData.value.forEach((item, index) => {
+    if (item.id === val) {
+      item.active = true;
+    } else {
+      item.active = false;
+    }
+  });
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", () => {});
-});
+  window.removeEventListener('scroll', () => { })
+})
+
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

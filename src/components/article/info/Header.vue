@@ -2,7 +2,7 @@
   <div class="mx-auto flex max-w-3xl flex-col items-center justify-center">
     <div class="leading-5">
       <h1 class="text-3xl font-bold text-[#444] dark:text-white">
-        {{ title }}
+        {{ articleData.title }}
       </h1>
     </div>
     <div class="flex flex-row flex-wrap gap-3">
@@ -12,57 +12,32 @@
       </p>
       <p class="info-text">
         <Icon name="carbon:book" size="18" class="mr-2" />
-        统计字数：{{ wordCount }} 字
-      </p>
-      <p class="info-text">
-        <Icon name="mdi:eye-outline" size="18" class="mr-2" />
-        浏览总量：{{ viewCount }}
+        统计字数：{{ articleData.readingTime.words }} 字
       </p>
       <p class="info-text">
         <Icon name="ic:baseline-timer" size="18" class="mr-2" />
-        阅读时间：{{ readTimeComputed }}
+        阅读时间：{{ articleData.readingTime.text }}
       </p>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+
 const dayjs = useDayjs();
 
 const props = defineProps({
-  title: {
-    type: String,
-  },
-  createdAt: {
-    type: String,
-  },
-  content: {
-    type: String,
-  },
-  wordCount: {
-    type: Number,
-  },
-  viewCount: {
-    type: Number,
+  articleData: {
+    type: Object as PropType<ParsedContent>,
+    required: true,
   },
 });
 
-const { title, wordCount } = toRefs(props);
 
 const formatTime = computed(() => {
-  return dayjs(props.createdAt).format("YYYY-MM-DD HH:mm:ss");
+  return dayjs(props.articleData.date).format("YYYY-MM-DD HH:mm:ss");
 });
 
-// 阅读时间
-const readTimeComputed = computed(() => {
-  if (!wordCount?.value) {
-    return "0分钟";
-  }
-  const time = Math.ceil(wordCount.value / 500);
-  if (time > 60) {
-    return `${Math.floor(time / 60)}小时${time % 60}分钟`;
-  }
-  return `${time}分钟`;
-});
 </script>
 
 <style scoped>

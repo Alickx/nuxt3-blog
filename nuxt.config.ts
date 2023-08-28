@@ -1,15 +1,11 @@
-import { installNuxtSiteConfig, updateSiteConfig } from "nuxt-site-config-kit";
-
 export default defineNuxtConfig({
   modules: [
     "@unocss/nuxt",
     "nuxt-icon",
     "@vueuse/nuxt",
-    "@ant-design-vue/nuxt",
     "@nuxt/image",
-    "nuxt-simple-sitemap",
-    "@sidebase/nuxt-auth",
     "dayjs-nuxt",
+    "@nuxt/content"
   ],
   css: ["@/assets/styles/normalize.css"],
   app: {
@@ -34,43 +30,18 @@ export default defineNuxtConfig({
     defaultTimezone: "Asia/Shanghai",
   },
   srcDir: "src/",
-  image: {
-    format: ["webp", "avif", "png", "jpg", "jpeg"],
-    quality: 50,
-  },
-  sitemap: {
-    exclude: ["/admin/**", "/login"],
-  },
-  site: {
-    url: "https://www.alickx.top",
-  },
-  // @ts-ignore
-  async setup() {
-    await installNuxtSiteConfig();
-    updateSiteConfig({
-      _context: "my-module",
-      url: "https://alickx.top",
-    });
-  },
-  build: {
-    transpile: ["jsonwebtoken"],
-  },
-  auth: {
-    provider: {
-      type: "local",
-      pages: {
-        login: "/login",
+  content: {
+    highlight: {
+      theme: {
+        default: 'github-light',
+        dark: 'github-dark',
+        sepia: 'monokai'
       },
-      endpoints: {
-        getSession: { path: "/user", method: "get" },
-      },
-      token: {
-        signInResponseTokenPointer: "/token/accessToken",
-      },
+      preload: ['java','vue','vue-html','shell','sql','javascript','typescript']
     },
-    session: {
-      enableRefreshOnWindowFocus: true,
-      enableRefreshPeriodically: 5000,
-    },
-  },
+    markdown: {
+      anchorLinks: false,
+      remarkPlugins: ['remark-reading-time'],
+    }
+  }
 });
