@@ -1,6 +1,6 @@
 <template>
   <div
-    class="dark:text-gray-3 border-t-1 border-t-gray-3 w-full border-0 dark:border-t-gray-6 border-solid bg-[#fafafa] pb-10 pt-10 text-base text-[#444] dark:bg-[#212526]"
+    class="dark:text-gray-3 border-t-1 border-t-gray-3 dark:border-t-gray-6 w-full border-0 border-solid bg-[#fafafa] pb-10 pt-10 text-base text-[#444] dark:bg-[#212526]"
   >
     <div class="mx-auto flex max-w-6xl flex-col">
       <div class="flex flex-col justify-center gap-2 gap-5 md:flex-row">

@@ -2,7 +2,7 @@
   <div v-if="isVisible" class="fixed bottom-0 right-0 mb-4 mr-4">
     <button
       @click.prevent="scrollToTop"
-      class="shadow-md hover:bg-gray-3 flex cursor-pointer items-center justify-center rounded-[9999px] border-0 bg-white p-3"
+      class="hover:bg-gray-3 flex cursor-pointer items-center justify-center rounded-[9999px] border-0 bg-white p-3 shadow-md"
     >
       <Icon name="mdi:arrow-up" size="24" />
     </button>

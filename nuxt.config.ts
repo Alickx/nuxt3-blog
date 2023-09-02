@@ -3,7 +3,6 @@ export default defineNuxtConfig({
     "@unocss/nuxt",
     "nuxt-icon",
     "@vueuse/nuxt",
-    "@nuxt/image",
     "dayjs-nuxt",
     "@nuxt/content"
   ],

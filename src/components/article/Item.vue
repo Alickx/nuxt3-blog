@@ -5,11 +5,14 @@
       <div>
         <NuxtLink :to="`/articles/${article.slug}`">
           <span
-            class="mt-1 break-all text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-[#CCCCCC]">
+            class="mt-1 break-all text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-[#CCCCCC]"
+          >
             {{ article.title }}
           </span>
         </NuxtLink>
-        <div class="mt-2 flex flex-row items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <div
+          class="mt-2 flex flex-row items-center gap-2 text-sm text-gray-500 dark:text-gray-400"
+        >
           <span>
             {{ formattedDate }}
           </span>
@@ -22,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
 const dayjs = useDayjs();
 
@@ -36,6 +39,4 @@ const props = defineProps({
 const formattedDate = computed(() => {
   return dayjs(props.article.date).fromNow();
 });
-
-
 </script>

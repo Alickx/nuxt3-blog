@@ -22,7 +22,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
 const dayjs = useDayjs();
 
@@ -33,11 +33,9 @@ const props = defineProps({
   },
 });
 
-
 const formatTime = computed(() => {
   return dayjs(props.articleData.date).format("YYYY-MM-DD HH:mm:ss");
 });
-
 </script>
 
 <style scoped>

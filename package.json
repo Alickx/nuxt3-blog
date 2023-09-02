@@ -12,8 +12,7 @@
     "postinstall": "nuxt prepare && prisma generate"
   },
   "devDependencies": {
-    "@nuxt/content": "npm:@nuxt/content-edge@latest",
-    "@nuxt/image": "1.0.0-rc.1",
+    "@nuxt/content": "^2.8.2",
     "@types/node": "^18.17.11",
     "@types/prettier": "^2.7.3",
     "@unocss/nuxt": "^0.54.3",

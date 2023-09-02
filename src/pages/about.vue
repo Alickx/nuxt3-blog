@@ -1,13 +1,7 @@
 <template>
-  <div>
-    这是一个关于页面
-  </div>
+  <div>这是一个关于页面</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

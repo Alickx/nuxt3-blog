@@ -15,23 +15,18 @@
 </template>
 
 <script setup lang="ts">
-
 const route = useRoute();
 
-
-const { data } = await useAsyncData('article', () => {
-  return queryContent('/articles').where({ slug: route.params.slug }).findOne();
-})
+const { data } = await useAsyncData("article", () => {
+  return queryContent("/articles").where({ slug: route.params.slug }).findOne();
+});
 
 useHead({
   titleTemplate(title) {
-    return `${title} - Alickx'blog`
+    return `${title} - Alickx'blog`;
   },
-  title: data.value?.title
-})
-
-
+  title: data.value?.title,
+});
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
