@@ -1,5 +1,5 @@
 <template>
-  <div class="code-container rounded">
+  <div class="code-container rounded max-w-[850px]">
     <div class="bg-[#ecebe8] dark:bg-[#383d49] flex flex-row items-center h-[30px]">
       <div class="flex-1 flex flex-row items-center justify-end text-gray-4">
         <small style="font-family: 'Fira Code'">{{ language }}</small>
