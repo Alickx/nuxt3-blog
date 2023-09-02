@@ -36,6 +36,16 @@ useHead({
     return `${title} - Alickx'blog`;
   },
   title: data.value?.title,
+  meta: [
+    {
+      name: "description",
+      content: data.value?.description,
+    },
+    {
+      name: "keywords",
+      content: data.value?.keywords,
+    }
+  ]
 });
 </script>
 

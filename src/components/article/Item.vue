@@ -4,11 +4,11 @@
       <NuxtLink class="md:flex-shrink-0" :to="`/articles/${article.slug}`" />
       <div>
         <NuxtLink :to="`/articles/${article.slug}`">
-          <span
+          <h1
             class="mt-1 break-all text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-[#CCCCCC]"
           >
             {{ article.title }}
-          </span>
+        </h1>
         </NuxtLink>
         <div
           class="mt-2 flex flex-row items-center gap-2 text-sm text-gray-500 dark:text-gray-400"

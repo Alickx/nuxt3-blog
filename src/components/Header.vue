@@ -32,7 +32,7 @@
           <div
             class="flex items-center justify-center gap-2 text-2xl font-bold text-white"
           >
-            <NuxtLink to="/">Alickx</NuxtLink>
+            <NuxtLink to="/">Alickx' Blog</NuxtLink>
           </div>
           <ul
             class="mx-30 hidden flex-1 list-none flex-row items-center text-white md:flex"

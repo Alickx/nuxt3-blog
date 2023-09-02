@@ -2,6 +2,7 @@
 title: 使用Uniapp开发旅游罗盘小程序
 slug: use-uniapp-to-develop-travel-compass-mini-program
 description: 使用Uniapp开发旅游罗盘小程序
+keywords: uniapp,miniprogram,wechat
 date: 2023-08-24 01:30
 ---
 

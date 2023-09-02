@@ -2,6 +2,7 @@
 title: Java项目分层结构分析
 slug: java-project-layered-structure-analysis
 description: 对各个项目分层结构进行优缺点分析，以及微服务架构下的项目结构
+keywords: structure,layered
 date: 2023-06-17 16:04
 ---
 

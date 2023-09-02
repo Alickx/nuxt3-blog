@@ -2,6 +2,7 @@
 title: Nuxt3生成对SEO友好的slug
 slug: nuxt3-generate-seo-friendly-slug
 description: 使用nodejs中的pinyin包将中文标题转换为slug
+keywords: nuxt3,seo,slug,nodejs
 date: 2023-08-17 13:48
 ---
 

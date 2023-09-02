@@ -2,6 +2,7 @@
 title: 使用CompletableFuture优化查询速度
 slug: use-completablefuture-to-optimize-query-speed
 description: 使用Java8的CompletableFuture优化查询速度
+keywords: java8,CompletableFuture,优化
 date: 2023-04-25T09:31:53Z
 ---
 
