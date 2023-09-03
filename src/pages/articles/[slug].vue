@@ -4,7 +4,7 @@
       <div v-if="data" class="max-w-5xl p-5 md:p-7">
         <ArticleInfoHeader :article-data="data" />
         <ArticleInfoContent :article-data="data" />
-        <ArticleInfoFooter :surround="surround" />
+        <ArticleInfoFooter />
       </div>
       <div v-if="data" class="sticky top-0 hidden pt-10 xl:block">
         <ArticleInfoMarkdownToc :article-data="data" />
@@ -26,10 +26,8 @@ definePageMeta({
 const route = useRoute();
 
 const { data } = await useAsyncData("article", () => {
-  return queryContent("/_articles").where({ slug: route.params.slug }).findOne();
+  return queryContent("_articles").where({ slug: route.params.slug }).findOne();
 });
-
-const surround = await queryContent().findSurround(data.value?._path!);
 
 useHead({
   titleTemplate(title) {
