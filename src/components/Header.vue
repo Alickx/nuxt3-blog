@@ -10,7 +10,7 @@
     <div class="flex h-full w-full flex-col justify-center">
       <div class="flex items-center justify-center">
         <div
-          class="sm:w-xl md:w-2xl lg:w-4xl xl:w-7xl flex w-[21rem] flex-row items-center justify-between"
+          class="sm:w-xl md:w-2xl lg:w-4xl flex w-[21rem] flex-row items-center justify-between xl:w-[calc(100%-100px)]"
         >
           <div class="text-[#444] dark:text-white">
             <Icon
@@ -20,12 +20,7 @@
               name="mdi:menu"
               size="28"
             />
-            <Icon
-              v-else
-              @click="close"
-              name="mdi:close"
-              size="28"
-            />
+            <Icon v-else @click="close" name="mdi:close" size="28" />
           </div>
           <div
             class="flex items-center justify-center gap-2 text-2xl font-bold text-[#444] dark:text-white"
@@ -35,23 +30,15 @@
             </NuxtLink>
           </div>
           <ul
-            class="mx-30 hidden flex-1 list-none flex-row items-center text-[#444] md:flex dark:text-white"
+            class="mx-30 gap-15 hidden flex-1 list-none flex-row items-center text-[#444] dark:text-white md:flex"
           >
             <li v-for="item in headerList" :key="item.path">
-              <NuxtLink
-                :to="item.path"
-                class="flex items-center justify-center gap-1"
-              >
-                <Icon
-                  class="cursor-pointer"
-                  :name="item.icon"
-                  size="24"
-                />
+              <NuxtLink :to="item.path">
                 {{ item.name }}
               </NuxtLink>
             </li>
           </ul>
-          <div class="flex flex-row gap-5 dark:text-white text-[#444]">
+          <div class="flex flex-row gap-5 text-[#444] dark:text-white">
             <Icon
               v-if="mode === 'light'"
               @click="toggleDark"
@@ -81,9 +68,8 @@
       <li v-for="item in headerList" :key="item.path" class="relative">
         <NuxtLink
           :to="item.path"
-          class="drak:border-[#30363d] dark:text-white flex items-center gap-1 border-0 border-b border-solid border-gray-200 py-3"
+          class="drak:border-[#30363d] flex items-center border-0 border-b border-solid border-gray-200 py-3 dark:text-white"
         >
-          <Icon :name="item.icon" size="20" />
           {{ item.name }}
         </NuxtLink>
       </li>
@@ -100,8 +86,11 @@ let isOpen = ref(false);
 const headerList = [
   {
     name: "首页",
-    icon: "mdi:home",
     path: "/",
+  },
+  {
+    name: "关于",
+    path: "/about",
   },
 ];
 
