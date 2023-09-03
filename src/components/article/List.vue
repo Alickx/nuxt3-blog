@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 const { data } = await useAsyncData("articleList", () => {
-  return queryContent("/articles").limit(10).sort({ date: -1 }).find();
+  return queryContent("/_articles").limit(10).sort({ date: -1 }).find();
 });
 
 const pageChange = (page: number) => {

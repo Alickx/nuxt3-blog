@@ -26,7 +26,7 @@ definePageMeta({
 const route = useRoute();
 
 const { data } = await useAsyncData("article", () => {
-  return queryContent("/articles").where({ slug: route.params.slug }).findOne();
+  return queryContent("/_articles").where({ slug: route.params.slug }).findOne();
 });
 
 const surround = await queryContent().findSurround(data.value?._path!);

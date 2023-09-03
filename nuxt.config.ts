@@ -7,6 +7,11 @@ export default defineNuxtConfig({
     "@nuxt/content",
   ],
   css: ["@/assets/styles/normalize.css", "@/assets/styles/hyzy.scss"],
+  routeRules: {
+    "/": { prerender: true },
+    "/articles/**": { isr: true },
+    "/about": { isr: true },
+  },
   app: {
     head: {
       link: [

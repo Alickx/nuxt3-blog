@@ -1,16 +1,14 @@
 <template>
-  <div class="markdown-body p-7 flex justify-center flex-1">
+  <div class="markdown-body flex flex-1 justify-center p-7">
     <ContentRenderer :value="data!" />
   </div>
 </template>
 
 <script setup lang="ts">
-import '@/assets/styles/markdown.scss'
+import "@/assets/styles/markdown.scss";
 
-
-
-const { data } = await useAsyncData("about", async () => {
-  return queryContent("/about").where({ title: "README" }).findOne();
+const { data } = await useAsyncData("/_about", async () => {
+  return queryContent("/_about").where({ slug: "about-me" }).findOne();
 });
 </script>
 
