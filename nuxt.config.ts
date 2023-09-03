@@ -4,12 +4,18 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@vueuse/nuxt",
     "dayjs-nuxt",
-    "@nuxt/content"
+    "@nuxt/content",
   ],
-  css: ["@/assets/styles/normalize.css","@/assets/styles/hyzy.scss"],
+  css: ["@/assets/styles/normalize.css", "@/assets/styles/hyzy.scss"],
   app: {
     head: {
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.11/400.min.css",
+        },
+      ],
       meta: [
         {
           name: "keywords",
@@ -32,15 +38,23 @@ export default defineNuxtConfig({
   content: {
     highlight: {
       theme: {
-        default: 'github-light',
-        dark: 'github-dark',
-        sepia: 'monokai'
+        default: "github-light",
+        dark: "github-dark",
+        sepia: "monokai",
       },
-      preload: ['java','vue','vue-html','shell','sql','javascript','typescript']
+      preload: [
+        "java",
+        "vue",
+        "vue-html",
+        "shell",
+        "sql",
+        "javascript",
+        "typescript",
+      ],
     },
     markdown: {
       anchorLinks: false,
-      remarkPlugins: ['remark-reading-time'],
-    }
-  }
+      remarkPlugins: ["remark-reading-time"],
+    },
+  },
 });
