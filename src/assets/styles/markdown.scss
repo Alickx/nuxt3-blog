@@ -1,13 +1,9 @@
-$font-family: "Fira Code", self;
 $line-space: 22px;
 
 .markdown-body {
   word-break: break-word;
   line-height: 32.4px;
-  font-family: "Microsoft YaHei", "Noto Sans SC", -apple-system,
-    blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+  font-family: "JetBrains Mono", HYZhengYuan;
   font-weight: 400;
   font-size: 16.56px;
   overflow-x: hidden;
@@ -73,7 +69,7 @@ $line-space: 22px;
   }
 
   p > code {
-    font-family: $font-family;
+    font-family: "Fira Code", self;
     word-break: break-word;
     border-radius: 2px;
     overflow-x: auto;
@@ -168,14 +164,25 @@ $line-space: 22px;
     min-width: 120px;
   }
 
+  blockquote:before {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 4px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: #e95f59;
+    border-radius: 2px;
+  }
+
   blockquote {
-    line-height: 1.8rem;
+    color: #333333;
+    border-radius: 2px;
+    padding: 10px 16px;
+    background-color: #fdefee;
     position: relative;
-    border-left: 3px solid #aa40ff;
-    padding: 0.5rem 0.8rem;
-    margin: 1rem 0;
-    background: rgb(239 239 239);
-    border-radius: 0 0.5rem 0.5rem 0;
+    border-left: none;
   }
 
   ol,

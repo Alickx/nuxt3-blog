@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 bg-[#fafafa] dark:bg-[#212526]">
+  <div class="flex-1 bg-white dark:bg-[#212526]">
     <ArticleList />
   </div>
 </template>

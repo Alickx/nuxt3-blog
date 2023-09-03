@@ -6,8 +6,10 @@
 </template>
 
 <script setup lang="ts">
-import "assets/styles/fira-code.scss";
-import "assets/styles/markdown.scss";
+import "@/assets/styles/fira-code.scss";
+import "@/assets/styles/jetBrains-mono.scss";
+import "@/assets/styles/hyzy.scss";
+import "@/assets/styles/markdown.scss";
 import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
 defineProps({

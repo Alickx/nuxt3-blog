@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     "dayjs-nuxt",
     "@nuxt/content"
   ],
-  css: ["@/assets/styles/normalize.css"],
+  css: ["@/assets/styles/normalize.css","@/assets/styles/hyzy.scss"],
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],

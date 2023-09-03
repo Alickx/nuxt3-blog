@@ -1,6 +1,6 @@
 <template>
   <div
-    class="z-50 h-[4rem] bg-black"
+    class="z-50 h-[4rem] bg-white shadow-md dark:bg-[#212526]"
     :class="{
       fixed: isOpen,
       'w-full': isOpen,
@@ -12,32 +12,30 @@
         <div
           class="sm:w-xl md:w-2xl lg:w-4xl xl:w-7xl flex w-[21rem] flex-row items-center justify-between"
         >
-          <div>
+          <div class="text-[#444] dark:text-white">
             <Icon
               v-if="!isOpen"
               @click="toggle"
               class="md:!hidden"
               name="mdi:menu"
-              color="white"
               size="28"
             />
             <Icon
               v-else
               @click="close"
               name="mdi:close"
-              color="white"
               size="28"
             />
           </div>
           <div
-            class="flex items-center justify-center gap-2 text-2xl font-bold text-white"
+            class="flex items-center justify-center gap-2 text-2xl font-bold text-[#444] dark:text-white"
           >
             <NuxtLink to="/">
               <h1 class="m-0 p-0 text-2xl">Alickx' Blog</h1>
             </NuxtLink>
           </div>
           <ul
-            class="mx-30 hidden flex-1 list-none flex-row items-center text-white md:flex"
+            class="mx-30 hidden flex-1 list-none flex-row items-center text-[#444] md:flex dark:text-white"
           >
             <li v-for="item in headerList" :key="item.path">
               <NuxtLink
@@ -47,20 +45,18 @@
                 <Icon
                   class="cursor-pointer"
                   :name="item.icon"
-                  color="white"
                   size="24"
                 />
                 {{ item.name }}
               </NuxtLink>
             </li>
           </ul>
-          <div class="flex flex-row gap-5">
+          <div class="flex flex-row gap-5 dark:text-white text-[#444]">
             <Icon
               v-if="mode === 'light'"
               @click="toggleDark"
               class="cursor-pointer"
               name="material-symbols:dark-mode-outline"
-              color="white"
               size="28"
             />
             <Icon
@@ -68,7 +64,6 @@
               @click="toggleDark"
               class="cursor-pointer"
               name="material-symbols:light-mode-outline"
-              color="white"
               size="28"
             />
           </div>
@@ -86,7 +81,7 @@
       <li v-for="item in headerList" :key="item.path" class="relative">
         <NuxtLink
           :to="item.path"
-          class="drak:border-[#30363d] flex items-center gap-1 border-0 border-b border-solid border-gray-200 py-3"
+          class="drak:border-[#30363d] dark:text-white flex items-center gap-1 border-0 border-b border-solid border-gray-200 py-3"
         >
           <Icon :name="item.icon" size="20" />
           {{ item.name }}

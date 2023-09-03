@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 bg-[#fafafa] pb-14 dark:bg-[#212526]">
+  <div class="flex-1 bg-white pb-14 dark:bg-[#212526]">
     <div class="relative mx-auto max-w-6xl flex-row items-start gap-5 xl:flex">
       <div v-if="data" class="max-w-5xl p-5 md:p-7">
         <ArticleInfoHeader :article-data="data" />

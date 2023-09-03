@@ -3,7 +3,7 @@
     <div class="min-h-lg flex flex-col">
       <div v-for="article in data" :key="article._path">
         <ArticleItem
-          class="border-b-1 border-b-gray-1 dark:border-b-gray-6 border-0 border-solid"
+          class="border-0"
           :article="article"
         />
       </div>
