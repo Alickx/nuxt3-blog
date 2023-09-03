@@ -6,11 +6,15 @@ export default defineNuxtConfig({
     "dayjs-nuxt",
     "@nuxt/content",
   ],
-  css: ["@/assets/styles/normalize.css", "@/assets/styles/hyzy.scss"],
+  css: [
+    "@/assets/styles/normalize.css",
+    "@/assets/styles/hyzy.scss",
+    "@/assets/styles/jetBrains-mono.scss",
+  ],
   routeRules: {
     "/": { prerender: true },
-    "/articles/**": { isr: true },
-    "/about": { isr: true },
+    "/articles/**": { prerender: true },
+    "/about": { prerender: true },
   },
   app: {
     head: {

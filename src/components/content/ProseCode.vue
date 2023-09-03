@@ -1,11 +1,17 @@
 <template>
-  <div class="code-container rounded max-w-[850px]">
-    <div class="bg-[#ecebe8] dark:bg-[#383d49] flex flex-row items-center h-[30px]">
-      <div class="flex-1 flex flex-row items-center justify-end text-gray-4">
+  <div class="code-container max-w-[850px] rounded">
+    <div
+      class="flex h-[30px] flex-row items-center bg-[#ecebe8] dark:bg-[#383d49]"
+    >
+      <div class="text-gray-4 flex flex-1 flex-row items-center justify-end">
         <small style="font-family: 'Fira Code'">{{ language }}</small>
       </div>
-      <div class="w-50% flex flex-row items-center justify-end ">
-        <Icon class="p-1 rounded hover:bg-white cursor-pointer mr-3" name="solar:copy-bold-duotone" size="18" />
+      <div class="w-50% flex flex-row items-center justify-end">
+        <Icon
+          class="mr-3 cursor-pointer rounded p-1 hover:bg-white"
+          name="solar:copy-bold-duotone"
+          size="18"
+        />
       </div>
     </div>
     <slot />
@@ -13,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-
 interface Props {
   code?: string;
   language?: string | null;
@@ -21,17 +26,14 @@ interface Props {
   highlights?: Array<number>;
 }
 
-const { copy, copied } = useClipboard()
+const { copy, copied } = useClipboard();
 
 withDefaults(defineProps<Props>(), {
-  code: '',
+  code: "",
   language: null,
   filename: null,
   highlights: () => [],
 });
-
-
-
 </script>
 
 <style scoped lang="scss">
@@ -46,7 +48,7 @@ withDefaults(defineProps<Props>(), {
     margin: 0 0;
 
     code {
-      font-family: "Fira Code", monospace;
+      font-family: "JetBrains Mono", monospace;
       display: block;
       font-size: 15.3px;
       font-weight: 400;
@@ -58,6 +60,5 @@ withDefaults(defineProps<Props>(), {
       word-break: normal;
     }
   }
-
 }
 </style>
