@@ -1,7 +1,6 @@
 <template>
   <div class="overflow-hidden p-4 transition-transform">
     <div class="md:flex md:flex-col">
-      <NuxtLink class="md:flex-shrink-0" :to="`/articles/${article.slug}`" />
       <div>
         <NuxtLink :to="`/articles/${article.slug}`">
           <span
