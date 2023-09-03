@@ -5,7 +5,7 @@
     "schema": "src/prisma/schema.prisma"
   },
   "scripts": {
-    "build": "prisma generate && nuxt build",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -29,8 +29,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.2.0",
-    "dayjs": "^1.11.9",
-    "prisma": "^5.2.0"
+    "dayjs": "^1.11.9"
   }
 }
