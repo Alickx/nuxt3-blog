@@ -13,6 +13,7 @@
   "devDependencies": {
     "@nuxt/content": "^2.8.2",
     "@types/node": "^18.17.11",
+    "@types/nprogress": "^0.2.0",
     "@types/prettier": "^2.7.3",
     "@unocss/nuxt": "^0.54.3",
     "@vueuse/core": "^10.4.0",
@@ -28,6 +29,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "dayjs": "^1.11.9"
+    "dayjs": "^1.11.9",
+    "nprogress": "^0.2.0"
   }
 }
