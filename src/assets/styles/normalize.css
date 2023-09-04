@@ -371,4 +371,6 @@ body {
     -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue",
     arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
+    font-display: swap;
+    font-style: normal;
 }

@@ -19,11 +19,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
-        {
-          rel: "stylesheet",
-          href: "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.11/400.min.css",
-        },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.png" }
       ],
       meta: [
         {
