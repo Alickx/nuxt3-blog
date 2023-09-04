@@ -15,14 +15,6 @@
 </template>
 
 <script setup lang="ts">
-
-definePageMeta({
-  pageTransition: {
-    name: "page",
-    mode: "out-in",
-  }
-})
-
 const route = useRoute();
 
 const { data } = await useAsyncData("article", () => {
@@ -42,8 +34,8 @@ useHead({
     {
       name: "keywords",
       content: data.value?.keywords,
-    }
-  ]
+    },
+  ],
 });
 </script>
 
