@@ -13,10 +13,6 @@
 
 <script setup lang="ts">
 const { data } = await useAsyncData("articleList", () => {
-  return queryContent("/_articles").limit(10).sort({ date: -1 }).find();
+  return queryContent("/_articles").sort({ date: -1 }).find();
 });
-
-const pageChange = (page: number) => {
-  // articleList.value = queryContent('/articles').limit(10).skip((page - 1) * 10).find();
-};
 </script>
