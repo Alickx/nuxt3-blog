@@ -1,6 +1,6 @@
 <template>
   <div class="markdown-body flex flex-1 justify-center p-7 dark:bg-[#212526]">
-    <ContentRenderer :value="data!" />
+    <ContentRenderer class="dark:text-gray-2" :value="data!" />
   </div>
 </template>
 
