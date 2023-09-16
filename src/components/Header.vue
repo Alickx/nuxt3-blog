@@ -16,21 +16,21 @@
             <Icon
               v-if="!isOpen"
               @click="toggle"
-              class="md:!hidden"
+              class="lg:!hidden"
               name="mdi:menu"
               size="28"
             />
             <Icon v-else @click="close" name="mdi:close" size="28" />
           </div>
           <div
-            class="flex items-center justify-center gap-2 text-2xl font-bold text-[#444] dark:text-white"
+            class="flex items-center justify-center text-2xl font-bold text-[#444] dark:text-white"
           >
             <NuxtLink to="/">
               <h1 class="m-0 p-0 text-2xl">Alickx' Blog</h1>
             </NuxtLink>
           </div>
           <ul
-            class="mx-30 gap-15 hidden flex-1 list-none flex-row items-center text-[#444] dark:text-white md:flex"
+            class="mx-30 gap-15 hidden flex-1 list-none flex-row items-center text-[#444] dark:text-white lg:flex"
           >
             <li v-for="item in headerList" :key="item.path">
               <NuxtLink :to="item.path">
@@ -38,7 +38,10 @@
               </NuxtLink>
             </li>
           </ul>
-          <div class="flex flex-row gap-5 text-[#444] dark:text-white">
+          <div
+            class="flex flex-row items-center gap-5 text-[#444] dark:text-white"
+          >
+            <AlgoliaDocSearch />
             <Icon
               v-if="mode === 'light'"
               @click="toggleDark"
@@ -118,10 +121,20 @@ const close = () => {
   isOpen.value = false;
 };
 
+watch(
+  () => mode.value,
+  () => {
+    document.documentElement.setAttribute("data-theme", mode.value);
+  },
+);
+
 onMounted(() => {
+  document.documentElement.setAttribute("data-theme", mode.value);
   // 监听路由变化，关闭菜单
   router.afterEach(() => {
     close();
   });
 });
 </script>
+
+<style scoped></style>

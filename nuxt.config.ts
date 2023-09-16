@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "dayjs-nuxt",
     "@nuxt/content",
+    "@nuxtjs/algolia",
   ],
   css: [
     "@/assets/styles/normalize.css",
@@ -18,9 +19,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.png" }
-      ],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
       meta: [
         {
           name: "keywords",
@@ -60,6 +59,14 @@ export default defineNuxtConfig({
     markdown: {
       anchorLinks: false,
       remarkPlugins: ["remark-reading-time"],
+    },
+  },
+  algolia: {
+    apiKey: "c9fa4df5a01399fadc7b839a73e52a08",
+    applicationId: "S761Z3RFQ3",
+    docSearch: {
+      indexName: "alickx",
+      lang: " ",
     },
   },
 });
