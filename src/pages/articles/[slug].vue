@@ -22,9 +22,6 @@ const { data } = await useAsyncData("article", () => {
 });
 
 useHead({
-  titleTemplate(title) {
-    return `${title} - Alickx'blog`;
-  },
   title: data.value?.title,
   meta: [
     {
