@@ -26,7 +26,8 @@
             class="flex items-center justify-center text-2xl font-bold text-[#444] dark:text-white"
           >
             <NuxtLink to="/">
-              <h1 class="m-0 p-0 text-2xl">Alickx' Blog</h1>
+              <h1 v-if="!IsArticlePageComputed()" class="m-0 p-0 text-2xl">Alickx' Blog</h1>
+              <span v-else class="m-0 p-0 text-2xl">Alickx' Blog</span>
             </NuxtLink>
           </div>
           <ul
@@ -83,7 +84,7 @@
 <script setup lang="ts">
 const mode = useColorMode();
 const router = useRouter();
-
+const route = useRoute();
 let isOpen = ref(false);
 
 const headerList = [
@@ -128,7 +129,13 @@ watch(
   },
 );
 
+const IsArticlePageComputed = () => {
+  return route.name === "articles-slug";
+};
+
 onMounted(() => {
+  console.log(route.name);
+
   document.documentElement.setAttribute("data-theme", mode.value);
   // 监听路由变化，关闭菜单
   router.afterEach(() => {

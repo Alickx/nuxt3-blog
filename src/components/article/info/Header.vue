@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto flex max-w-3xl flex-col items-center justify-center">
     <div class="leading-5">
-      <h1 class="text-3xl font-bold text-[#444] dark:text-white">
+      <h1 class="my-8 text-3xl font-bold text-[#444] dark:text-white">
         {{ articleData.title }}
       </h1>
     </div>

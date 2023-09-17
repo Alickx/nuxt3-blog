@@ -3,14 +3,14 @@
     <div class="md:flex md:flex-col">
       <div>
         <NuxtLink :to="`/articles/${article.slug}`">
-          <span
-            class="py-1 mt-1 break-all text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-[#CCCCCC]"
+          <h2
+            class="break-all py-1 text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-[#CCCCCC]"
           >
             {{ article.title }}
-        </span>
+          </h2>
         </NuxtLink>
         <div
-          class="mt-2 flex flex-row items-center gap-2 text-sm text-gray-500 dark:text-gray-400"
+          class="mt-1 flex flex-row items-center gap-2 text-sm text-gray-500 dark:text-gray-400"
         >
           <span>
             {{ formattedDate }}
