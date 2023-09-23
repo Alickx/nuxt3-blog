@@ -26,7 +26,9 @@
             class="flex items-center justify-center text-2xl font-bold text-[#444] dark:text-white"
           >
             <NuxtLink to="/">
-              <h1 v-if="!IsArticlePageComputed()" class="m-0 p-0 text-2xl">Alickx' Blog</h1>
+              <h1 v-if="!IsArticlePageComputed()" class="m-0 p-0 text-2xl">
+                Alickx' Blog
+              </h1>
               <span v-else class="m-0 p-0 text-2xl">Alickx' Blog</span>
             </NuxtLink>
           </div>
@@ -91,6 +93,10 @@ const headerList = [
   {
     name: "首页",
     path: "/",
+  },
+  {
+    name: "每周分享",
+    path: "/weekly",
   },
   {
     name: "关于",
