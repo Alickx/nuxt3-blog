@@ -32,6 +32,7 @@
     "@docsearch/css": "3",
     "@docsearch/js": "3",
     "@nuxtjs/algolia": "^1.9.0",
+    "@vercel/analytics": "^1.0.2",
     "dayjs": "^1.11.9",
     "nprogress": "^0.2.0"
   }
