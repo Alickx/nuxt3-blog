@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   ],
   routeRules: {
     "/": { prerender: true },
+    "/weekly": { prerender: true },
     "/articles/**": { isr: true },
     "/about": { isr: true },
   },
