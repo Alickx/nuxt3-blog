@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown-body flex justify-center p-7 dark:bg-[#212526]">
+  <div class="markdown-body flex justify-center p-7">
     <ContentRenderer class="dark:text-gray-2" :value="data!" />
   </div>
 </template>

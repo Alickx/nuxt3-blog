@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-[#212526]">
+  <div>
     <ArticleList content-path="_articles" />
   </div>
 </template>
