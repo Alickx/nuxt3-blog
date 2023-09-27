@@ -9,7 +9,6 @@ export default defineNuxtConfig({
   ],
   css: [
     "@/assets/styles/normalize.css",
-    "@/assets/styles/hyzy.scss",
     "@/assets/styles/jetBrains-mono.scss",
   ],
   routeRules: {
