@@ -8,6 +8,7 @@
       </div>
       <div class="w-50% flex flex-row items-center justify-end">
         <Icon
+          @click="copy(code)"
           class="mr-3 cursor-pointer rounded p-1 hover:bg-white"
           name="solar:copy-bold-duotone"
           size="18"
