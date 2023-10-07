@@ -34,7 +34,7 @@ const props = defineProps({
 });
 
 const formatTime = computed(() => {
-  return dayjs(props.articleData.date).format("YYYY-MM-DD HH:mm:ss");
+  return dayjs(props.articleData.date).format("YYYY-MM-DD");
 });
 </script>
 
