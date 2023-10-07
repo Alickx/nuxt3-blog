@@ -18,6 +18,11 @@ export default defineNuxtConfig({
     "/articles/**": { isr: true },
     "/about": { prerender: true },
   },
+  nitro: {
+    prerender: {
+      routes: ['/sitemap.xml']
+    }
+  },
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
