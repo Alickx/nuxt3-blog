@@ -11,12 +11,12 @@ export default defineNuxtConfig({
     "@/assets/styles/normalize.css",
     "@/assets/styles/jetBrains-mono.scss",
   ],
-  routeRules: {
-    "/": { prerender: true },
-    "/weekly": { prerender: true },
-    "/articles/**": { swr: true,static: true },
-    "/about": { prerender: true },
-  },
+  // routeRules: {
+  //   "/": { prerender: true },
+  //   "/weekly": { prerender: true },
+  //   "/articles/**": { swr: true,static: true },
+  //   "/about": { prerender: true },
+  // },
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
