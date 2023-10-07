@@ -7,16 +7,13 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/algolia",
   ],
-  css: [
-    "@/assets/styles/normalize.css",
-    "@/assets/styles/jetBrains-mono.scss",
-  ],
-  // routeRules: {
-  //   "/": { prerender: true },
-  //   "/weekly": { prerender: true },
-  //   "/articles/**": { swr: true,static: true },
-  //   "/about": { prerender: true },
-  // },
+  css: ["@/assets/styles/normalize.css", "@/assets/styles/jetBrains-mono.scss"],
+  routeRules: {
+    "/": { prerender: true },
+    "/weekly": { prerender: true },
+    "/articles/**": { isr: true },
+    "/about": { prerender: true },
+  },
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],

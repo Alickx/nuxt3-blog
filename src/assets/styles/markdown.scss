@@ -3,7 +3,10 @@ $line-space: 22px;
 .markdown-body {
   word-break: break-word;
   line-height: 32.4px;
-  font-family: "JetBrains Mono", HYZhengYuan;
+  font-family: "JetBrains Mono", "Microsoft YaHei", "Noto Sans SC",
+  -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue",
+  arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 400;
   font-size: 16.56px;
   overflow-x: hidden;
