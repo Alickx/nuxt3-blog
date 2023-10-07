@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import "@/assets/styles/markdown.scss";
 import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
 defineProps({

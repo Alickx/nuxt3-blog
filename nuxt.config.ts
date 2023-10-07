@@ -7,7 +7,11 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/algolia",
   ],
-  css: ["@/assets/styles/normalize.css", "@/assets/styles/jetBrains-mono.scss"],
+  css: [
+    "@/assets/styles/normalize.css",
+    "@/assets/styles/jetBrains-mono.scss",
+    "@/assets/styles/markdown.scss",
+  ],
   routeRules: {
     "/": { prerender: true },
     "/weekly": { prerender: true },
