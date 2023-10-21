@@ -2,7 +2,7 @@
   <div class="overflow-hidden p-4 transition-transform">
     <div class="md:flex md:flex-col">
       <div>
-        <NuxtLink :to="`/articles/${article.slug}`">
+        <NuxtLink :external="true" :to="`/articles/${article.slug}`">
           <h2
             class="break-all py-1 text-lg font-normal leading-tight text-[#444] no-underline hover:underline dark:text-[#CCCCCC]"
           >

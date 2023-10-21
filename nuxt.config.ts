@@ -9,14 +9,19 @@ export default defineNuxtConfig({
   ],
   css: [
     "@/assets/styles/normalize.css",
-    "@/assets/styles/hyzy.scss",
     "@/assets/styles/jetBrains-mono.scss",
+    "@/assets/styles/markdown.scss",
   ],
   routeRules: {
     "/": { prerender: true },
     "/weekly": { prerender: true },
     "/articles/**": { isr: true },
-    "/about": { isr: true },
+    "/about": { prerender: true },
+  },
+  nitro: {
+    prerender: {
+      routes: ['/sitemap.xml']
+    }
   },
   app: {
     head: {

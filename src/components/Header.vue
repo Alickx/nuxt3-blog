@@ -140,8 +140,6 @@ const IsArticlePageComputed = () => {
 };
 
 onMounted(() => {
-  console.log(route.name);
-
   document.documentElement.setAttribute("data-theme", mode.value);
   // 监听路由变化，关闭菜单
   router.afterEach(() => {
