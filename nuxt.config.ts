@@ -12,6 +12,12 @@ export default defineNuxtConfig({
     "@/assets/styles/jetBrains-mono.scss",
     "@/assets/styles/markdown.scss",
   ],
+  routeRules: {
+    "/": { prerender: true },
+    "/weekly": { prerender: true },
+    "/articles/**": { isr: true },
+    "/about": { prerender: true },
+  },
   nitro: {
     prerender: {
       routes: ["/sitemap.xml"],
@@ -20,7 +26,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
-      script: [{ src: "/darkModelVerify.js" }],
+      // script: [{ src: "/darkModelVerify.js" }],
       meta: [
         {
           name: "keywords",
