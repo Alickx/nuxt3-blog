@@ -12,12 +12,6 @@ export default defineNuxtConfig({
     "@/assets/styles/jetBrains-mono.scss",
     "@/assets/styles/markdown.scss",
   ],
-  routeRules: {
-    "/": { prerender: true },
-    "/weekly": { prerender: true },
-    "/articles/**": { isr: true },
-    "/about": { prerender: true },
-  },
   nitro: {
     prerender: {
       routes: ["/sitemap.xml"],
