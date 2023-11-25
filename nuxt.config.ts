@@ -26,7 +26,6 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
-      script: [{ src: "/darkModelVerify.js" }],
       meta: [
         {
           name: "keywords",
