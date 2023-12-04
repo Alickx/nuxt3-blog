@@ -5,7 +5,9 @@
         <ArticleInfoHeader :article-data="data" />
         <ArticleInfoContent :article-data="data" />
         <ArticleInfoFooter />
-        <WalineComment />
+        <ClientOnly>
+          <WalineComment />
+        </ClientOnly>
       </div>
       <div v-if="data" class="sticky top-0 hidden pt-10 xl:block">
         <ArticleInfoMarkdownToc :article-data="data" />
