@@ -5,11 +5,11 @@
         <ArticleInfoHeader :article-data="data" />
         <ArticleInfoContent :article-data="data" />
         <ArticleInfoFooter />
+        <WalineComment />
       </div>
       <div v-if="data" class="sticky top-0 hidden pt-10 xl:block">
         <ArticleInfoMarkdownToc :article-data="data" />
       </div>
-      <WalineComment />
     </div>
     <BackTop />
   </div>
