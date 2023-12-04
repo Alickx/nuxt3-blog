@@ -9,12 +9,15 @@
       <div v-if="data" class="sticky top-0 hidden pt-10 xl:block">
         <ArticleInfoMarkdownToc :article-data="data" />
       </div>
+      <WalineComment />
     </div>
     <BackTop />
   </div>
 </template>
 
 <script setup lang="ts">
+import WalineComment from "~/components/WalineComment.vue";
+
 const route = useRoute();
 
 const { data } = await useAsyncData("article", () => {
