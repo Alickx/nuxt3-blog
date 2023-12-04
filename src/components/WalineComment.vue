@@ -1,5 +1,5 @@
 <template>
-  <Waline :serverURL="serverURL" :path="path" data='html[data-theme="dark"]' />
+  <Waline :serverURL="serverURL" :path="path" dark='html[data-theme="dark"]' />
 </template>
 <script setup>
 import { Waline } from "@waline/client/component";
