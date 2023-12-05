@@ -95,6 +95,10 @@ const headerList = [
     path: "/",
   },
   {
+    name: "每周分享",
+    path: "/weekly",
+  },
+  {
     name: "关于",
     path: "/about",
   },
