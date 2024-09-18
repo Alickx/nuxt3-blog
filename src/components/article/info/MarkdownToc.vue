@@ -3,40 +3,43 @@
     v-if="hasToc"
     class="min-w-[180px] max-w-[180px] rounded bg-transparent px-4 py-2"
   >
-    <div class="flex justify-end">
+    <div class="flex justify-end mb-2">
       <Icon
         @click="isShowToc = !isShowToc"
-        name="icons8:right-round"
+        :name="isShowToc ? 'icons8:down-round' : 'icons8:right-round'"
         size="25"
-        class="cursor-pointer dark:text-white"
+        class="cursor-pointer dark:text-white transition-transform duration-300"
+        :class="{ 'rotate-180': isShowToc }"
       />
     </div>
-    <ul
-      v-if="isShowToc"
-      class="flex flex-col text-base no-underline dark:text-white"
-    >
-      <li
-        class="cursor-pointer rounded px-3 py-1 dark:text-white"
-        :class="{
-          'text-blue-500': item.active,
-          'bg-[#e3efff]': item.active,
-          'dark:bg-black': item.active,
-        }"
-        v-for="(item, index) in tocItemData"
-        :key="index"
+    <transition name="fade">
+      <ul
+        v-if="isShowToc"
+        class="flex flex-col text-base no-underline dark:text-white overflow-hidden"
       >
-        <span
-          class="line-clamp-1 break-all rounded"
-          @click="scrollToAnchor(item.id)"
-          >{{ item.text }}</span
+        <li
+          class="cursor-pointer rounded px-3 py-1 dark:text-white"
+          :class="{
+            'text-blue-500': item.active,
+            'bg-[#e3efff]': item.active,
+            'dark:bg-black': item.active,
+          }"
+          v-for="(item, index) in tocItemData"
+          :key="index"
         >
-      </li>
-    </ul>
+          <span
+            class="line-clamp-1 break-all rounded"
+            @click="scrollToAnchor(item.id)"
+            >{{ item.text }}</span
+          >
+        </li>
+      </ul>
+    </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { type ParsedContent } from "@nuxt/content/dist/runtime/types";
+import { TocLink, type ParsedContent } from "@nuxt/content/dist/runtime/types";
 
 interface Toc {
   id: string;
@@ -101,4 +104,14 @@ onUnmounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+</style>

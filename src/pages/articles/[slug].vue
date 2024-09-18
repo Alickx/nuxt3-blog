@@ -9,7 +9,7 @@
           <WalineComment />
         </ClientOnly>
       </div>
-      <div v-if="data" class="sticky top-0 hidden pt-10 xl:block">
+      <div v-if="data" class="sticky top-0 hidden pt-18 xl:block">
         <ArticleInfoMarkdownToc :article-data="data" />
       </div>
     </div>

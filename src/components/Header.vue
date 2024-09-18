@@ -1,10 +1,10 @@
 <template>
   <div
-    class="z-50 h-[4rem] bg-white shadow-md dark:bg-[#212526]"
+    class="z-50 h-[4rem] bg-white shadow-md dark:bg-[#212526] transition-transform duration-300 sticky top-0 w-full"
     :class="{
-      fixed: isOpen,
-      'w-full': isOpen,
       'overflow-hidden': isOpen,
+      '-translate-y-full': isHidden,
+      'translate-y-0': !isHidden
     }"
   >
     <div class="flex h-full w-full flex-col justify-center">
@@ -88,6 +88,8 @@ const mode = useColorMode();
 const router = useRouter();
 const route = useRoute();
 let isOpen = ref(false);
+let isHidden = ref(false);
+let lastScrollPosition = ref(0);
 
 const headerList = [
   {
@@ -135,12 +137,35 @@ const IsArticlePageComputed = () => {
   return route.name === "articles-slug";
 };
 
+const handleScroll = () => {
+  const currentScrollPosition = window.scrollY || document.documentElement.scrollTop;
+  console.log(currentScrollPosition);
+  if (currentScrollPosition < 0) {
+    return;
+  }
+  // 向下滚动
+  if (currentScrollPosition > lastScrollPosition.value) {
+    isHidden.value = true;
+  } else {
+    // 向上滚动
+    isHidden.value = false;
+  }
+  lastScrollPosition.value = currentScrollPosition;
+};
+
 onMounted(() => {
   document.documentElement.setAttribute("data-theme", mode.value);
   // 监听路由变化，关闭菜单
   router.afterEach(() => {
     close();
   });
+  // 添加滚动事件监听
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  // 移除滚动事件监听
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
