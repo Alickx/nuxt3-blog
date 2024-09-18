@@ -17,6 +17,13 @@
           </span>
           |
           <span>{{ article.readingTime.words }} 字</span>
+          |
+          <span
+            class="waline-comment-count"
+            ref="commentCountRef"
+            :data-path="`/articles/${article.slug}`"
+          ></span>
+          <span>评论</span>
         </div>
       </div>
     </div>
@@ -25,6 +32,9 @@
 
 <script setup lang="ts">
 import { type ParsedContent } from "@nuxt/content/dist/runtime/types";
+
+const commentCountRef = ref(null);
+const isShowCommentCount = ref(false);
 
 const dayjs = useDayjs();
 
@@ -38,4 +48,5 @@ const props = defineProps({
 const formattedDate = computed(() => {
   return dayjs(props.article.date).fromNow();
 });
+
 </script>

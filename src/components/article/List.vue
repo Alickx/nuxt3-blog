@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import type { QueryBuilderParams } from "@nuxt/content/dist/runtime/types";
+import { commentCount } from '@waline/client/dist/comment';
 
 const props = defineProps({
   contentPath: {
@@ -23,4 +24,11 @@ const query: QueryBuilderParams = {
   path: props.contentPath,
   sort: [{ date: -1 }],
 };
+
+
+onMounted(() => {
+  commentCount({
+    serverURL: 'https://comment.alickx.top'
+  });
+});
 </script>

@@ -139,7 +139,6 @@ const IsArticlePageComputed = () => {
 
 const handleScroll = () => {
   const currentScrollPosition = window.scrollY || document.documentElement.scrollTop;
-  console.log(currentScrollPosition);
   if (currentScrollPosition < 0) {
     return;
   }
