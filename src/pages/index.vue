@@ -2,6 +2,7 @@
   <div>
     <ArticleList content-path="_articles" />
   </div>
+  <BackTop />
 </template>
 
 <script setup lang="ts">
