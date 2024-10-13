@@ -7,22 +7,26 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/algolia",
   ],
+
   css: [
     "@/assets/styles/normalize.css",
     "@/assets/styles/jetBrains-mono.scss",
     "@/assets/styles/markdown.scss",
   ],
+
   routeRules: {
     "/": { prerender: true },
     "/weekly": { prerender: true },
     "/articles/**": { isr: true },
     "/about": { prerender: true },
   },
+
   nitro: {
     prerender: {
       routes: ["/sitemap.xml"],
     },
   },
+
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
@@ -39,13 +43,16 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   dayjs: {
     locales: ["zh-cn"],
     plugins: ["relativeTime", "utc", "timezone"],
     defaultLocale: "zh-cn",
     defaultTimezone: "Asia/Shanghai",
   },
+
   srcDir: "src/",
+
   content: {
     highlight: {
       theme: {
@@ -68,6 +75,7 @@ export default defineNuxtConfig({
       remarkPlugins: ["remark-reading-time"],
     },
   },
+
   algolia: {
     apiKey: "c9fa4df5a01399fadc7b839a73e52a08",
     applicationId: "S761Z3RFQ3",
@@ -76,4 +84,6 @@ export default defineNuxtConfig({
       lang: " ",
     },
   },
+
+  compatibilityDate: "2024-10-13",
 });

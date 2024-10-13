@@ -22,7 +22,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { type ParsedContent } from "@nuxt/content/dist/runtime/types";
+import type { ParsedContent } from '@nuxt/content';
+
 
 const dayjs = useDayjs();
 
