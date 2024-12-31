@@ -4,6 +4,7 @@
     <div class="flex-1 bg-white dark:bg-[#212526]">
       <slot />
     </div>
+    <div class="content-divider"></div>
     <Footer />
   </div>
 </template>
