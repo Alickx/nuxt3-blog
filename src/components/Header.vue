@@ -1,10 +1,10 @@
 <template>
   <div
-    class="z-50 h-[4rem] bg-white shadow-md dark:bg-[#212526] transition-transform duration-300 sticky top-0 w-full"
+    class="sticky top-0 z-50 h-[4rem] w-full bg-white shadow-md transition-transform duration-300 dark:bg-[#212526]"
     :class="{
       'overflow-hidden': isOpen,
       '-translate-y-full': isHidden,
-      'translate-y-0': !isHidden
+      'translate-y-0': !isHidden,
     }"
   >
     <div class="flex h-full w-full flex-col justify-center">
@@ -101,6 +101,10 @@ const headerList = [
     path: "/daily",
   },
   {
+    name: "互动交流",
+    path: "/interaction",
+  },
+  {
     name: "关于",
     path: "/about",
   },
@@ -142,7 +146,8 @@ const IsArticlePageComputed = () => {
 };
 
 const handleScroll = () => {
-  const currentScrollPosition = window.scrollY || document.documentElement.scrollTop;
+  const currentScrollPosition =
+    window.scrollY || document.documentElement.scrollTop;
   if (currentScrollPosition < 0) {
     return;
   }
@@ -163,12 +168,12 @@ onMounted(() => {
     close();
   });
   // 添加滚动事件监听
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener("scroll", handleScroll);
 });
 
 onUnmounted(() => {
   // 移除滚动事件监听
-  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 

@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     "/weekly": { prerender: true },
     "/articles/**": { isr: true },
     "/about": { prerender: true },
+    "/interaction": { prerender: true },
   },
 
   nitro: {
