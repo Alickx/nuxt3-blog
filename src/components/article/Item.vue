@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card-container mb-6 overflow-hidden rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-gray-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600"
+    class="card-container mb-6 overflow-hidden rounded-lg border border-gray-100 bg-gray-50 p-6 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-gray-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800/80 dark:hover:border-gray-600"
   >
     <div class="flex flex-col">
       <!-- 文章封面图片 -->
