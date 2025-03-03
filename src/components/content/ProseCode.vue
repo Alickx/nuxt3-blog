@@ -1,5 +1,7 @@
 <template>
-  <div class="code-container max-w-[850px] rounded">
+  <div
+    class="code-container w-full max-w-full overflow-x-auto rounded md:max-w-[850px]"
+  >
     <div
       class="flex h-[30px] flex-row items-center bg-[#ecebe8] dark:bg-[#383d49]"
     >

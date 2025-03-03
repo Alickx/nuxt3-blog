@@ -4,9 +4,9 @@ $line-space: 22px;
   word-break: break-word;
   line-height: 32.4px;
   font-family: "JetBrains Mono", "Microsoft YaHei", "Noto Sans SC",
-  -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue",
-  arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-  "Segoe UI Symbol", "Noto Color Emoji";
+    -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue",
+    arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 400;
   font-size: 16.56px;
   overflow-x: hidden;
@@ -24,7 +24,7 @@ $line-space: 22px;
     margin-bottom: 10px;
     padding-bottom: 5px;
     .dark & {
-      color: #e5e7ea
+      color: #e5e7ea;
     }
   }
 
@@ -105,11 +105,11 @@ $line-space: 22px;
   }
 
   table {
-    display: inline-block !important;
+    display: block !important;
     font-size: 12px;
-    width: auto;
+    width: 100%;
     max-width: 100%;
-    overflow: auto;
+    overflow-x: auto;
     border-collapse: separate;
     border-spacing: 0;
     border-top: 1px solid #f6f6f6;
@@ -170,7 +170,7 @@ $line-space: 22px;
     border-left: none;
     .dark & {
       background-color: #2a2f3b;
-      color: #fcfcfc
+      color: #fcfcfc;
     }
   }
 
@@ -219,6 +219,13 @@ $line-space: 22px;
     }
     h3 {
       font-size: 18px;
+    }
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    pre {
+      white-space: pre-wrap;
     }
   }
 }

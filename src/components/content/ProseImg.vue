@@ -1,6 +1,6 @@
 <template>
   <img
-    class="dark:filter-brightness-80 dark:filter-contrast-120 cursor-pointer"
+    class="dark:filter-brightness-80 dark:filter-contrast-120 max-w-full cursor-pointer"
     @click="preview"
     ref="imgRef"
     :src="srcComputed"
