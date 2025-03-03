@@ -1,14 +1,21 @@
 <template>
-  <div class="mx-auto mt-4 max-w-3xl">
+  <div class="mx-auto mt-6 max-w-3xl px-4 sm:px-6 md:px-0">
     <div class="min-h-lg flex flex-col">
       <ContentList :query="query">
         <template #default="{ list }">
-          <div v-for="article in list" :key="article._path">
-            <ArticleItem class="border-0" :article="article" />
+          <div class="space-y-6">
+            <ArticleItem
+              v-for="article in list"
+              :key="article._path"
+              :article="article"
+            />
           </div>
         </template>
         <template #not-found>
-          <p>No articles found.</p>
+          <div class="mt-10 text-center text-gray-500 dark:text-gray-400">
+            <div class="i-carbon-document-unknown mx-auto mb-4 h-16 w-16"></div>
+            <p>文章未找到。</p>
+          </div>
         </template>
       </ContentList>
     </div>

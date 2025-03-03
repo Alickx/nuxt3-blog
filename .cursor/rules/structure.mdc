@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Agent Instructions
+
+If you create a new file(s), pleas run the following command afterwards to update the project documentation.
+
+```bash ~/.scripts/update_structure.sh```
+
+
+If you create a new folder(s), pleas run the following command afterwards to update the project documentation.
+
+```bash ~/.scripts/update_structure_folder.sh```
