@@ -69,7 +69,8 @@ SELECT * FROM information_schema.PROCESSLIST WHERE ID = 123
 
 画的比较丑，会话 a，b，c 顺序执行
 
-
+2025-03-06 更新执行图
+![mdl 锁执行图](https://i.imgur.com/2TpkTW3.png)
 
 ## 题外话
 如果使用 mysql8 版本，alter 语句可以这样子
