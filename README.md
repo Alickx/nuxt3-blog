@@ -1,3 +1,7 @@
+<div align="right">
+  <strong>English</strong> | <a href="README_zh-CN.md">简体中文</a>
+</div>
+
 <h1 align="center">Nuxt3-Blog</h1>
 
 <div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
@@ -6,101 +10,101 @@
   <img src="doc/Snipaste_2023-10-29_15-04-43.png" width="30%" />
 </div>
 
-## 📖 项目介绍
+## 📖 Project Introduction
 
-这是一个基于 Nuxt3 + TypeScript + UnoCSS 构建的个人博客网站，用于展示文章、记录生活，以及分享个人日常。项目采用现代前端技术栈，具有响应式布局和深色模式支持，专注于良好的用户体验和性能优化。
+This is a personal blog website built with Nuxt3 + TypeScript + UnoCSS, designed for displaying articles, recording life, and sharing personal moments. The project utilizes a modern front-end technology stack, features responsive layout and dark mode support, focusing on excellent user experience and performance optimization.
 
-## 🛠️ 技术栈
+## 🛠️ Technology Stack
 
-- **Nuxt3**: Vue 的服务端渲染框架，提供优秀的 SEO 支持和性能
-- **TypeScript**: 增强代码可维护性和类型安全
-- **UnoCSS**: 原子化 CSS 引擎，提高样式开发效率
-- **Vite**: 现代前端构建工具，提供极速的开发体验
-- **@nuxt/content**: 强大的内容管理系统，方便博客文章的管理
-- **Waline**: 轻量级评论系统
-- **Algolia**: 高效的站内搜索解决方案
-- **Pnpm**: 高性能的包管理工具
+- **Nuxt3**: Vue's server-side rendering framework, providing excellent SEO support and performance
+- **TypeScript**: Enhances code maintainability and type safety
+- **UnoCSS**: Atomic CSS engine, improving style development efficiency
+- **Vite**: Modern front-end build tool, providing an extremely fast development experience
+- **@nuxt/content**: Powerful content management system, making blog article management convenient
+- **Waline**: Lightweight commenting system
+- **Algolia**: Efficient site-wide search solution
+- **Pnpm**: High-performance package manager
 
-## ✨ 主要功能
+## ✨ Key Features
 
-- ✅ **文章展示**: 支持 Markdown 格式，代码高亮，阅读时间估计
-- ✅ **文章搜索**: 集成 Algolia，提供高效的全站搜索体验
-- ✅ **响应式布局**: 适配各种设备，从手机到桌面平台
-- ✅ **深色模式**: 支持浅色/深色主题切换，保护用户视力
-- ✅ **文章评论**: 集成 Waline 评论系统，支持匿名评论
-- ✅ **网站 SEO**: 针对搜索引擎优化，提高网站可见性
-- ✅ **站点地图**: 自动生成 sitemap.xml，有助于搜索引擎收录
+- ✅ **Article Display**: Supports Markdown format, code highlighting, reading time estimation
+- ✅ **Article Search**: Integrates Algolia, providing an efficient full-site search experience
+- ✅ **Responsive Layout**: Adapts to various devices, from mobile to desktop platforms
+- ✅ **Dark Mode**: Supports light/dark theme switching, protecting users' eyesight
+- ✅ **Article Comments**: Integrates the Waline comment system, supporting anonymous comments
+- ✅ **Website SEO**: Optimized for search engines, improving website visibility
+- ✅ **Sitemap**: Automatically generates sitemap.xml, helping with search engine indexing
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 环境要求
+### Requirements
 
-- Node.js 16.x 或更高版本
-- pnpm 7.x 或更高版本
+- Node.js 16.x or higher
+- pnpm 7.x or higher
 
-### 安装与运行
+### Installation and Running
 
 ```bash
-# 克隆仓库
-git clone https://github.com/yourusername/nuxt3-blog.git
+# Clone repository
+git clone https://github.com/alickx/nuxt3-blog.git
 cd nuxt3-blog
 
-# 安装依赖
+# Install dependencies
 pnpm install
 
-# 开发模式运行
+# Run in development mode
 pnpm dev
 
-# 构建项目
+# Build project
 pnpm build
 
-# 预览构建结果
+# Preview build result
 pnpm preview
 ```
 
-## 📝 内容创作
+## 📝 Content Creation
 
-博客文章存放在 `src/content/_articles` 目录下，使用 Markdown 格式编写。每篇文章需要包含 frontmatter 元数据，例如：
+Blog articles are stored in the `src/content/_articles` directory, written in Markdown format. Each article needs to include frontmatter metadata, for example:
 
 ```markdown
 ---
-title: '文章标题'
-description: '文章描述'
+title: 'Article Title'
+description: 'Article Description'
 date: '2023-01-01'
-tags: ['标签1', '标签2']
+tags: ['tag1', 'tag2']
 ---
 
-文章内容...
+Article content...
 ```
 
-## 🌐 部署方案
+## 🌐 Deployment Strategy
 
-项目采用 Vercel + Cloudflare 的部署方式：
+The project uses a Vercel + Cloudflare deployment approach:
 
-1. **Vercel**: 提供持续集成和部署服务，每次推送代码或添加文章后，会自动触发部署
-2. **Cloudflare**: 通过设置 CNAME 记录和 Cloudflare 的 CDN，实现国内无备案域名的访问加速
+1. **Vercel**: Provides continuous integration and deployment services; each time code is pushed or an article is added, deployment is automatically triggered
+2. **Cloudflare**: Through setting up CNAME records and Cloudflare's CDN, enables access acceleration for domains without ICP filing in China
 
-### 部署步骤
+### Deployment Steps
 
-1. 在 Vercel 上导入 GitHub 仓库
-2. 配置构建命令 `pnpm build`
-3. 设置环境变量（如需要）
-4. 设置自定义域名
-5. 在 Cloudflare 添加域名并设置 CNAME 记录指向 Vercel 提供的域名
+1. Import GitHub repository on Vercel
+2. Configure build command `pnpm build`
+3. Set environment variables (if needed)
+4. Set up custom domain
+5. Add domain in Cloudflare and set CNAME record pointing to the domain provided by Vercel
 
-## 🤝 贡献指南
+## 🤝 Contribution Guidelines
 
-欢迎对本项目做出贡献！无论是提交 bug、改进文档还是添加新功能，您的参与都将使这个项目变得更好。
+Contributions to this project are welcome! Whether submitting bugs, improving documentation, or adding new features, your participation will make this project better.
 
-1. Fork 本仓库
-2. 创建您的特性分支: `git checkout -b feature/amazing-feature`
-3. 提交您的更改: `git commit -m 'Add some amazing feature'`
-4. 推送到分支: `git push origin feature/amazing-feature`
-5. 提交 Pull Request
+1. Fork this repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add some amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Submit a Pull Request
 
-## 📄 许可证
+## 📄 License
 
-本项目基于 [LICENSE](LICENSE) 开源许可证进行分发和使用。
+This project is distributed and used under the [LICENSE](LICENSE) open source license.
 
 ---
 
