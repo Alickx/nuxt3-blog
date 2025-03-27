@@ -1,34 +1,36 @@
 <template>
   <div
     v-if="hasToc"
-    class="min-w-[180px] max-w-[180px] rounded bg-transparent px-4 py-2"
+    class="min-w-[220px] max-w-[220px] rounded bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-zinc-800/80"
   >
-    <div class="flex justify-end mb-2">
+    <div
+      class="mb-4 flex items-center justify-between border-b pb-2 dark:border-gray-700"
+    >
+      <span class="text-sm font-medium dark:text-gray-200">目录</span>
       <Icon
         @click="isShowToc = !isShowToc"
-        :name="isShowToc ? 'icons8:down-round' : 'icons8:right-round'"
-        size="25"
-        class="cursor-pointer dark:text-white transition-transform duration-300"
-        :class="{ 'rotate-180': isShowToc }"
+        :name="isShowToc ? 'carbon:chevron-up' : 'carbon:chevron-down'"
+        size="20"
+        class="cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
       />
     </div>
     <transition name="fade">
       <ul
         v-if="isShowToc"
-        class="flex flex-col text-base no-underline dark:text-white overflow-hidden"
+        class="flex max-h-[70vh] flex-col space-y-1 overflow-y-auto text-sm no-underline"
       >
         <li
-          class="cursor-pointer rounded px-3 py-1 dark:text-white"
-          :class="{
-            'text-blue-500': item.active,
-            'bg-[#e3efff]': item.active,
-            'dark:bg-black': item.active,
-          }"
           v-for="(item, index) in tocItemData"
           :key="index"
+          class="cursor-pointer rounded transition-colors hover:bg-gray-100 dark:hover:bg-zinc-700"
+          :style="{ paddingLeft: `${(item.depth - 1) * 12}px` }"
+          :class="{
+            'text-primary-500 font-medium': item.active,
+            'bg-primary-50 dark:bg-primary-900/20': item.active,
+          }"
         >
           <span
-            class="line-clamp-1 break-all rounded"
+            class="line-clamp-1 block break-all rounded px-3 py-1.5"
             @click="scrollToAnchor(item.id)"
             >{{ item.text }}</span
           >
