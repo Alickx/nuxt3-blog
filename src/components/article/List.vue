@@ -1,8 +1,12 @@
 <template>
   <div class="mx-auto mt-6 max-w-3xl px-4 sm:px-6 md:px-0">
     <div class="min-h-lg flex flex-col">
-      <ContentList :query="query">
-        <template #default="{ list: articles }">
+      <ContentQuery
+        :path="contentPath"
+        :sort="[{ date: -1 }]"
+        :key="currentPage"
+      >
+        <template #default="{ data: articles }">
           <div class="space-y-6">
             <ArticleItem
               v-for="article in paginatedArticles(articles)"
@@ -22,7 +26,7 @@
             <p>文章未找到。</p>
           </div>
         </template>
-      </ContentList>
+      </ContentQuery>
     </div>
   </div>
 </template>
@@ -42,10 +46,6 @@ const props = defineProps({
 
 const currentPage = ref(1);
 const pageSize = 10;
-const query: QueryBuilderParams = {
-  path: props.contentPath,
-  sort: [{ date: -1 }],
-};
 
 // 将分页逻辑修改为接受文章列表参数
 const paginatedArticles = (articles: any[]) => {
