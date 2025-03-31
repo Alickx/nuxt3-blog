@@ -22,13 +22,17 @@
         <li
           v-for="(item, index) in tocItemData"
           :key="index"
-          class="cursor-pointer rounded transition-colors hover:bg-gray-100 dark:hover:bg-zinc-700"
+          class="relative cursor-pointer rounded transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700"
           :style="{ paddingLeft: `${(item.depth - 1) * 12}px` }"
           :class="{
-            'text-primary-500 font-medium': item.active,
-            'bg-primary-50 dark:bg-primary-900/20': item.active,
+            'text-primary-500 font-medium shadow-md': item.active,
+            'bg-primary-50/80 dark:bg-primary-900/30': item.active,
           }"
         >
+          <div
+            v-if="item.active"
+            class="bg-primary-500 absolute bottom-0 left-0 top-0 w-1 rounded-l"
+          ></div>
           <span
             class="line-clamp-1 block break-all rounded px-3 py-1.5"
             @click="scrollToAnchor(item.id)"
@@ -41,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { TocLink, type ParsedContent } from "@nuxt/content/dist/runtime/types";
+import type { ParsedContent } from "@nuxt/content";
 
 interface Toc {
   id: string;
@@ -56,10 +60,49 @@ const props = defineProps<{
 }>();
 
 const { articleData } = toRefs(props);
-const tocItemData = ref<Toc[]>(articleData.value.body.toc.links);
+
+const convertToToc = (links: any[]): Toc[] => {
+  return links.map((link) => ({
+    ...link,
+    active: false,
+    children: link.children ? convertToToc(link.children) : undefined,
+  }));
+};
+
+const tocItemData = ref<Toc[]>(
+  convertToToc(articleData.value?.body?.toc?.links || []),
+);
 let currentAnchor = ref("");
 
 let isShowToc = ref(true);
+
+// 获取所有目录项（扁平化数组）
+const getAllItems = (items: Toc[]): Toc[] => {
+  return items.reduce((acc: Toc[], item) => {
+    acc.push(item);
+    if (item.children && item.children.length > 0) {
+      acc.push(...getAllItems(item.children));
+    }
+    return acc;
+  }, []);
+};
+
+// 检查每个标题的可见性
+const checkVisibility = () => {
+  const allItems = getAllItems(tocItemData.value);
+
+  // 检查每个标题的可见性
+  for (const item of allItems) {
+    const ele = document.getElementById(item.id);
+    if (ele) {
+      const rect = ele.getBoundingClientRect();
+      if (rect.top >= 0 && rect.top <= 200) {
+        currentAnchor.value = item.id;
+        break; // 找到第一个可见标题后停止
+      }
+    }
+  }
+};
 
 const scrollToAnchor = (anchor: string) => {
   const anchorElement = document.getElementById(anchor);
@@ -69,40 +112,36 @@ const scrollToAnchor = (anchor: string) => {
 };
 
 const hasToc = computed(() => {
-  return props.articleData.body.toc.links.length > 0;
+  const linksLength = articleData.value?.body?.toc?.links?.length;
+  return linksLength !== undefined && linksLength > 0;
 });
 
 onMounted(() => {
-  if (tocItemData.value) {
-    window.addEventListener("scroll", () => {
-      tocItemData.value.forEach((item, index) => {
-        const ele = document.getElementById(item.id);
-        if (ele) {
-          const rect = ele.getBoundingClientRect();
-          if (rect.top >= 0 && rect.top <= 200) {
-            currentAnchor.value = item.id;
-          }
-        }
-      });
-    });
+  if (tocItemData.value.length > 0) {
+    window.addEventListener("scroll", checkVisibility);
   }
 });
 
 watch(
   () => currentAnchor.value,
   (val) => {
-    tocItemData.value.forEach((item, index) => {
-      if (item.id === val) {
-        item.active = true;
-      } else {
-        item.active = false;
+    // 递归更新所有目录项的激活状态
+    const updateActiveState = (items: Toc[], targetId: string) => {
+      for (const item of items) {
+        item.active = item.id === targetId;
+
+        if (item.children && item.children.length > 0) {
+          updateActiveState(item.children, targetId);
+        }
       }
-    });
+    };
+
+    updateActiveState(tocItemData.value, val);
   },
 );
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", () => {});
+  window.removeEventListener("scroll", checkVisibility);
 });
 </script>
 
@@ -115,5 +154,37 @@ onUnmounted(() => {
 .fade-leave-to {
   opacity: 0;
   transform: translateY(-10px);
+}
+
+/* 添加选中项的动画效果 */
+li {
+  position: relative;
+  overflow: hidden;
+}
+
+li.text-primary-500::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--primary-100, #e0f2fe) 0%,
+    transparent 100%
+  );
+  opacity: 0.3;
+  z-index: -1;
+}
+
+@media (prefers-color-scheme: dark) {
+  li.text-primary-500::before {
+    background: linear-gradient(
+      90deg,
+      var(--primary-900, #0c4a6e) 0%,
+      transparent 100%
+    );
+    opacity: 0.2;
+  }
 }
 </style>
