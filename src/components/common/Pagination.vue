@@ -1,23 +1,23 @@
 <template>
-  <div class="mt-8 flex items-center justify-center space-x-3">
+  <div class="mt-8 flex items-center justify-center space-x-4">
     <button
       @click="$emit('change', currentPage - 1)"
       :disabled="currentPage === 1"
-      class="rounded-lg p-2 text-gray-500 transition-all duration-200 hover:bg-gray-100/80 hover:text-gray-800 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent dark:text-gray-400 dark:hover:bg-gray-800/80 dark:hover:text-gray-200"
+      class="flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-all duration-300 hover:bg-gray-50 hover:text-[#217c91] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent dark:text-gray-400 dark:hover:bg-[#2a2f3b] dark:hover:text-[#8393ad]"
     >
       <Icon name="heroicons:chevron-left" class="h-5 w-5" />
     </button>
 
-    <div class="flex space-x-1">
+    <div class="flex space-x-2">
       <button
         v-for="page in displayedPages"
         :key="page"
         @click="$emit('change', page)"
         :class="[
-          'min-w-[40px] rounded-lg px-3.5 py-2 transition-all duration-200',
+          'h-10 min-w-[40px] rounded-lg px-3.5 font-medium transition-all duration-300',
           currentPage === page
-            ? 'bg-gray-900 font-medium text-white dark:bg-white dark:text-gray-900'
-            : 'text-gray-600 hover:bg-gray-100/80 dark:text-gray-400 dark:hover:bg-gray-800/80',
+            ? 'bg-[#217c91] text-white shadow-sm dark:bg-[#3a4a5a] dark:text-white'
+            : 'text-gray-700 hover:bg-gray-50 hover:text-[#217c91] dark:text-gray-300 dark:hover:bg-[#2a2f3b] dark:hover:text-[#8393ad]',
         ]"
       >
         {{ page }}
@@ -27,7 +27,7 @@
     <button
       @click="$emit('change', currentPage + 1)"
       :disabled="currentPage === totalPages"
-      class="rounded-lg p-2 text-gray-500 transition-all duration-200 hover:bg-gray-100/80 hover:text-gray-800 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent dark:text-gray-400 dark:hover:bg-gray-800/80 dark:hover:text-gray-200"
+      class="flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-all duration-300 hover:bg-gray-50 hover:text-[#217c91] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent dark:text-gray-400 dark:hover:bg-[#2a2f3b] dark:hover:text-[#8393ad]"
     >
       <Icon name="heroicons:chevron-right" class="h-5 w-5" />
     </button>

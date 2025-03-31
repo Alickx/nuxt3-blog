@@ -29,7 +29,10 @@
 
 <script setup lang="ts">
 import type { QueryBuilderParams } from "@nuxt/content";
-import { commentCount } from "@waline/client/dist/comment";
+// 使用动态导入防止服务器端执行
+const { commentCount } = process.client
+  ? await import("@waline/client/dist/comment")
+  : { commentCount: () => {} };
 
 const props = defineProps({
   contentPath: {
@@ -57,13 +60,19 @@ const getTotalPages = (articles: any[]) => {
 
 const handlePageChange = (page: number) => {
   currentPage.value = page;
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  // 只在客户端环境中执行window操作
+  if (process.client) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 };
 
 const updateCommentCount = () => {
+  // 确保只在客户端执行
+  if (!process.client) return;
+
   // 添加短暂延迟确保 DOM 已更新
   setTimeout(() => {
     commentCount({
