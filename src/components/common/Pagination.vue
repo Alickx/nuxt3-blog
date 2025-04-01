@@ -9,19 +9,21 @@
     </button>
 
     <div class="flex space-x-2">
-      <button
-        v-for="page in displayedPages"
-        :key="page"
-        @click="$emit('change', page)"
-        :class="[
-          'h-10 min-w-[40px] rounded-lg px-3.5 font-medium transition-all duration-300',
-          currentPage === page
-            ? 'bg-[#217c91] text-white shadow-sm dark:bg-[#3a4a5a] dark:text-white'
-            : 'text-gray-700 hover:bg-gray-50 hover:text-[#217c91] dark:text-gray-300 dark:hover:bg-[#2a2f3b] dark:hover:text-[#8393ad]',
-        ]"
-      >
-        {{ page }}
-      </button>
+      <TransitionGroup name="page-numbers" tag="div" class="flex space-x-2">
+        <button
+          v-for="page in displayedPages"
+          :key="page"
+          @click="$emit('change', page)"
+          :class="[
+            'h-10 min-w-[40px] rounded-lg px-3.5 font-medium transition-all duration-300',
+            currentPage === page
+              ? 'bg-[#217c91] text-white shadow-sm dark:bg-[#3a4a5a] dark:text-white'
+              : 'text-gray-700 hover:bg-gray-50 hover:text-[#217c91] dark:text-gray-300 dark:hover:bg-[#2a2f3b] dark:hover:text-[#8393ad]',
+          ]"
+        >
+          {{ page }}
+        </button>
+      </TransitionGroup>
     </div>
 
     <button
@@ -58,3 +60,19 @@ const displayedPages = computed(() => {
 
 defineEmits(["change"]);
 </script>
+
+<style scoped>
+.page-numbers-enter-active,
+.page-numbers-leave-active {
+  transition: all 0.3s ease;
+}
+.page-numbers-enter-from,
+.page-numbers-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-numbers-move {
+  transition: transform 0.3s ease;
+}
+</style>
