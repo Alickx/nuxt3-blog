@@ -19,26 +19,49 @@
         v-if="isShowToc"
         class="flex max-h-[70vh] flex-col space-y-1 overflow-y-auto text-sm no-underline"
       >
-        <li
-          v-for="(item, index) in tocItemData"
-          :key="index"
-          class="relative cursor-pointer rounded transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700"
-          :style="{ paddingLeft: `${(item.depth - 1) * 12}px` }"
-          :class="{
-            'text-primary-500 font-medium shadow-md': item.active,
-            'bg-primary-50/80 dark:bg-primary-900/30': item.active,
-          }"
-        >
-          <div
-            v-if="item.active"
-            class="bg-primary-500 absolute bottom-0 left-0 top-0 w-1 rounded-l"
-          ></div>
-          <span
-            class="line-clamp-1 block break-all rounded px-3 py-1.5"
-            @click="scrollToAnchor(item.id)"
-            >{{ item.text }}</span
+        <template v-for="(item, index) in tocItemData" :key="index">
+          <li
+            class="relative cursor-pointer rounded transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700"
+            :style="{ paddingLeft: `${(item.depth - 1) * 12}px` }"
+            :class="{
+              'text-primary-500 font-medium shadow-md': item.active,
+              'bg-primary-50/80 dark:bg-primary-900/30': item.active,
+            }"
           >
-        </li>
+            <div
+              v-if="item.active"
+              class="bg-primary-500 absolute bottom-0 left-0 top-0 w-1 rounded-l"
+            ></div>
+            <span
+              class="line-clamp-1 block break-all rounded px-3 py-1.5"
+              @click="scrollToAnchor(item.id)"
+              >{{ item.text }}</span
+            >
+          </li>
+          <!-- 渲染子目录 -->
+          <template v-if="item.children && item.children.length > 0">
+            <li
+              v-for="(child, childIndex) in item.children"
+              :key="`${index}-${childIndex}`"
+              class="relative cursor-pointer rounded transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700"
+              :style="{ paddingLeft: `${(child.depth - 1) * 12}px` }"
+              :class="{
+                'text-primary-500 font-medium shadow-md': child.active,
+                'bg-primary-50/80 dark:bg-primary-900/30': child.active,
+              }"
+            >
+              <div
+                v-if="child.active"
+                class="bg-primary-500 absolute bottom-0 left-0 top-0 w-1 rounded-l"
+              ></div>
+              <span
+                class="line-clamp-1 block break-all rounded px-3 py-1.5"
+                @click="scrollToAnchor(child.id)"
+                >{{ child.text }}</span
+              >
+            </li>
+          </template>
+        </template>
       </ul>
     </transition>
   </div>
@@ -90,17 +113,41 @@ const getAllItems = (items: Toc[]): Toc[] => {
 // 检查每个标题的可见性
 const checkVisibility = () => {
   const allItems = getAllItems(tocItemData.value);
+  const allItemsSorted = [...allItems].sort((a, b) => {
+    const eleA = document.getElementById(a.id);
+    const eleB = document.getElementById(b.id);
+    if (!eleA || !eleB) return 0;
 
-  // 检查每个标题的可见性
-  for (const item of allItems) {
+    return eleA.offsetTop - eleB.offsetTop;
+  });
+
+  // 获取当前滚动位置
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  let activeItem = null;
+
+  // 找到当前滚动位置下应该激活的标题（最后一个在滚动位置上方的标题）
+  for (let i = 0; i < allItemsSorted.length; i++) {
+    const item = allItemsSorted[i];
     const ele = document.getElementById(item.id);
-    if (ele) {
-      const rect = ele.getBoundingClientRect();
-      if (rect.top >= 0 && rect.top <= 200) {
-        currentAnchor.value = item.id;
-        break; // 找到第一个可见标题后停止
+    if (ele && ele.offsetTop <= scrollTop + 200) {
+      activeItem = item;
+
+      // 检查下一个标题是否已经进入视图
+      const nextItem = allItemsSorted[i + 1];
+      if (nextItem) {
+        const nextEle = document.getElementById(nextItem.id);
+        if (nextEle && nextEle.offsetTop <= scrollTop + 50) {
+          activeItem = nextItem;
+        }
       }
     }
+  }
+
+  if (activeItem) {
+    currentAnchor.value = activeItem.id;
+  } else if (allItemsSorted.length > 0) {
+    // 如果没有找到激活项，则激活第一个标题
+    currentAnchor.value = allItemsSorted[0].id;
   }
 };
 
