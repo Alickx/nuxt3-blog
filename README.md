@@ -28,6 +28,7 @@ This is a personal blog website built with Nuxt3 + TypeScript + UnoCSS, designed
 - ✅ **Article Comments**: Integrates the Waline comment system, supporting anonymous comments
 - ✅ **Website SEO**: Optimized for search engines, improving website visibility
 - ✅ **Sitemap**: Automatically generates sitemap.xml, helping with search engine indexing
+- ✅ **Configuration System**: Easily customize blog name, header navigation, footer links, and more through configuration files
 
 ## 🚀 Quick Start
 
@@ -69,6 +70,64 @@ tags: ['tag1', 'tag2']
 ---
 
 Article content...
+```
+
+## ⚙️ Customization
+
+The blog can be easily customized through the configuration file located at `src/config/site.ts`. This allows you to modify:
+
+- Blog name and basic information
+- Header navigation menu items
+- Footer links and sections
+- Social media links
+- SEO metadata and favicon
+- Algolia search configuration
+
+Example configuration:
+
+```typescript
+// src/config/site.ts
+export const siteConfig = {
+  name: "Your Blog Name",
+  title: "Your Blog Title",
+  description: "Your blog description",
+  author: "Your Name",
+
+  // Navigation menu
+  nav: [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    // Add more menu items
+  ],
+
+  // Footer links by section
+  footerLinks: [
+    {
+      title: "Social Media",
+      links: [
+        { name: "Github", url: "https://github.com/yourusername" },
+        // Add more links
+      ]
+    },
+    // Add more sections
+  ],
+
+  // SEO configuration
+  seo: {
+    meta: {
+      keywords: "keyword1,keyword2",
+      description: "Site description"
+    }
+  },
+
+  // Algolia search configuration
+  algolia: {
+    apiKey: "your-api-key",
+    applicationId: "your-application-id",
+    indexName: "your-index-name",
+    lang: "en"
+  }
+}
 ```
 
 ## 🌐 Deployment Strategy

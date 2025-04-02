@@ -1,3 +1,5 @@
+import { siteConfig } from "./src/config/site";
+
 export default defineNuxtConfig({
   modules: [
     "@unocss/nuxt",
@@ -40,13 +42,14 @@ export default defineNuxtConfig({
         },
         {
           name: "keywords",
-          content: "alickx,alickx.top,alickx blog,alickx's blog",
+          content: siteConfig.seo.meta.keywords,
         },
         {
           name: "description",
-          content: "alickx's blog,记录代码，生活的博客",
+          content: siteConfig.seo.meta.description,
         },
       ],
+      title: siteConfig.title,
     },
   },
 
@@ -83,11 +86,11 @@ export default defineNuxtConfig({
   },
 
   algolia: {
-    apiKey: "c9fa4df5a01399fadc7b839a73e52a08",
-    applicationId: "S761Z3RFQ3",
+    apiKey: siteConfig.algolia.apiKey,
+    applicationId: siteConfig.algolia.applicationId,
     docSearch: {
-      indexName: "alickx",
-      lang: " ",
+      indexName: siteConfig.algolia.indexName,
+      lang: siteConfig.algolia.lang,
     },
   },
 

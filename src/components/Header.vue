@@ -27,15 +27,15 @@
           >
             <NuxtLink to="/">
               <h1 v-if="!IsArticlePageComputed()" class="m-0 p-0 text-2xl">
-                Alickx' Blog
+                {{ siteInfo.name }}
               </h1>
-              <span v-else class="m-0 p-0 text-2xl">Alickx' Blog</span>
+              <span v-else class="m-0 p-0 text-2xl">{{ siteInfo.name }}</span>
             </NuxtLink>
           </div>
           <ul
             class="mx-30 gap-15 hidden flex-1 list-none flex-row items-center text-[#444] dark:text-white lg:flex"
           >
-            <li v-for="item in headerList" :key="item.path">
+            <li v-for="item in nav" :key="item.path">
               <NuxtLink :to="item.path">
                 {{ item.name }}
               </NuxtLink>
@@ -71,7 +71,7 @@
     <ul
       class="dark:text-gray mt-10 flex list-none flex-col gap-1 text-sm text-gray-500"
     >
-      <li v-for="item in headerList" :key="item.path" class="relative">
+      <li v-for="item in nav" :key="item.path" class="relative">
         <NuxtLink
           :to="item.path"
           class="drak:border-[#30363d] flex items-center border-0 border-b border-solid border-gray-200 py-3 dark:text-white"
@@ -91,24 +91,10 @@ let isOpen = ref(false);
 let isHidden = ref(false);
 let lastScrollPosition = ref(0);
 
-const headerList = [
-  {
-    name: "首页",
-    path: "/",
-  },
-  {
-    name: "日常",
-    path: "/daily",
-  },
-  {
-    name: "互动交流",
-    path: "/interaction",
-  },
-  {
-    name: "关于",
-    path: "/about",
-  },
-];
+// 使用配置文件
+const { useNavConfig, useSiteInfo } = useNuxtApp().$composables;
+const nav = useNavConfig();
+const siteInfo = useSiteInfo();
 
 watch(
   () => isOpen.value,

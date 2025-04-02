@@ -28,6 +28,7 @@
 - ✅ **文章评论**: 集成 Waline 评论系统，支持匿名评论
 - ✅ **网站 SEO**: 针对搜索引擎优化，提高网站可见性
 - ✅ **站点地图**: 自动生成 sitemap.xml，有助于搜索引擎收录
+- ✅ **配置系统**: 通过配置文件轻松自定义博客名称、头部导航、底部链接等内容
 
 ## 🚀 快速开始
 
@@ -69,6 +70,64 @@ tags: ['标签1', '标签2']
 ---
 
 文章内容...
+```
+
+## ⚙️ 个性化定制
+
+博客可以通过位于 `src/config/site.ts` 的配置文件进行轻松自定义。这允许您修改：
+
+- 博客名称和基本信息
+- 头部导航菜单项
+- 底部链接和分区
+- 社交媒体链接
+- SEO元数据和网站图标
+- Algolia搜索配置
+
+配置示例：
+
+```typescript
+// src/config/site.ts
+export const siteConfig = {
+  name: "您的博客名称",
+  title: "您的博客标题",
+  description: "您的博客描述",
+  author: "您的名字",
+
+  // 导航菜单
+  nav: [
+    { name: "首页", path: "/" },
+    { name: "关于", path: "/about" },
+    // 添加更多菜单项
+  ],
+
+  // 按分区组织的底部链接
+  footerLinks: [
+    {
+      title: "社交媒体",
+      links: [
+        { name: "Github", url: "https://github.com/您的用户名" },
+        // 添加更多链接
+      ]
+    },
+    // 添加更多分区
+  ],
+
+  // SEO配置
+  seo: {
+    meta: {
+      keywords: "关键词1,关键词2",
+      description: "网站描述"
+    }
+  },
+
+  // Algolia搜索配置
+  algolia: {
+    apiKey: "您的API密钥",
+    applicationId: "您的应用ID",
+    indexName: "您的索引名称",
+    lang: "zh-cn"
+  }
+}
 ```
 
 ## 🌐 部署方案

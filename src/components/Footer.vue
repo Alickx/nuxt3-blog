@@ -39,7 +39,8 @@
       >
         <div class="mb-2 flex justify-center space-x-4">
           <a
-            href="https://github.com/Alickx"
+            v-if="socialLinks.github"
+            :href="socialLinks.github"
             target="_blank"
             class="text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
           >
@@ -58,7 +59,7 @@
           </a>
         </div>
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          © {{ new Date().getFullYear() }} Alickx Blog 保留所有权利。
+          © {{ new Date().getFullYear() }} {{ siteInfo.name }} 保留所有权利。
         </p>
       </div>
     </div>
@@ -66,33 +67,12 @@
 </template>
 
 <script setup lang="ts">
-const footerLinks = [
-  {
-    title: "社交媒体",
-    links: [
-      { name: "Github", url: "https://github.com/Alickx" },
-      { name: "BiliBili", url: "https://space.bilibili.com/302185707" },
-      {
-        name: "网易云音乐",
-        url: "https://music.163.com/#/user/home?id=115930869",
-      },
-      { name: "Steam", url: "https://steamcommunity.com/id/11923/" },
-    ],
-  },
-  {
-    title: "友情链接",
-    links: [{ name: "aliveseven", url: "https://aliveseven.github.io/" }],
-  },
-  {
-    title: "学习论坛",
-    links: [
-      { name: "B站大学", url: "https://www.bilibili.com/" },
-      { name: "开源中国", url: "https://www.oschina.net/" },
-      { name: "掘金论坛", url: "https://juejin.cn/" },
-      { name: "思否", url: "https://segmentfault.com/" },
-    ],
-  },
-];
+// 使用配置文件
+const { useFooterConfig, useSocialLinks, useSiteInfo } =
+  useNuxtApp().$composables;
+const footerLinks = useFooterConfig();
+const socialLinks = useSocialLinks();
+const siteInfo = useSiteInfo();
 </script>
 
 <style scoped>
