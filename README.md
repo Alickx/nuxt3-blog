@@ -4,12 +4,6 @@
 
 <h1 align="center">Nuxt3-Blog</h1>
 
-<div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-  <img src="doc/Snipaste_2023-10-29_15-04-34.png" width="30%" />
-  <img src="doc/Snipaste_2023-10-29_15-04-56.png" width="30%" />
-  <img src="doc/Snipaste_2023-10-29_15-04-43.png" width="30%" />
-</div>
-
 ## 📖 Project Introduction
 
 This is a personal blog website built with Nuxt3 + TypeScript + UnoCSS, designed for displaying articles, recording life, and sharing personal moments. The project utilizes a modern front-end technology stack, features responsive layout and dark mode support, focusing on excellent user experience and performance optimization.

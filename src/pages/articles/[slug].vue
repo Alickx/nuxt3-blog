@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full overflow-x-hidden pb-14">
+  <div class="w-full pb-14">
     <div
       class="relative mx-auto max-w-6xl xl:grid xl:grid-cols-[1fr_auto] xl:gap-5"
     >
