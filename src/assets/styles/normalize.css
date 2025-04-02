@@ -410,3 +410,12 @@ code {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+/* 改善粘性定位行为 */
+.sticky-container {
+  position: sticky;
+  top: 0;
+  height: fit-content;
+  align-self: flex-start;
+  z-index: 10;
+}

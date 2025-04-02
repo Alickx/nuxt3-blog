@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="hasToc"
-    class="min-w-[220px] max-w-[220px] rounded bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-zinc-800/80"
-  >
+  <div v-if="hasToc" class="w-full">
     <div
       class="mb-4 flex items-center justify-between border-b pb-2 dark:border-gray-700"
     >
@@ -17,7 +14,7 @@
     <transition name="fade">
       <ul
         v-if="isShowToc"
-        class="flex max-h-[70vh] flex-col space-y-1 overflow-y-auto text-sm no-underline"
+        class="flex max-h-[70vh] flex-col space-y-1.5 overflow-y-auto text-sm no-underline"
       >
         <template v-for="(item, index) in tocItemData" :key="index">
           <li
@@ -33,7 +30,7 @@
               class="bg-primary-500 absolute bottom-0 left-0 top-0 w-1 rounded-l"
             ></div>
             <span
-              class="line-clamp-1 block break-all rounded px-3 py-1.5"
+              class="line-clamp-1 block break-all rounded px-4 py-2"
               @click="scrollToAnchor(item.id)"
               >{{ item.text }}</span
             >
@@ -55,7 +52,7 @@
                 class="bg-primary-500 absolute bottom-0 left-0 top-0 w-1 rounded-l"
               ></div>
               <span
-                class="line-clamp-1 block break-all rounded px-3 py-1.5"
+                class="line-clamp-1 block break-all rounded px-4 py-2"
                 @click="scrollToAnchor(child.id)"
                 >{{ child.text }}</span
               >
