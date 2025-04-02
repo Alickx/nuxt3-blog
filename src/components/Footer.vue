@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="mt-14 w-full border-t border-t-[#ddd] bg-white py-6 text-[#444] dark:border-t-gray-700 dark:bg-[#212526] dark:text-gray-300"
+    class="mt-18 w-full border-t border-t-[#ddd] bg-white py-6 text-[#444] dark:border-t-gray-700 dark:bg-[#212526] dark:text-gray-300"
   >
     <div class="container mx-auto px-4">
       <!-- 页脚上部 - 链接区域 -->

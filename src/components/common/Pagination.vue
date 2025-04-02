@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto mt-8 flex w-full items-center justify-center gap-1">
+  <div class="mx-auto mt-18 flex w-full items-center justify-center gap-1">
     <!-- 首页按钮 -->
     <button
       @click="$emit('change', 1)"
