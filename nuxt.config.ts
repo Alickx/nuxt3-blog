@@ -1,11 +1,11 @@
 export default defineNuxtConfig({
   modules: [
     "@unocss/nuxt",
-    "nuxt-icon",
     "@vueuse/nuxt",
     "dayjs-nuxt",
     "@nuxt/content",
     "@nuxtjs/algolia",
+    "@nuxt/icon",
   ],
 
   css: [

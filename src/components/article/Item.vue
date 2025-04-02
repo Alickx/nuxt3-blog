@@ -35,25 +35,25 @@
           <span
             class="flex items-center rounded-full bg-gray-100 px-3 py-1 transition-colors duration-300 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
           >
-            <span class="i-carbon-time mr-1.5"></span>
+            <Icon name="i-carbon-time" class="mr-1.5"></Icon>
             {{ formattedDate }}
           </span>
           <span
             class="flex items-center rounded-full bg-gray-100 px-3 py-1 transition-colors duration-300 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
           >
-            <span class="i-carbon-document mr-1.5"></span>
+            <Icon name="i-carbon-document" class="mr-1.5"></Icon>
             {{ article.readingTime.words }} 字
           </span>
           <span
             class="flex items-center rounded-full bg-gray-100 px-3 py-1 transition-colors duration-300 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
           >
-            <span class="i-carbon-chat mr-1.5"></span>
+            <Icon name="i-carbon-chat" class="mr-1.5"></Icon>
             <span
               class="waline-comment-count"
               ref="commentCountRef"
               :data-path="`/articles/${article.slug}`"
             ></span>
-            评论
+            &nbsp;评论
           </span>
         </div>
       </div>
