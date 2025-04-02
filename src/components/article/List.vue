@@ -47,7 +47,6 @@
 </template>
 
 <script setup lang="ts">
-import type { QueryBuilderParams } from "@nuxt/content";
 import gsap from "gsap";
 // 使用动态导入防止服务器端执行
 const { commentCount } = process.client
@@ -123,7 +122,7 @@ const handlePageChange = async (page: number) => {
   isLoading.value = false;
 
   // 只在客户端环境中执行window操作
-  if (process.client) {
+  if (import.meta.client) {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -133,7 +132,7 @@ const handlePageChange = async (page: number) => {
 
 const updateCommentCount = () => {
   // 确保只在客户端执行
-  if (!process.client) return;
+  if (!import.meta.client) return;
 
   // 添加短暂延迟确保 DOM 已更新
   setTimeout(() => {
