@@ -11,7 +11,7 @@
               <div class="page-loading-spinner"></div>
             </div>
 
-            <Transition-group
+            <TransitionGroup
               :key="currentPage"
               name="article-list"
               tag="div"
@@ -27,7 +27,7 @@
                 :article="article"
                 :data-index="article._animIndex"
               />
-            </Transition-group>
+            </TransitionGroup>
           </div>
           <CommonPagination
             :current-page="currentPage"
