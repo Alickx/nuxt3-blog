@@ -1,7 +1,9 @@
 <template>
-  <div class="pb-14">
-    <div class="relative mx-auto max-w-6xl flex-row items-start gap-5 xl:flex">
-      <div v-if="data" class="w-full overflow-x-hidden p-3 sm:p-5 md:p-7">
+  <div class="w-full overflow-x-hidden pb-14">
+    <div
+      class="relative mx-auto max-w-6xl flex-row items-start gap-5 overflow-hidden xl:flex"
+    >
+      <div v-if="data" class="w-full overflow-hidden p-3 sm:p-5 md:p-7">
         <ArticleInfoHeader :article-data="data" />
         <ArticleInfoContent :article-data="data" />
         <ArticleInfoFooter />

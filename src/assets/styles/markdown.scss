@@ -10,7 +10,26 @@ $line-space: 22px;
   font-weight: 400;
   font-size: 16.56px;
   overflow-x: hidden;
+  max-width: 100%;
   color: #444;
+
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  pre {
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  code {
+    word-break: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
+  }
 
   h1,
   h2,
@@ -226,6 +245,16 @@ $line-space: 22px;
 
     pre {
       white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    img,
+    video,
+    iframe {
+      max-width: 100%;
+      height: auto;
     }
   }
 }
