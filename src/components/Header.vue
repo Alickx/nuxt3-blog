@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-50 h-[4rem] w-full bg-white shadow-md transition-transform duration-300 dark:bg-[#212526]"
+    class="fixed top-0 z-50 h-[4rem] w-full bg-white shadow-md transition-transform duration-300 dark:bg-[#212526]"
     :class="{
       'overflow-hidden': isOpen,
       '-translate-y-full': isHidden,
