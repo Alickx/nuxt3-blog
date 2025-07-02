@@ -82,6 +82,15 @@ $line-space: 22px;
 
   img {
     max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+
+    .dark & {
+      border-color: #3a3a3a;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
   }
 
   hr {
