@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="mt-18 w-full border-t border-t-[#ddd] bg-white py-6 text-[#444] dark:border-t-gray-700 dark:bg-[#212526] dark:text-gray-300"
+    class="mt-5 w-full bg-white py-4 text-[#444] dark:bg-[#212526] dark:text-gray-300"
   >
     <div class="container mx-auto px-4">
       <!-- 页脚上部 - 链接区域 -->
@@ -14,7 +14,7 @@
             class="flex flex-col text-center"
           >
             <h3
-              class="mb-3 border-b border-gray-200 pb-2 text-base font-bold dark:border-gray-700"
+              class="mb-4 text-base font-bold"
             >
               {{ section.title }}
             </h3>
@@ -35,7 +35,7 @@
 
       <!-- 页脚下部 - 版权信息 -->
       <div
-        class="mt-4 border-t border-gray-200 pt-3 text-center dark:border-gray-700"
+        class="mt-6 text-center"
       >
         <div class="mb-2 flex justify-center space-x-4">
           <a
@@ -77,7 +77,6 @@ const siteInfo = useSiteInfo();
 
 <style scoped>
 footer {
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 
@@ -89,17 +88,5 @@ a {
 h3 {
   position: relative;
   font-size: 1.1rem;
-}
-
-h3::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 30px;
-  height: 2px;
-  background-color: #3b82f6;
 }
 </style>

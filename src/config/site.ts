@@ -4,6 +4,8 @@ export interface SiteConfig {
   title: string;
   description: string;
   author: string;
+  // 博客创建时间
+  createdAt: string;
 
   // 社交媒体链接
   social: {
@@ -53,6 +55,7 @@ export const siteConfig: SiteConfig = {
   title: "Alickx' Blog - 个人技术博客",
   description: "一个基于Nuxt3的技术博客",
   author: "Alickx",
+  createdAt: "2023-04-26",
 
   social: {
     github: "https://github.com/Alickx",

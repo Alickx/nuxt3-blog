@@ -1,9 +1,9 @@
 <template>
-  <div class="mx-auto mt-6 max-w-3xl px-4 sm:px-6 md:px-0">
+  <div>
     <div class="min-h-lg flex flex-col">
       <ContentQuery :path="contentPath" :sort="[{ date: -1 }]">
         <template #default="{ data: articles }">
-          <div class="relative space-y-6">
+          <div class="relative">
             <div
               v-if="isLoading"
               class="absolute inset-0 z-10 flex items-center justify-center bg-white bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-50"
@@ -15,7 +15,7 @@
               :key="currentPage"
               name="article-list"
               tag="div"
-              class="space-y-6"
+              class="divide-y divide-gray-100 dark:divide-gray-800"
               :css="false"
               @before-enter="beforeEnter"
               @enter="enter"
