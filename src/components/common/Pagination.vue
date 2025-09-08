@@ -26,7 +26,7 @@
           :key="page"
           @click="$emit('change', page)"
           :class="[
-            'inline-flex h-9 w-9 items-center justify-center rounded-md text-sm font-medium transition-colors',
+            'inline-flex h-9 w-9 items-center justify-center rounded-md text-sm font-medium transition-colors cursor-pointer',
             currentPage === page
               ? 'border border-solid border-black bg-black text-white dark:border-white dark:bg-white dark:text-black'
               : 'border border-solid border-[#e5e7eb] bg-white text-gray-700 hover:bg-gray-100 dark:border-[#1f2937] dark:bg-black dark:text-gray-400 dark:hover:bg-gray-900 dark:hover:text-gray-100',
