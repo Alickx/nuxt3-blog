@@ -28,7 +28,8 @@
     "remark-reading-time": "^2.0.2",
     "sass": "^1.92.1",
     "sitemap": "^7.1.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "unocss": "^66.5.1"
   },
   "dependencies": {
     "@docsearch/css": "^3.9.0",
