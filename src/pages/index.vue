@@ -19,12 +19,18 @@
                 关于我
               </h2>
               <div class="text-center">
-                <div class="mx-auto mb-4 h-20 w-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-0.5">
+                <div
+                  class="mx-auto mb-4 h-20 w-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-0.5 about-avatar cursor-pointer"
+                  @mouseenter="startRotation"
+                  @mouseleave="stopRotation"
+                  ref="avatarContainer"
+                >
                   <div class="flex h-full w-full items-center justify-center rounded-full bg-white dark:bg-gray-800 overflow-hidden">
                     <img
                       src="~/assets/images/avatar.png"
                       alt="Alickx头像"
-                      class="h-full w-full rounded-full object-cover"
+                      class="about-avatar__image h-full w-full rounded-full object-cover"
+                      ref="avatarImage"
                     />
                   </div>
                 </div>
@@ -146,6 +152,58 @@
 <script setup lang="ts">
 import { siteConfig } from "~/config/site";
 
+const avatarImage = ref<HTMLElement | null>(null);
+let rotationInterval: number | null = null;
+let rotationDegree = 0;
+
+const startRotation = () => {
+  if (rotationInterval) return;
+
+  rotationInterval = window.setInterval(() => {
+    rotationDegree += 30; // 进一步增加旋转速度
+    if (avatarImage.value) {
+      avatarImage.value.style.transform = `rotate(${rotationDegree}deg)`;
+    }
+  }, 20); // 减少间隔时间使旋转更流畅
+};
+
+const stopRotation = () => {
+  if (rotationInterval) {
+    clearInterval(rotationInterval);
+    rotationInterval = null;
+
+    // 平滑减速到停止
+    const startDegree = rotationDegree;
+    // 计算到最近的完整圈的位置，避免过度旋转
+    const targetDegree = Math.round(startDegree / 360) * 360;
+    const startTime = Date.now();
+    const duration = 1200; // 1.2秒减速时间，更自然
+
+    const slowDown = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // 使用更自然的缓出效果
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+
+      // 计算当前应该旋转的角度
+      const currentDegree = startDegree + (targetDegree - startDegree) * easeOut;
+
+      if (avatarImage.value) {
+        avatarImage.value.style.transform = `rotate(${currentDegree}deg)`;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(slowDown);
+      } else {
+        // 停止时保持在目标角度
+        rotationDegree = targetDegree;
+      }
+    };
+
+    requestAnimationFrame(slowDown);
+  }
+};
+
 useHead({
   title: "Alickx' Blog",
   meta: [
@@ -184,4 +242,10 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.about-avatar__image {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+</style>
