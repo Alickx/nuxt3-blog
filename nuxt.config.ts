@@ -33,7 +33,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
-      script: [{ src: "/darkModelVerify.js" }],
+      script: [
+        { src: "/darkModelVerify.js" },
+        { src: "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", async: true }
+      ],
       meta: [
         {
           name: "viewport",
