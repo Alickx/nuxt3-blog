@@ -72,6 +72,13 @@ tags: ['tag1', 'tag2']
 Article content...
 ```
 
+Recommended guidance for each frontmatter field:
+
+- `title`: Write a concise, engaging headline that includes primary keywords so search engines and feeds surface the article accurately while enticing readers to click.
+- `description`: Provide a one- or two-sentence summary highlighting the article's main takeaway; this powers SEO meta descriptions and helps social previews communicate value quickly.
+- `date`: Use the ISO 8601 format (`YYYY-MM-DD`) to keep chronological sorting predictable across the site, archives, and any automated deployments.
+- `tags`: Choose 3–5 specific topical labels that reflect the article's themes; consistent tagging keeps related posts grouped and improves search and filter relevance.
+
 ## ⚙️ Customization
 
 The blog can be easily customized through the configuration file located at `src/config/site.ts`. This allows you to modify:
@@ -162,4 +169,3 @@ This project is distributed and used under the [LICENSE](LICENSE) open source li
 ---
 
 <p align="center">Made with ❤️ by <a href="https://github.com/alickx">alickx</a></p>
-
