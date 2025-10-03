@@ -22,10 +22,6 @@
         <Icon name="ic:baseline-visibility" size="18" class="mr-2" />
         访问次数：<span id="busuanzi_value_page_pv">-</span>
       </p>
-      <p class="info-text">
-        <Icon name="ic:baseline-person" size="18" class="mr-2" />
-        访问人数：<span id="busuanzi_value_page_uv">-</span>
-      </p>
     </div>
   </div>
 </template>
