@@ -116,25 +116,25 @@
               </h2>
               <div class="grid grid-cols-2 gap-3">
                 <div class="flex items-center rounded-lg bg-gray-50 p-2 dark:bg-gray-700">
-                  <div class="mr-2 h-6 w-6 rounded bg-green-500 flex items-center justify-center">
+                  <div class="mr-2 flex h-6 min-w-[1.5rem] shrink-0 items-center justify-center rounded bg-green-500 px-1">
                     <span class="text-xs font-bold text-white">N</span>
                   </div>
                   <span class="text-xs font-medium text-gray-700 dark:text-gray-300">Nuxt.js</span>
                 </div>
                 <div class="flex items-center rounded-lg bg-gray-50 p-2 dark:bg-gray-700">
-                  <div class="mr-2 h-6 w-6 rounded bg-blue-500 flex items-center justify-center">
+                  <div class="mr-2 flex h-6 min-w-[1.5rem] shrink-0 items-center justify-center rounded bg-blue-500 px-1">
                     <span class="text-xs font-bold text-white">V</span>
                   </div>
                   <span class="text-xs font-medium text-gray-700 dark:text-gray-300">Vue.js</span>
                 </div>
                 <div class="flex items-center rounded-lg bg-gray-50 p-2 dark:bg-gray-700">
-                  <div class="mr-2 h-6 w-6 rounded bg-blue-600 flex items-center justify-center">
+                  <div class="mr-2 flex h-6 min-w-[1.5rem] shrink-0 items-center justify-center rounded bg-blue-600 px-1">
                     <span class="text-xs font-bold text-white">TS</span>
                   </div>
                   <span class="text-xs font-medium text-gray-700 dark:text-gray-300">TypeScript</span>
                 </div>
                 <div class="flex items-center rounded-lg bg-gray-50 p-2 dark:bg-gray-700">
-                  <div class="mr-2 h-6 w-6 rounded bg-cyan-500 flex items-center justify-center">
+                  <div class="mr-2 flex h-6 min-w-[1.5rem] shrink-0 items-center justify-center rounded bg-cyan-500 px-1">
                     <span class="text-xs font-bold text-white">TW</span>
                   </div>
                   <span class="text-xs font-medium text-gray-700 dark:text-gray-300">Tailwind</span>
