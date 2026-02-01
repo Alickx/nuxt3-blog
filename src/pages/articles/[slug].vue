@@ -7,9 +7,11 @@
         <ArticleInfoHeader :article-data="data" />
         <ArticleInfoContent :article-data="data" />
         <ArticleInfoFooter />
-        <ClientOnly>
-          <WalineComment />
-        </ClientOnly>
+        <div ref="commentWrapper">
+          <ClientOnly>
+            <WalineComment />
+          </ClientOnly>
+        </div>
       </div>
       <div v-if="data" class="relative hidden w-[260px] xl:block">
         <div
@@ -31,6 +33,7 @@ import type { CSSProperties } from "vue";
 
 const route = useRoute();
 const tocWrapper = ref<HTMLElement | null>(null);
+const commentWrapper = ref<HTMLElement | null>(null);
 const tocStyle = ref<CSSProperties>({
   position: "fixed",
   top: "120px",
@@ -76,15 +79,42 @@ const updateTocPosition = () => {
   if (!tocWrapper.value) return;
 
   const headerHeight = 120; // 头部高度
+  const bottomGap = 20; // 目录与评论区的间距
 
-  tocStyle.value = {
-    position: "fixed",
-    top: `${headerHeight}px`,
-    width: "260px",
-    maxHeight: "calc(100vh - 120px)",
-    overflowY: "auto",
-    zIndex: 10,
-  };
+  // 获取目录容器高度
+  const tocHeight = tocWrapper.value.offsetHeight;
+
+  // 获取评论区位置（如果存在）
+  const commentTop = commentWrapper.value
+    ? commentWrapper.value.getBoundingClientRect().top + window.scrollY
+    : Infinity;
+
+  // 计算目录固定时的底部位置
+  const scrollTop = window.scrollY;
+  const tocFixedBottom = scrollTop + headerHeight + tocHeight;
+
+  // 判断是否需要停止跟随
+  if (tocFixedBottom + bottomGap > commentTop) {
+    // 目录将超过评论区，切换为绝对定位
+    tocStyle.value = {
+      position: "absolute",
+      top: `${commentTop - tocHeight - bottomGap}px`,
+      width: "260px",
+      maxHeight: "calc(100vh - 120px)",
+      overflowY: "auto",
+      zIndex: 10,
+    };
+  } else {
+    // 正常固定跟随
+    tocStyle.value = {
+      position: "fixed",
+      top: `${headerHeight}px`,
+      width: "260px",
+      maxHeight: "calc(100vh - 120px)",
+      overflowY: "auto",
+      zIndex: 10,
+    };
+  }
 };
 
 // 节流处理，避免频繁计算
