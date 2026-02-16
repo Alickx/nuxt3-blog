@@ -59,7 +59,13 @@ const props = defineProps({
   },
 });
 
-const currentPage = ref(1);
+const route = useRoute();
+const router = useRouter();
+
+const currentPage = computed(() => {
+  const page = Number(route.query.page);
+  return page > 0 ? page : 1;
+});
 const pageSize = 10;
 const isLoading = ref(false);
 
@@ -118,7 +124,10 @@ const handlePageChange = async (page: number) => {
   // Animate current page out
   await new Promise((resolve) => setTimeout(resolve, 300));
 
-  currentPage.value = page;
+  // 通过 URL query 参数驱动分页，第1页不带参数保持 URL 简洁
+  await router.push({
+    query: page > 1 ? { page: String(page) } : {},
+  });
   isLoading.value = false;
 
   // 只在客户端环境中执行window操作
