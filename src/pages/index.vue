@@ -23,6 +23,7 @@
                   class="mx-auto mb-4 h-20 w-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-0.5 about-avatar cursor-pointer"
                   @mouseenter="startRotation"
                   @mouseleave="stopRotation"
+                  @click="handleAvatarClick"
                   ref="avatarContainer"
                 >
                   <div class="flex h-full w-full items-center justify-center rounded-full bg-white dark:bg-gray-800 overflow-hidden">
@@ -151,10 +152,16 @@
 
 <script setup lang="ts">
 import { siteConfig } from "~/config/site";
+import confetti from "canvas-confetti";
 
 const avatarImage = ref<HTMLElement | null>(null);
 let rotationInterval: number | null = null;
 let rotationDegree = 0;
+
+// 头像点击烟花彩蛋
+const clickCount = ref(0);
+const resetTimer = ref<ReturnType<typeof setTimeout> | null>(null);
+const isAnimating = ref(false);
 
 const startRotation = () => {
   if (rotationInterval) return;
@@ -202,6 +209,70 @@ const stopRotation = () => {
 
     requestAnimationFrame(slowDown);
   }
+};
+
+// 头像点击处理（烟花彩蛋）
+const handleAvatarClick = () => {
+  // 触发旋转动画（原有功能）
+  startRotation();
+  setTimeout(() => {
+    stopRotation();
+  }, 500);
+
+  // 烟花彩蛋逻辑
+  if (isAnimating.value) return;
+
+  clickCount.value++;
+
+  // 清除之前的重置计时器
+  if (resetTimer.value) {
+    clearTimeout(resetTimer.value);
+  }
+
+  // 达到5次触发烟花
+  if (clickCount.value >= 5) {
+    triggerConfetti();
+    clickCount.value = 0;
+  } else {
+    // 3秒后重置计数
+    resetTimer.value = setTimeout(() => {
+      clickCount.value = 0;
+    }, 3000);
+  }
+};
+
+// 烟花效果
+const triggerConfetti = () => {
+  isAnimating.value = true;
+
+  // 多轮烟花效果
+  const duration = 3000;
+  const end = Date.now() + duration;
+
+  const frame = () => {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7']
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7']
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    } else {
+      isAnimating.value = false;
+    }
+  };
+
+  frame();
 };
 
 useHead({
