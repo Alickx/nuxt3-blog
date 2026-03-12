@@ -98,7 +98,7 @@ export const siteConfig: SiteConfig = {
     },
     {
       title: "友情链接",
-      links: [{ name: "aliveseven", url: "https://www.aliveseven.top/" }],
+      links: [],
     },
     {
       title: "学习论坛",
